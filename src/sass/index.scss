@@ -1,2 +1,8 @@
-@import './common';
-@import './example';
+@import './home/home-header';
+@import './home/home-body';
+@import './footer/footer';
+@import './modal/film-modal';
+@import './modal/team-modal';
+@import './my-library/my-library-header';
+@import './my-library/my-library-watched-body';
+@import './film-card';
