@@ -5,3 +5,8 @@ const refs = {
   queue: document.querySelector('.queue'),
   watchedContainer: document.querySelector('.watchedContainer'),
 };
+refs.watched.addEventListener('click', onWatched);
+refs.qatched.addEventListener('click', onQatched);
+
+refs.watched.addEventListener('click', onWatched);
+refs.queue.addEventListener('click', onQueue);
