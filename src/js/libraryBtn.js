@@ -19,7 +19,7 @@ function onWatched() {
   watchedMovies.forEach(movie => {
     const movieEl = document.createElement('div'); // цей div має бути картка фільму
     // movieEl.textContent =
-    //   movie.title || movie.name || movie.original_title; // ось тут не впевнений чи title чи може якось за ID
+    //   movie.title || movie.name || movie.original_title; // ось тут не впевнений чи взагалі так можна робити.
     refs.watchedContainer.appendChild(movieEl);
   });
 }
@@ -35,6 +35,6 @@ function onQueue() {
   queueMovies.forEach(movie => {
     const movieElement = document.createElement('div'); // цей div має бути картка фільму
     movieElement.textContent = movie.title; // ось тут не впевнений чи title чи може якось за ID
-    refs.watchedContainer.appendChild(movieElement);
+    refs.watchedContainer.appendChild(movieElement); // тут теж сумніваюсь
   });
 }
