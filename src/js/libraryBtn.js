@@ -5,8 +5,8 @@ const refs = {
   queue: document.querySelector('.queue'),
   watchedContainer: document.querySelector('.watchedContainer'),
 };
-refs.watched.addEventListener('click', onWatched);
-refs.queue.addEventListener('click', onQueue);
+// refs.watched.addEventListener('click', onWatched);
+// refs.queue.addEventListener('click', onQueue);
 
 refs.watched.addEventListener('click', onWatched);
 refs.queue.addEventListener('click', onQueue);
@@ -28,12 +28,12 @@ function onQueue() {
   // Отримуємо список фільмів з черги перегляду з localStorage
   const queueMovies = JSON.parse(localStorage.getItem('queueMovies')) || [];
 
-  // Очищаємо контейнер перед відображенням списку фільмів
-  refs.watchedContainer.innerHTML = '';
+  // Очищаємо контейнер перед відображенням списку фільмів ???
+  // refs.watchedContainer.innerHTML = '';
 
   // Додаємо кожен фільм зі списку до контейнера
   queueMovies.forEach(movie => {
-    const movieElement = document.createElement('div'); // цей div має бути картка фільму
+    const movieElement = document.createElement('div'); // цей div має бути картка фільму ??
     movieElement.textContent = movie.title; // ось тут не впевнений чи title чи може якось за ID
     refs.watchedContainer.appendChild(movieElement); // тут теж сумніваюсь
   });
