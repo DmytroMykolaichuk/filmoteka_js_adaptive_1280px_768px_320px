@@ -1,3 +1,65 @@
+.lib-header__wrapper {
+  height: 230px;
+
+  background-image: linear-gradient(to right, rgba(0, 0, 0, .56),
+  rgba(0, 0, 0, .56)),
+    url(../img/my-library/hbg-320-x1.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 320px 230px;
+
+  @media (min-device-pixel-ratio: 2),
+  (min-resolution: 192dpi),
+  (min-resolution: 2dppx) {
+    background-image: linear-gradient(to right, rgba(0, 0, 0, .56),
+    rgba(0, 0, 0, .56)),
+      url(../img/my-library/hbg-320-x2.jpg);
+  }
+
+  @media screen and (min-width: 768px) {
+    background-size: 768px 219px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, .56),
+    rgba(0, 0, 0, .56)),
+      url(../img/my-library/hbg-768-x1.jpg);
+
+    @media (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+      background-image: linear-gradient(to right, rgba(0, 0, 0, .56),
+      rgba(0, 0, 0, .56)),
+        url(../img/my-library/hbg-768-x2.jpg);
+    }
+  }
+
+  @media screen and (min-width: 1200px) {
+    height: 216px;
+    background-size: 1280px 216px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, .56),
+    rgba(0, 0, 0, .56)),
+      url(../img/my-library/hbg-1280-x1.jpg);
+
+    @media (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+      background-image: linear-gradient(to right, rgba(0, 0, 0, .56),
+      rgba(0, 0, 0, .56)),
+        url(../img/my-library/hbg-1280-x2.jpg);
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 button{
     background-color: red;
 }
