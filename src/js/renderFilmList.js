@@ -2,11 +2,9 @@ import { genres } from './genres';
 
 const gallery = document.querySelector('.film-list');
 
-let markup = '';
-
 export function renderFilmList(data) {
   console.log(data);
-
+  let markup = '';
   data.results
     .map(el => {
       let release = Number.parseInt(el.release_date || el.first_air_date);
