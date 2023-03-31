@@ -82,24 +82,26 @@ img {
 .film-list {
   display: flex;
   flex-wrap: wrap;
+  gap: 20px;
 
   @media screen and(min-width: 768px) {
     gap: 32px;
   }
 
   @media screen and(min-width: 1280px) {
-    gap: 16px;
+    column-gap: 16px;
+    row-gap: 32px;
   }
 }
 
 .film-item {
   width: 100%;
 
-  margin-bottom: 32px;
+  // margin-bottom: 32px;
 
   @media screen and(min-width: 768px) {
     flex-basis: calc((100% - 32px) / 2);
-    margin-bottom: 16px;
+    // margin-bottom: 16px;
   }
 
   @media screen and(min-width: 1280px) {
@@ -111,6 +113,7 @@ img {
 }
 
 .poster{
+  width: 100%;
   display: block;
   transition: transform 300ms linear;
 
@@ -134,3 +137,14 @@ img {
   font-size: 12px;
   line-height: 1.16;
 }
+
+.film-data{
+  font-family: 'Roboto';
+}
+// .info-film{
+//   display: flex;
+//   align-items: center;
+//   width: 100%;
+//   gap: 3px;
+//   justify-content: start;
+// }

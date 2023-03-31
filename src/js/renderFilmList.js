@@ -30,11 +30,10 @@ export function renderFilmList(data) {
               alt="${el.title}"
               loading="lazy"
             /></div>
-            <div>
+            <div class='film-data'>
               <h2 class="title-film">${el.title}</h2>
               <p>
-                <span>${genreMarkup.join(', ')}</span> 
-                <span>| ${release}</span>
+                <span class='info-film'>${genreMarkup.join(', ')} | ${release}</span> 
                 <span class ="rating">${el.vote_average.toFixed(1)}</span>
               </p>
             </div>
