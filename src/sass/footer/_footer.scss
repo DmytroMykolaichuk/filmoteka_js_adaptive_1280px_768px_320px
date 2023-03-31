@@ -1,3 +1,41 @@
 @import '~node_modules/modern-normalize/modern-normalize.css';
 
+.footer {
+    background-color: var(--footer-background-color);
+    
+}
 
+.footer__inf {
+    display: flex;
+    justify-content: center;
+    padding-top: 30px;
+    padding-bottom: 28px;
+}
+
+.footer__copyrite{
+    color: var(--footer-text-color);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+}
+
+.footer__heart {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.footer__icon {
+    color: var(--footer-icon-fill)
+}
+
+.footer__btn {
+    background-color: transparent;
+    text-decoration: underline;
+    border-color: transparent;
+    color: var(--footer-text-color);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+}
