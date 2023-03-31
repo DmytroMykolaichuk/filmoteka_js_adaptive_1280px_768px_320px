@@ -111,3 +111,14 @@ img {
     flex-basis: calc((100% - 32px) / 3);
   }
 }
+
+.rating {
+  background-color: #ff6b08;
+  color: #ffffff;
+  border-radius: 5px;
+  padding: 3px 12px;
+
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.16;
+}
