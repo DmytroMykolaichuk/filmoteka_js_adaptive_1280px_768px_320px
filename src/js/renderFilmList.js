@@ -21,7 +21,7 @@ export function renderFilmList(data) {
       });
 
       markup += ` <li class ="film-item">
-        <a class="film-card" href="">
+        <a id='${el.id}' class="film-card" href="#">
           <div>
           <div class='thumb'>
           <img
