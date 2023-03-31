@@ -23,13 +23,15 @@ export function renderFilmList(data) {
       markup += ` <li class ="film-item">
         <a class="film-card" href="">
           <div>
-            <img
+          <div class='thumb'>
+          <img
+              class = 'poster'
               src= "${el.poster_path ? mainPoster : posterFake}"
               alt="${el.title}"
               loading="lazy"
-            />
+            /></div>
             <div>
-              <h2>${el.title}</h2>
+              <h2 class="title-film">${el.title}</h2>
               <p>
                 <span>${genreMarkup.join(', ')}</span> 
                 <span>| ${release}</span>
