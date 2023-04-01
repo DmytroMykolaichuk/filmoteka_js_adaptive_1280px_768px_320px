@@ -30,7 +30,7 @@ export function renderFilmList(data) {
             /></div>
             <div class='film-data'>
               <h2 class="title-film">${el.title}</h2>
-              <p class = film-text>
+              <p class ="film-text">
                 <span class='info-film'>${genreMarkup.join(
                   ', '
                 )} | ${release}</span> 
