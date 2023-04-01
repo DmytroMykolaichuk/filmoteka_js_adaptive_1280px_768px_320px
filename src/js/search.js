@@ -1,3 +1,5 @@
+// js/search.js
+
 import axios from 'axios';
 import { renderFilmList } from './renderFilmList';
 const gallery = document.querySelector('.film-list');
@@ -12,7 +14,6 @@ const instance = axios.create({
 let name;
 let page = 1;
 let pages;
-
 
 export async function getSearchMovie() {
   try {
@@ -44,16 +45,16 @@ export function onSearch(event) {
 }
 
 export async function addSearchedMovie() {
-    const searchResult = await getSearchMovie();
-    if (searchResult.results.length !== 0) {
-      pages = searchResult.total_pages;
-      renderFilmList(searchResult);
-      console.log(searchResult);
-      console.log(pages);
-    } else {
-      errorEl.classList.toggle('visually-hidden');
-      return console.log(
-        'Sorry, there are no images matching your search query. Please try again.'
-      );
-    }
+  const searchResult = await getSearchMovie();
+  if (searchResult.results.length !== 0) {
+    pages = searchResult.total_pages;
+    renderFilmList(searchResult);
+    console.log(searchResult);
+    console.log(pages);
+  } else {
+    errorEl.classList.toggle('visually-hidden');
+    return console.log(
+      'Sorry, there are no images matching your search query. Please try again.'
+    );
   }
+}
