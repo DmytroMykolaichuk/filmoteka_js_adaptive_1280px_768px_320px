@@ -1,3 +1,6 @@
+@import './components/container';
+@import './base/variables';
+@import './base/reset';
 @import './home/home-header';
 @import './home/home-body';
 @import './footer/footer';
@@ -6,6 +9,3 @@
 @import './my-library/my-library-header';
 @import './my-library/my-library-watched-body';
 @import './film-card';
-@import './components/container';
-@import './base/variables';
-@import './base/reset';
