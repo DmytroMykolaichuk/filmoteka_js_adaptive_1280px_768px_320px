@@ -4,6 +4,8 @@ import { genres } from './genres';
 const filmList = document.querySelector('.film-list');
 filmList.addEventListener('click', clickOnFilmCard);
 const backdrop = document.querySelector('.modal-container');
+const modal = document.querySelector('.modal-body');
+const body = document.querySelector('body');
 
 let idCard = '';
 let markup = '';
@@ -59,9 +61,9 @@ export async function clickOnFilmCard(event) {
                 </p>
                 <p>
                     <span class="film-property-label">Genre</span>
-                    <span class="film-property-value">${
-                      modalCard.genres.id
-                    }</span>
+                    <span class="film-property-value">${modalCard.genres
+                      .map(genre => genre.name)
+                      .join(', ')}</span>
                 </p>
             </div>
             <div class="movie-description">
@@ -69,13 +71,13 @@ export async function clickOnFilmCard(event) {
                 <p class="mov-desc-text">${modalCard.overview}</p>
             </div>
             <div class="modal-Btn">
-            <button type="button" class="trailer-Btn btn__queue" data-id=${
+            <button type="button" class="trailer-Btn btn__queue btn" data-id=${
               modalCard.id
             }>trailer</button>    
-            <button type="button" class="add-to-watched-Btn btn__watch" data-id=${
+            <button type="button" class="add-to-watched-Btn btn__watch btn" data-id=${
               modalCard.id
             }>Add to watched</button>
-                <button type="button" class="add-to-queue-Btn btn__queue" data-id=${
+                <button type="button" class="add-to-queue-Btn btn__queue btn" data-id=${
                   modalCard.id
                 }>Add to queue</button>
                 
@@ -83,27 +85,38 @@ export async function clickOnFilmCard(event) {
             
     </div>`;
 
-  backdrop.style.display = 'block';
-  const modal = document.querySelector('.modal-body');
+  backdrop.removeAttribute('hidden', '');
+  window.addEventListener('keydown', pressEscapeKey);
+
+  body.classList.toggle('no-scroll');
 
   modal.innerHTML = '';
   modal.insertAdjacentHTML('beforeend', markup);
 }
 
-const closeModal1 = document.querySelector('.modal-close');
-closeModal1.addEventListener('click', () => (backdrop.style.display = 'none'));
+const closeModalOnClick = document.querySelector('.js-modal-close');
+closeModalOnClick.addEventListener('click', closeModal);
+
+window.addEventListener('click', event => {
+  if (event.target === backdrop) {
+    closeModal();
+  }
+});
 
 function closeModal() {
   // Скрыть модальное окно
-  closeModal1.setAttribute('hidden', '');
+  closeModalOnClick.setAttribute('hidden', '');
+  backdrop.setAttribute('hidden', '');
+
+  body.classList.toggle('no-scroll');
   // Удалить обработчики событий
-  document.removeEventListener('click', clickOutsideModal);
-  document.removeEventListener('keydown', pressEscapeKey);
+  window.removeEventListener('click', clickOutsideModal);
+  window.removeEventListener('keydown', pressEscapeKey);
 }
 
 // Функция для проверки, находится ли щелчок за пределами модального окна
 function clickOutsideModal(event) {
-  if (event.target == modal) {
+  if (event.target === modal) {
     closeModal();
   }
 }
@@ -114,3 +127,8 @@ function pressEscapeKey(event) {
     closeModal();
   }
 }
+
+const btn = document.querySelectorAll('.btn');
+btn.forEach(el => {
+  el.addEventListener('mouseout', () => btn.blur());
+});
