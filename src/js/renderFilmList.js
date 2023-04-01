@@ -3,7 +3,7 @@ import { genres } from './genres';
 const gallery = document.querySelector('.film-list');
 
 export function renderFilmList(data) {
-  console.log(data);
+  // console.log(data);
   let markup = '';
   data.results
     .map(el => {

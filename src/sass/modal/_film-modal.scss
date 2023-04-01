@@ -12,7 +12,7 @@
 
 .modal-content {
   position: fixed;
-  top: 50%;
+  top: 47%;
   left: 50%;
   transform: translate(-50%, -50%) scale(1);
   background-color: #fefefe;
@@ -22,19 +22,28 @@
   width: 100%;
 
   max-width: 280px;
-  max-height: 940px;
+  // max-height: 940px;
   padding: 48px 20px 40px 20px;
+
+  height: auto;
+  max-height: 95vh;
+  overflow-y: auto;
 
   @media screen and (min-width: 768px) {
     max-width: 704px;
-    max-height: 552px;
+    // max-height: 552px;
     padding: 40px 36px;
+    top: 50%;
   }
 
   @media screen and (min-width: 1280px) {
     max-width: 806px;
-    max-height: 558px;
+    // max-height: 558px;
     padding: 40px 12px;
+  }
+  &.active {
+    opacity: 1;
+    visibility: visible;
   }
 }
 
@@ -99,9 +108,15 @@
   font-weight: 500;
   font-size: 30px;
   line-height: calc(35px / 30px);
-  margin-top: 0;
+  margin-top: 20px;
   margin-bottom: 20px;
   text-transform: uppercase;
+
+  @media screen and (min-width: 768px) {
+    margin-top: 0;
+    font-size: 20px;
+    line-height: calc(23px / 20px);
+  }
 
   @media screen and (min-width: 1280px) {
     font-size: 20px;
@@ -208,6 +223,7 @@
 
   @media screen and (min-width: 1280px) {
     margin-left: 8px;
+    margin-top: 15%;
   }
 }
 
@@ -240,6 +256,44 @@
     width: 125px;
     height: 44px;
   }
+}
+
+.trailer-Btn {
+  // background: url('../images/youtube_social.png') no-repeat;
+  background: url('../images/youtube_social1.png') no-repeat;
+
+  background-size: 30px;
+  background-position-x: 20px;
+  background-position-y: center;
+
+  @media screen and (min-width: 768px) {
+    padding-left: 30px;
+    background-size: 25px;
+    background-position-x: 10px;
+    background-position-y: center;
+  }
+
+  @media screen and (min-width: 1280px) {
+    padding-left: 30px;
+    background-size: 30px;
+    background-position-x: 10px;
+    background-position-y: center;
+  }
+}
+
+.add-to-watched-Btn:hover,
+.add-to-queue-Btn:hover,
+.add-to-watched-Btn:focus,
+.add-to-queue-Btn:focus {
+  background-color: #ff6b01;
+  border: none;
+  color: #ffffff;
+}
+
+.trailer-Btn:hover,
+.trailer-Btn:focus {
+  background-color: #ff0909;
+  border: none;
 }
 
 .watch-button .active {
