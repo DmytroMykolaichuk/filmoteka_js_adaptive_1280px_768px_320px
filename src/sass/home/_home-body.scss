@@ -1,82 +1,5 @@
-h1,
-h2,
-h3,
-p {
-  margin: 0;
-  font-weight: 500;
-  font-size: 20px;
-  line-height: 1.2;
-  color: #000000;
-}
-
-span {
-  color: #ff6b08;
-}
-
-ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-a {
-  text-decoration: none;
-}
-
-img {
-  @media screen and(min-width: 320px) {
-    width: 280px;
-    height: 398px;
-  }
-
-  @media screen and(min-width: 768px) {
-    width: 336px;
-    height: 455px;
-  }
-
-  @media screen and(min-width: 1280px) {
-    width: 395px;
-    height: 574px;
-  }
-}
-
-.visually-hidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  border: 0;
-  padding: 0;
-  white-space: nowrap;
-  clip-path: inset(100%);
-  clip: rect(0 0 0 0);
-  overflow: hidden;
-}
-
 .films {
   padding: 60px 0;
-}
-
-.container {
-  width: 100%;
-  padding-left: 32px;
-  padding-right: 32px;
-  margin: 0 auto;
-  //   outline: 2px solid red;
-
-  @media screen and(min-width: 320px) {
-    width: 320px;
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-
-  @media screen and(min-width: 768px) {
-    width: 768px;
-  }
-
-  @media screen and(min-width: 1280px) {
-    width: 1280px;
-  }
 }
 
 .film-list {
@@ -97,54 +20,55 @@ img {
 .film-item {
   width: 100%;
 
-  // margin-bottom: 32px;
-
   @media screen and(min-width: 768px) {
     flex-basis: calc((100% - 32px) / 2);
-    // margin-bottom: 16px;
   }
 
   @media screen and(min-width: 1280px) {
     flex-basis: calc((100% - 32px) / 3);
   }
 }
-.title-film{
+.title-film {
   text-transform: uppercase;
 }
 
-.poster{
+.poster {
   width: 100%;
   display: block;
   transition: transform 300ms linear;
 
-  &:hover{
+  &:hover {
     transform: scale(1.1);
   }
 }
 
-.thumb{
+.thumb {
   overflow: hidden;
   margin-bottom: 8px;
 }
 
+.title-film,
+.film-text {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.2;
+
+  color: var(--main-black-color);
+}
+
+span {
+  color: var(--footer-icon-fill);
+}
+
 .rating {
-  background-color: #ff6b08;
-  color: #ffffff;
+  background-color: var(--footer-icon-fill);
+  color: var(--main-white-color);
+
   border-radius: 5px;
+
   padding: 3px 12px;
 
   font-weight: 500;
   font-size: 12px;
   line-height: 1.16;
 }
-
-.film-data{
-  font-family: 'Roboto';
-}
-// .info-film{
-//   display: flex;
-//   align-items: center;
-//   width: 100%;
-//   gap: 3px;
-//   justify-content: start;
-// }
