@@ -94,7 +94,7 @@ img {
   }
 }
 
-.film-item {
+.film-item {position: relative;
   width: 100%;
 
   // margin-bottom: 32px;
@@ -127,10 +127,12 @@ img {
   margin-bottom: 8px;
 }
 
-.rating {
+.rating {position: absolute;
+  top: 0px;
+  left: 0px;
   background-color: #ff6b08;
   color: #ffffff;
-  border-radius: 5px;
+  border-bottom-right-radius: 5px;
   padding: 3px 12px;
 
   font-weight: 500;
@@ -138,9 +140,23 @@ img {
   line-height: 1.16;
 }
 
+.film-card{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  
+}
+
 .film-data {
   font-family: 'Roboto';
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height:100%;
+  flex: 0 1 70px;
 }
+
+
 // .info-film{
 //   display: flex;
 //   align-items: center;
