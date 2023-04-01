@@ -1,18 +1,18 @@
 .modal-container {
-  display: none;
+  // display: none;
   position: fixed;
   z-index: 1;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
-  overflow: auto;
+  overflow-y: auto;
   background-color: rgba(0, 0, 0, 0.4);
 }
 
 .modal-content {
   position: fixed;
-  top: 47%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(1);
   background-color: #fefefe;
@@ -26,7 +26,7 @@
   padding: 48px 20px 40px 20px;
 
   height: auto;
-  max-height: 95vh;
+  max-height: 97vh;
   overflow-y: auto;
 
   @media screen and (min-width: 768px) {
@@ -53,14 +53,20 @@
   background-color: transparent;
   border: none;
   position: absolute;
-  right: 16px;
-  top: 16px;
+  top: 0px;
+  right: 0px;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
+
+  @media screen and (min-width: 768px) {
+    top: 16px;
+    right: 16px;
+  }
 }
+
 .modal-close:hover,
 .modal-close:focus {
   fill: #ff6b01;
@@ -118,10 +124,10 @@
     line-height: calc(23px / 20px);
   }
 
-  @media screen and (min-width: 1280px) {
-    font-size: 20px;
-    line-height: calc(23px / 20px);
-  }
+  // @media screen and (min-width: 1280px) {
+  //   font-size: 20px;
+  //   line-height: calc(23px / 20px);
+  // }
 }
 .movie-description {
   margin-top: 0;
@@ -259,8 +265,8 @@
 }
 
 .trailer-Btn {
-  // background: url('../images/youtube_social.png') no-repeat;
-  background: url('../images/youtube_social1.png') no-repeat;
+  background: url('../images/youtube_social.png') no-repeat;
+  // background: url('../images/youtube_social1.png') no-repeat;
 
   background-size: 30px;
   background-position-x: 20px;
@@ -292,12 +298,23 @@
 
 .trailer-Btn:hover,
 .trailer-Btn:focus {
+  // background: url('../images/youtube_social_onHover-2.png') no-repeat;
+  background: url('../images/youtube_social_onHover.png') no-repeat;
+  background-size: 30px;
+  background-position-x: 10px;
+  background-position-y: center;
+
   background-color: #ff0909;
   border: none;
+  color: #ffffff;
 }
 
-.watch-button .active {
-  background-color: #ff6b01;
-  border: none;
-  color: #ffffff;
+// .watch-button .active {
+//   background-color: #ff6b01;
+//   border: none;
+//   color: #ffffff;
+// }
+
+.no-scroll {
+  overflow: hidden;
 }
