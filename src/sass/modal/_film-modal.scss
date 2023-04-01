@@ -1,196 +1,249 @@
 .modal-container {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.4);
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  background-color: #fefefe;
+  margin: 0 auto;
+
+  border: 1px solid #888;
+  width: 100%;
+
+  max-width: 280px;
+  max-height: 940px;
+  padding: 48px 20px 40px 20px;
+
+  @media screen and (min-width: 768px) {
+    max-width: 704px;
+    max-height: 552px;
+    padding: 40px 36px;
   }
-  .modal-content {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(1);
-    background-color: #FEFEFE;
-    margin: 0 auto;
-    padding: 40px 12px;
-    border: 1px solid #888;
-    width: 100%;
+
+  @media screen and (min-width: 1280px) {
     max-width: 806px;
     max-height: 558px;
-    @media screen and (max-width: 1023px) {
-      max-width: 704px;
-      max-height: 552px;
-      padding: 40px 36px;
-    }
-    @media screen and (max-width: 767px) {
-      max-width: 280px;
-      max-height: 940px;
-      padding: 48px 20px 40px 20px;
-    }
+    padding: 40px 12px;
   }
-  .modal-close {
-    width: 40px;
-    height: 40px;
-    background-color: transparent;
-    border: none;
-    position: absolute;
-    right: 16px;
-    top: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
-    cursor: pointer;
+}
+
+.modal-close {
+  width: 40px;
+  height: 40px;
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  right: 16px;
+  top: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+.modal-close:hover,
+.modal-close:focus {
+  fill: #ff6b01;
+  text-decoration: none;
+  outline: none;
+}
+.modal-body {
+  display: flex;
+  flex-direction: column;
+
+  @media screen and (min-width: 768px) {
+    flex-direction: inherit;
   }
-  .modal-close:hover,
-  .modal-close:focus {
-    fill: #FF6B01;
-    text-decoration: none;
-    outline: none;
-  }
-  .modal-body {
+
+  @media screen and (min-width: 1280px) {
     display: flex;
     align-items: flex-start;
     gap: 16px;
-    @media screen and (max-width: 767px) {
-      display: flex;
-      flex-direction: column;
-    }
   }
-  .movie-image {
+}
+.movie-image {
+  max-width: 240px;
+  max-height: 357px;
+
+  //   height: auto;
+  // margin-bottom: 20px;
+
+  @media screen and (min-width: 768px) {
+    max-width: 364px;
+    max-height: 374px;
+    margin-right: 40px;
+  }
+
+  @media screen and (min-width: 1280px) {
     max-width: 357px;
     max-height: 478px;
-    //   height: auto;
-    // margin-bottom: 20px;
-    @media screen and (max-width: 1023px) {
-      max-width: 364px;
-      max-height: 374px;
-      margin-right: 68px;
-    }
-    @media screen and (max-width: 767px) {
-      max-width: 240px;
-      max-height: 357px;
-      // margin-right: 68px;
-    }
+    margin-right: 16px;
   }
-  .modal-description {
-    display: flex;
-    flex-direction: column;
+}
+.modal-description {
+  display: flex;
+  flex-direction: column;
+}
+.modal-title {
+  font-weight: 500;
+  font-size: 30px;
+  line-height: calc(35px / 30px);
+  margin-top: 0;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+
+  @media screen and (min-width: 1280px) {
+    font-size: 20px;
+    line-height: calc(23px / 20px);
   }
-  .modal-title {
-    font-weight: 500;
-    font-size: 30px;
-    line-height: calc(35px / 30px);
-    margin-top: 0;
-    margin-bottom: 20px;
-    text-transform: uppercase;
-    @media screen and (max-width: 1023px) {
-      font-size: 20px;
-      line-height: calc(23px / 20px);
-    }
-  }
-  .movie-description {
-    margin-top: 0;
-    font-size: 18px;
-  }
-  // .movie-info {
-  //   margin: 0;
-  //   padding: 0;
-  // }
-  // li {
-  //   list-style: none;
-  // }
-  // .movie-info li {
-  //   margin-bottom: 10px;
-  //   font-size: 16px;
-  // }
-  // .movie-info-details {
-  //   display: flex;
-  // }
-  .add-to-watched-Btn,
-  .add-to-queue-Btn {
-    font-weight: 500;
-    font-size: 12px;
-    line-height: calc(16px / 12px);
-    // display: flex;
-    // align-items: center;
-    text-align: center;
-    text-transform: uppercase;
-    color: #000000;
-    padding: 14px 10px 12px 10px;
-    border: 1px solid #000000;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  .watch-button .active {
-    background-color: #FF6B01;
-    border: none;
-    color: #FFFFFF;
-  }
-  .modal-container.show {
-    display: block;
-  }
-  .film-description {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-  }
-  .film-description p {
-    display: table-row;
-  }
-  .film-property-label,
-  .film-property-value {
-    display: table-cell;
-    padding: 5px;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: calc(16px / 12px);
-    align-items: left;
-  }
-  .film-property-label {
-    color: #8C8C8C;
+}
+.movie-description {
+  margin-top: 0;
+  font-size: 18px;
+}
+
+.modal-container.show {
+  display: block;
+}
+.film-description {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+.film-description p {
+  display: table-row;
+}
+.film-property-label,
+.film-property-value {
+  display: table-cell;
+  padding: 5px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: calc(16px / 12px);
+  align-items: left;
+}
+.film-property-label {
+  color: #8c8c8c;
+  padding-right: 39px;
+
+  @media screen and (min-width: 1280px) {
     padding-right: 83px;
-    @media screen and (max-width: 1023px) {
-      padding-right: 36px;
-    }
   }
-  .film-property-value {
-    display: flex;
-    color: #000000;
+}
+.film-property-value {
+  display: flex;
+  color: #000000;
+}
+
+.film-property-bgVote,
+.film-property-bgVotes {
+  width: 36px;
+  height: 16px;
+
+  border-radius: 5px;
+  text-align: center;
+}
+
+.film-property-bgVotes {
+  color: #000000;
+  background: #f7f7f7;
+
+  margin-left: 5px;
+}
+
+.film-property-bgVote {
+  color: #ffffff;
+  background: #ff6b01;
+  margin-right: 5px;
+}
+
+.movie-description {
+  margin-top: 20px;
+}
+
+.mov-desc-title,
+.mov-desc-text {
+  font-weight: 500;
+  font-size: 12px;
+
+  color: #000000;
+}
+
+.mov-desc-title {
+  line-height: calc(16px / 12px);
+
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.mov-desc-text {
+  display: flex;
+  align-items: center;
+  line-height: calc(20px / 12px);
+}
+
+.modal-Btn {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+
+  justify-content: center;
+
+  @media screen and (min-width: 768px) {
+    margin-left: 0;
+    justify-content: left;
   }
-  .film-property-bgVote {
-    width: 36px;
-    height: 16px;
-    background: #FF6B01;
-    border-radius: 5px;
-    text-align: center;
-    margin-right: 5px;
+
+  @media screen and (min-width: 1280px) {
+    margin-left: 8px;
   }
-  .film-property-bgVotes {
-    width: 36px;
-    height: 16px;
-    background: #F7F7F7;
-    border-radius: 5px;
-    text-align: center;
-    margin-left: 5px;
+}
+
+.add-to-watched-Btn,
+.add-to-queue-Btn,
+.trailer-Btn {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: calc(16px / 12px);
+
+  text-align: center;
+  text-transform: uppercase;
+  color: #000000;
+
+  width: 200px;
+  height: 44px;
+
+  background-color: white;
+  border: 1px solid #000000;
+  border-radius: 5px;
+
+  cursor: pointer;
+
+  @media screen and (min-width: 768px) {
+    width: 105px;
+    height: 44px;
   }
-  .movie-description {
-    font-weight: 500;
-    font-size: 12px;
-    color: #000000;
-    margin-top: 20px;
+
+  @media screen and (min-width: 1280px) {
+    width: 125px;
+    height: 44px;
   }
-  .movie-description-title {
-    line-height: calc(16px / 12px);
-    display: flex;
-    align-items: center;
-    text-transform: uppercase;
-    margin-bottom: 8px;
-  }
-  .movie-description {
-    line-height: calc(20px / 12px);
-  }
+}
+
+.watch-button .active {
+  background-color: #ff6b01;
+  border: none;
+  color: #ffffff;
+}
