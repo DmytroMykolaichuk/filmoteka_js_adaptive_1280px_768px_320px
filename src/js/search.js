@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { renderFilmList } from './renderFilmList';
+import { addItem } from '../index';
 const gallery = document.querySelector('.film-list');
 const searchFormEl = document.querySelector('.header__movie-search-form');
 const inputEl = document.querySelector('.movie-search-form');
@@ -12,6 +13,7 @@ const instance = axios.create({
 let name;
 let page = 1;
 let pages;
+
 
 
 export async function getSearchMovie() {
@@ -33,6 +35,7 @@ export function onSearch(event) {
   name = inputEl.value.trim();
   page = 1;
   if (name !== '') {
+    errorEl.classList.add('visually-hidden');
     page = 1;
     addSearchedMovie();
   } else {
@@ -46,14 +49,18 @@ export function onSearch(event) {
 export async function addSearchedMovie() {
     const searchResult = await getSearchMovie();
     if (searchResult.results.length !== 0) {
+      errorEl.classList.add('visually-hidden');
       pages = searchResult.total_pages;
       renderFilmList(searchResult);
       console.log(searchResult);
       console.log(pages);
     } else {
-      errorEl.classList.toggle('visually-hidden');
+      errorEl.classList.remove('visually-hidden');
+      addItem();
       return console.log(
         'Sorry, there are no images matching your search query. Please try again.'
       );
     }
   }
+
+  errorEl.style.color = 'red';
