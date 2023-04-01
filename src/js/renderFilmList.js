@@ -20,7 +20,6 @@ export function renderFilmList(data) {
 
       markup += ` <li class ="film-item">
         <a id='${el.id}' class="film-card" href="#">
-          <div class= ='film-in-wrap'>
           <div class='thumb'>
           <img
               class = 'poster'
@@ -35,8 +34,7 @@ export function renderFilmList(data) {
                 <span class ="rating">IMDB:<br>${el.vote_average.toFixed(1)}</span>
               </p>
             </div>
-          </div>
-        </a>
+          </a>
       </li>`;
     })
     .join('');
