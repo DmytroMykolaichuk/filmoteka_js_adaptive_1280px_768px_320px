@@ -1,9 +1,7 @@
 import axios from 'axios';
 import * as basicLightbox from 'basiclightbox';
-// import 'basiclightbox/dist/basiclightbox.min.css';
+import 'basiclightbox/dist/basiclightbox.min.css';
 
-const basicLightbox = require('basiclightbox');
-// const button = document.querySelector('.film__trailer__btn');
 const modal = document.querySelector('.modal-container');
 
 export function getVideoInfo(movieId) {
