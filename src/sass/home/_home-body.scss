@@ -108,21 +108,21 @@ img {
     flex-basis: calc((100% - 32px) / 3);
   }
 }
-.title-film{
+.title-film {
   text-transform: uppercase;
 }
 
-.poster{
+.poster {
   width: 100%;
   display: block;
   transition: transform 300ms linear;
 
-  &:hover{
+  &:hover {
     transform: scale(1.1);
   }
 }
 
-.thumb{
+.thumb {
   overflow: hidden;
   margin-bottom: 8px;
 }
@@ -147,7 +147,7 @@ img {
   
 }
 
-.film-data{
+.film-data {
   font-family: 'Roboto';
   display: flex;
   flex-direction: column;
