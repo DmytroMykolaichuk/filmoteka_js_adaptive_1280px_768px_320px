@@ -16,7 +16,7 @@ export function getVideoInfo(movieId) {
       return videoKey;
     })
     .catch(error => {
-      console.error('Ошибка получения информации о видео:', error);
+      console.error('Ошибка получения информации з видео:', error);
       throw error;
     });
 }
