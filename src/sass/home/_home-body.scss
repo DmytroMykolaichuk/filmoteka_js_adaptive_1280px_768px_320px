@@ -94,7 +94,7 @@ img {
   }
 }
 
-.film-item {
+.film-item {position: relative;
   width: 100%;
 
   // margin-bottom: 32px;
@@ -127,7 +127,9 @@ img {
   margin-bottom: 8px;
 }
 
-.rating {
+.rating {position: absolute;
+  top: 0px;
+  left: 0px;
   background-color: #ff6b08;
   color: #ffffff;
   border-radius: 5px;
@@ -140,6 +142,17 @@ img {
 
 .film-data{
   font-family: 'Roboto';
+}
+
+
+.film-card{
+  display: block;
+  height: 100%;
+}
+
+.film-in-wrap{
+  display: flex;
+  height: 100%;
 }
 // .info-film{
 //   display: flex;
