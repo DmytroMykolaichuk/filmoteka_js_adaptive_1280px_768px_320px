@@ -1,6 +1,6 @@
 import axios from 'axios';
 import * as basicLightbox from 'basiclightbox';
-import 'basiclightbox/dist/basiclightbox.min.css';
+import '../css/basicLightbox.min.css';
 
 const modal = document.querySelector('.modal-container');
 
