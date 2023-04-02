@@ -1,3 +1,4 @@
+// src/js/film-modal.js
 import axios from 'axios';
 import { genres } from './genres';
 

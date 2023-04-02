@@ -1,3 +1,4 @@
+// src/js/trailer.js
 import axios from 'axios';
 import * as basicLightbox from 'basiclightbox';
 import '../css/basicLightbox.min.css';
