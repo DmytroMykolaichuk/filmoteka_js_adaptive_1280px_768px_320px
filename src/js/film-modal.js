@@ -1,6 +1,7 @@
 // src/js/film-modal.js
 import axios from 'axios';
 import { genres } from './genres';
+import { getVideoInfo } from './trailer';
 
 const filmList = document.querySelector('.film-list');
 filmList.addEventListener('click', clickOnFilmCard);
@@ -93,6 +94,11 @@ export async function clickOnFilmCard(event) {
 
   modal.innerHTML = '';
   modal.insertAdjacentHTML('beforeend', markup);
+
+  getVideoInfo(idCard).catch(() => {
+    const trailerMovieBtn = document.querySelector('.trailer-Btn');
+    trailerMovieBtn.classList.add('trailer-btn-none');
+  });
 }
 
 const closeModalOnClick = document.querySelector('.js-modal-close');
