@@ -102,9 +102,9 @@ export async function clickOnFilmCard(event) {
     const trailerMovieBtn = document.querySelector('.trailer-Btn');
     trailerMovieBtn.classList.add('trailer-btn-none');
   });
-  
-    btnWatched = document.querySelector('.click-watche')
-    btnQueue = document.querySelector('.click-queue')
+
+    const btnWatched = document.querySelector('.click-watche')
+    const btnQueue = document.querySelector('.click-queue')
     
     btnQueue.addEventListener('click', onQueue(btnQueue.dataset.id))
     btnWatched.addEventListener('click', onWathced(btnWatched.dataset.id))
