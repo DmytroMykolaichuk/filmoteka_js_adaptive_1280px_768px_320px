@@ -2,6 +2,7 @@
 import axios from 'axios';
 import { genres } from './genres';
 import { getVideoInfo } from './trailer';
+import { onWathced,onQueue } from './button-modal';
 
 const filmList = document.querySelector('.film-list');
 filmList.addEventListener('click', clickOnFilmCard);
@@ -75,10 +76,10 @@ export async function clickOnFilmCard(event) {
             <button type="button" class="trailer-Btn btn__queue btn" data-id=${
               modalCard.id
             }>trailer</button>    
-            <button type="button" class="add-to-watched-Btn btn__watch btn" data-id=${
+            <button type="button" class="add-to-watched-Btn click-watche btn__watch btn" data-id=${
               modalCard.id
             }>Add to watched</button>
-                <button type="button" class="add-to-queue-Btn btn__queue btn" data-id=${
+                <button type="button" class="add-to-queue-Btn click-queue btn__queue btn" data-id=${
                   modalCard.id
                 }>Add to queue</button>
                 
@@ -101,6 +102,16 @@ export async function clickOnFilmCard(event) {
     const trailerMovieBtn = document.querySelector('.trailer-Btn');
     trailerMovieBtn.classList.add('trailer-btn-none');
   });
+  
+    btnWatched = document.querySelector('.click-watche')
+    btnQueue = document.querySelector('.click-queue')
+    
+    btnQueue.addEventListener('click', onQueue(btnQueue.dataset.id))
+    btnWatched.addEventListener('click', onWathced(btnWatched.dataset.id))
+
+  // function onWathced(){
+//     localStorage.setItem('watched',`${idCard}`)
+//   }
 }
 
 const closeModalOnClick = document.querySelector('.js-modal-close');
