@@ -4,7 +4,7 @@
   background-image: linear-gradient(to right, rgba(0, 0, 0, .56),
       rgba(0, 0, 0, .56)),
     url(../img/my-library/hbg-320-x1.jpg);
-  background-size: 320px 230px;
+  background-size: 100% 230px;
   background-repeat: no-repeat;
   background-position: center;
 
@@ -22,7 +22,7 @@
     background-image: linear-gradient(to right, rgba(0, 0, 0, .56),
         rgba(0, 0, 0, .56)),
       url(../img/my-library/hbg-768-x1.jpg);
-    background-size: 768px 219px;
+    background-size: 100% 219px;
 
     @media (min-device-pixel-ratio: 2),
     (min-resolution: 192dpi),
@@ -39,7 +39,7 @@
     background-image: linear-gradient(to right, rgba(0, 0, 0, .56),
         rgba(0, 0, 0, .56)),
       url(../img/my-library/hbg-1280-x1.jpg);
-    background-size: 1280px 216px;
+    background-size: 100% 216px;
 
     @media (min-device-pixel-ratio: 2),
     (min-resolution: 192dpi),
