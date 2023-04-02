@@ -1,3 +1,4 @@
+// src/sass/my-library/_my-library-watched-body.scss
 .container {
   padding-left: 20px;
   padding-right: 20px;
@@ -56,6 +57,6 @@
   }
 
   @media screen and (min-width: 1280px) {
-    width: calc((100% - (16px * 2) ) / 3);
+    width: calc((100% - (16px * 2)) / 3);
   }
 }
