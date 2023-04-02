@@ -1,14 +1,10 @@
-.choise-genre-conteiner{
+.choice-ganre{
     position: absolute;
     bottom: 0;
     left: 50%;
     transform: translate(-50%,0);
-}
-
-.choice-ganre{
     display: block;
     margin: 0 auto;
-    position: relative;
     width: 148px;
     height: 42px;
     background-color: #FF6B01;
@@ -30,10 +26,6 @@
 }
 
 .ganre-container{
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%,0);
-    top: 100%;
     padding: 5px;
     background-color: #2a2f36 ;
 
