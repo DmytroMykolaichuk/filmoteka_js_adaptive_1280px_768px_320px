@@ -35,6 +35,8 @@
 
   @media screen and (min-width: 1280px) {
     height: 216px;
+    padding-top: 40px;
+    padding-bottom: 60px;
 
     background-image: linear-gradient(to right, rgba(0, 0, 0, .56),
         rgba(0, 0, 0, .56)),
@@ -72,68 +74,68 @@
   }
 }
 
-.nav-wrapper {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+// .nav-wrapper {
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: center;
 
-  padding-top: 20px;
-}
+//   padding-top: 20px;
+// }
 
-.nav-wrapper > a {
-  display: flex;
-  gap: 10px;
-  align-items: baseline;
+// .nav-wrapper > a {
+//   display: flex;
+//   gap: 10px;
+//   align-items: baseline;
 
-  padding-top: 20px;
-  padding-bottom: 20px;
-}
+//   padding-top: 20px;
+//   padding-bottom: 20px;
+// }
 
-.prod-name {
-  font-family: 'Roboto';
-  font-weight: 500;
-  font-size: 30px;
-  line-height: calc(35 / 30);
-  color: #ffffff;
+// .prod-name {
+//   font-family: 'Roboto';
+//   font-weight: 500;
+//   font-size: 30px;
+//   line-height: calc(35 / 30);
+//   color: #ffffff;
 
-  @media screen and (max-width: 767px) {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    margin: -1px;
-    border: 0;
-    padding: 0;
-    white-space: nowrap;
-    clip-path: inset(100%);
-    clip: rect(0 0 0 0);
-    overflow: hidden;
-  }
-}
+//   @media screen and (max-width: 767px) {
+//     position: absolute;
+//     width: 1px;
+//     height: 1px;
+//     margin: -1px;
+//     border: 0;
+//     padding: 0;
+//     white-space: nowrap;
+//     clip-path: inset(100%);
+//     clip: rect(0 0 0 0);
+//     overflow: hidden;
+//   }
+// }
 
-.nav-list {
-  padding-left: 0;
-  margin-top: 0;
-  margin-bottom: 0;
-  list-style-type: none;
+// .nav-list {
+//   padding-left: 0;
+//   margin-top: 0;
+//   margin-bottom: 0;
+//   list-style-type: none;
 
-  display: flex;
-  gap: 40px;
-}
+//   display: flex;
+//   gap: 40px;
+// }
 
-.nav-list a {
-  font-family: 'Roboto';
-  font-weight: 500;
-  font-size: 12px;
-  line-height: calc(14 / 12);
-  color: #ffffff;
+// .nav-list a {
+//   font-family: 'Roboto';
+//   font-weight: 500;
+//   font-size: 12px;
+//   line-height: calc(14 / 12);
+//   color: #ffffff;
 
-  padding-top: 20px;
-  padding-bottom: 20px;
-}
+//   padding-top: 20px;
+//   padding-bottom: 20px;
+// }
 
-.nav-list .current {
-  text-decoration: solid underline #ff001b 3px;
-}
+// .nav-list .current {
+//   text-decoration: solid underline #ff001b 3px;
+// }
 
 .btn-list {
   padding-left: 0;
