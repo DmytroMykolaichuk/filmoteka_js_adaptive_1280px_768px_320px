@@ -1,6 +1,26 @@
-<header>
-    <a href="../index.html">Home</a>
-    <a href="./my-library.html">MY LIBRARY</a>
-    <button>Watched</button>
-    <button>queue</button>
+<header class="lib-header">
+  <div class="container">
+
+      <div class="nav-wrapper">
+        <a class="logo-link link" href="../index.html">
+          <img src="../img/logo.svg" alt="Logo" width="24">
+          <span class="prod-name">Filmoteka</span>
+        </a>
+        
+        <ul class="nav-list">
+          <li><a class="link" href="../index.html">HOME</a></li>
+          <li><a class="link current" href="./my-library.html">MY LIBRARY</a></li>
+        </ul>
+      </div>
+
+      <ul class="btn-list">
+        <li>
+          <button class="lib-btn current" type="button" data-lib-btn="Watched">WATCHED</button>
+        </li>
+        <li>
+          <button class="lib-btn" type="button" data-lib-btn="Queue">QUEUE</button>
+        </li>
+      </ul>
+
+  </div>
 </header>
