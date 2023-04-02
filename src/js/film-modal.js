@@ -5,9 +5,12 @@ import { getVideoInfo } from './trailer';
 
 const filmList = document.querySelector('.film-list');
 filmList.addEventListener('click', clickOnFilmCard);
+
 const backdrop = document.querySelector('.overlay');
+
 const modal = document.querySelector('.modal');
 const modalBody = document.querySelector('.modal-body');
+
 const body = document.querySelector('body');
 
 let idCard = '';
