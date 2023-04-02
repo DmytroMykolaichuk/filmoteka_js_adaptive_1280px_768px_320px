@@ -3,7 +3,7 @@ import axios from 'axios';
 import * as basicLightbox from 'basiclightbox';
 import '../css/basicLightbox.min.css';
 
-const modal = document.querySelector('.modal-container');
+const modal = document.querySelector('.modal');
 
 export function getVideoInfo(movieId) {
   return axios
