@@ -2,7 +2,7 @@
 import axios from 'axios';
 import { genres } from './genres';
 import { getVideoInfo } from './trailer';
-import { onWathced,onQueue } from './button-modal';
+// import { onWathced, onQueue } from './button-modal';
 
 const filmList = document.querySelector('.film-list');
 filmList.addEventListener('click', clickOnFilmCard);
@@ -103,16 +103,43 @@ export async function clickOnFilmCard(event) {
     trailerMovieBtn.classList.add('trailer-btn-none');
   });
 
+
     const btnWatched = document.querySelector('.click-watche')
     const btnQueue = document.querySelector('.click-queue')
     
-    btnQueue.addEventListener('click', onQueue(btnQueue.dataset.id))
-    btnWatched.addEventListener('click', onWathced(btnWatched.dataset.id))
+    btnQueue.addEventListener('click', onQueue)
+    btnWatched.addEventListener('click', onWathced)
 
-  // function onWathced(){
-//     localStorage.setItem('watched',`${idCard}`)
-//   }
-}
+    function onQueue(){
+      const data = localStorage.getItem('queue')
+      if(!data){
+        const arrQueue = []
+        arrQueue.push(idCard)
+        localStorage.setItem('queue', JSON.stringify(arrQueue))
+        return 
+      }
+      const oldQueueList = JSON.parse(data)
+      if(oldQueueList.includes(idCard)){return console.log('yes')}
+        const newQueueList = oldQueueList
+        newQueueList.push(idCard)
+        localStorage.setItem('queue',JSON.stringify(newQueueList))
+    }
+
+    function onWathced(){
+      const data = localStorage.getItem('wathced')
+        if(!data){
+          const arrWathced = []
+          arrWathced.push(idCard)
+          localStorage.setItem('wathced', JSON.stringify(arrWathced))
+          return 
+        }
+        const oldWathcedList = JSON.parse(data)
+        if(oldWathcedList.includes(idCard)){return console.log('yes')}
+          const newWathcedList = oldWathcedList
+          newWathcedList.push(idCard)
+          localStorage.setItem('wathced',JSON.stringify(newWathcedList))
+    }
+  }
 
 const closeModalOnClick = document.querySelector('.js-modal-close');
 closeModalOnClick.addEventListener('click', closeModal);
@@ -150,7 +177,7 @@ function pressEscapeKey(event) {
   }
 }
 
-const btn = document.querySelectorAll('.btn');
-btn.forEach(el => {
-  el.addEventListener('mouseout', () => btn.blur());
-});
+// const btn = document.querySelectorAll('.btn');
+// btn.forEach(el => {
+//   el.addEventListener('mouseout', () => btn.blur());
+// })
