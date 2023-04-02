@@ -1,43 +1,71 @@
-<header class="header container">
-  <nav class="navigation">
-    <div class="navigation__titles">
-      <a href="./index.html" class="logo link">
-        <svg class="logo__icon" width="24" height="24">
-          <use href="../images/icons.svg#icon-film"></use>
-        </svg>
-        <span class="logo_title">Filmoteka</span>
-      </a>
-      <ul class="hero-list list">
-        <li class="link hero-item current">
-          <a href="./index.html">Home</a>
-        </li>
-        <li class="link hero-item">
-          <a href="./partials/my-library.html">MY LIBRARY</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
-  <form class="header__movie-search-form">
-    <div class="form-group">
-      <div class="input-container">
-        <input
-          type="text"
-          name="movie-search-name"
-          class="movie-search-form"
-          required
-          placeholder="Movie search"
-        />
-        <button type="submit" class="header__movie-search-button">
-          <svg class="button__icon" width="12" height="12">
-            <use href="../images/icons.svg#icon-search-2"></use>
+<header class="header">
+  <div class="container">
+    <nav class="navigation">
+      <div class="navigation__titles">
+        <a href="./index.html" class="logo link">
+          <svg class="logo__icon" width="24" height="24">
+            <use href="../images/icons.svg#icon-film"></use>
           </svg>
-        </button>
+          <span class="logo_title">Filmoteka</span>
+        </a>
+        <ul class="hero-list list">
+          <li class="link hero-item current">
+            <a href="./index.html">Home</a>
+          </li>
+          <li class="link hero-item">
+            <a href="./partials/my-library.html">MY LIBRARY</a>
+          </li>
+        </ul>
       </div>
+    </nav>
+    <form class="header__movie-search-form">
+      <div class="form-group">
+        <div class="input-container">
+          <input
+            type="text"
+            name="movie-search-name"
+            class="movie-search-form"
+            required
+            placeholder="Movie search"
+          />
+          <button type="submit" class="header__movie-search-button">
+            <svg class="button__icon" width="12" height="12">
+              <use href="../images/icons.svg#icon-search-2"></use>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div class="search-error-message visually-hidden">
+        <p>
+          Search result not successful. Enter the correct movie name and try again
+        </p>
+      </div>
+    </form>
+    <div class="choise-genre-conteiner">
+      <button class="choice-ganre">Choice Ganre</button>
+        <div class="ganre-container visually-hidden">
+          <ul class="list-ganre">
+          <li class="item-ganre"><button class="bta-ganre" id="28">Action</button></li>
+          <li class="item-ganre"><button class="bta-ganre" id="12">Adventure</button></li>
+          <li class="item-ganre"><button class="bta-ganre" id="16">Animation</button></li>
+          <li class="item-ganre"><button class="bta-ganre" id="35">Comedy</button></li>
+          <li class="item-ganre"><button class="bta-ganre" id="80">Crime</button></li>
+          <li class="item-ganre"><button class="bta-ganre" id="99">Documentary</button></li>
+          <li class="item-ganre"><button class="bta-ganre" id="18">Drama</button></li>
+          <li class="item-ganre"><button class="bta-ganre" id="10751">Family</button></li>
+          <li class="item-ganre"><button class="bta-ganre" id="14">Fantasy</button></li>
+          <li class="item-ganre"><button class="bta-ganre" id="36">History</button></li>
+          <li class="item-ganre"><button class="bta-ganre" id="27">Horror</button></li>
+          <li class="item-ganre"><button class="bta-ganre" id="10402">Music</button></li>
+          <li class="item-ganre"><button class="bta-ganre" id="9648">Mystery</button></li>
+          <li class="item-ganre"><button class="bta-ganre" id="10749">Romance</button></li>
+          <li class="item-ganre"><button class="bta-ganre" id="878">Science Fiction</button></li>
+          <li class="item-ganre"><button class="bta-ganre" id="10770">TV Movie</button></li>
+          <li class="item-ganre"><button class="bta-ganre" id="53">Thriller</button></li>
+          <li class="item-ganre"><button class="bta-ganre" id="10752">War</button></li>
+          <li class="item-ganre"><button class="bta-ganre" id="37">Western</button></li>
+          </ul>
+        </div>
     </div>
-    <div class="search-error-message visually-hidden">
-      <p>
-        Search result not successful. Enter the correct movie name and try again
-      </p>
-    </div>
-  </form>
+  </div class="container">
 </header>
