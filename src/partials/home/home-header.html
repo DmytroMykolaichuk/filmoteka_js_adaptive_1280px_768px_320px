@@ -1,4 +1,4 @@
-<header class="header-container">
+<header class="header container">
   <nav class="navigation">
     <div class="navigation__titles">
       <a href="./index.html" class="logo link">
@@ -16,29 +16,28 @@
         </li>
       </ul>
     </div>
-    <form class="header__movie-search-form">
-      <div class="form-group">
-        <div class="input-container">
-          <input
-            type="text"
-            name="movie-search-name"
-            class="movie-search-form"
-            required
-            placeholder="Movie search"
-          />
-          <button type="submit" class="header__movie-search-button">
-            <svg class="logo__icon" width="12" height="12">
-              <use href="../images/icons.svg#icon-search-2"></use>
-            </svg>
-          </button>
-        </div>
-      </div>
-      <div class="search-error-message visually-hidden">
-        <p>
-          Search result not successful. Enter the correct movie name and try
-          again
-        </p>
-      </div>
-    </form>
   </nav>
+  <form class="header__movie-search-form">
+    <div class="form-group">
+      <div class="input-container">
+        <input
+          type="text"
+          name="movie-search-name"
+          class="movie-search-form"
+          required
+          placeholder="Movie search"
+        />
+        <button type="submit" class="header__movie-search-button">
+          <svg class="button__icon" width="12" height="12">
+            <use href="../images/icons.svg#icon-search-2"></use>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <div class="search-error-message visually-hidden">
+      <p>
+        Search result not successful. Enter the correct movie name and try again
+      </p>
+    </div>
+  </form>
 </header>
