@@ -1,3 +1,4 @@
+// src/sass/home/_home-body.scss
 h1,
 h2,
 h3,
@@ -164,3 +165,7 @@ img {
 //   gap: 3px;
 //   justify-content: start;
 // }
+
+.hidden {
+  display: none;
+}
