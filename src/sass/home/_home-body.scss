@@ -1,3 +1,4 @@
+// src/sass/home/_home-body.scss
 h1,
 h2,
 h3,
@@ -94,7 +95,8 @@ img {
   }
 }
 
-.film-item {position: relative;
+.film-item {
+  position: relative;
   width: 100%;
 
   // margin-bottom: 32px;
@@ -127,7 +129,8 @@ img {
   margin-bottom: 8px;
 }
 
-.rating {position: absolute;
+.rating {
+  position: absolute;
   top: 0px;
   left: 0px;
   background-color: #ff6b08;
@@ -140,11 +143,10 @@ img {
   line-height: 1.16;
 }
 
-.film-card{
+.film-card {
   display: flex;
   flex-direction: column;
   height: 100%;
-  
 }
 
 .film-data {
@@ -152,10 +154,9 @@ img {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height:100%;
+  height: 100%;
   flex: 0 1 70px;
 }
-
 
 // .info-film{
 //   display: flex;

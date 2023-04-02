@@ -1,8 +1,9 @@
+// src/js/trailer.js
 import axios from 'axios';
 import * as basicLightbox from 'basiclightbox';
 import '../css/basicLightbox.min.css';
 
-const modal = document.querySelector('.modal-container');
+const modal = document.querySelector('.modal');
 
 export function getVideoInfo(movieId) {
   return axios
@@ -12,10 +13,6 @@ export function getVideoInfo(movieId) {
     .then(response => {
       const videoKey = response.data.results[0].key;
       return videoKey;
-    })
-    .catch(error => {
-      console.error('Ошибка получения информации з видео:', error);
-      throw error;
     });
 }
 
@@ -25,6 +22,10 @@ export const playVideoTrailer = modal.addEventListener('click', event => {
   if (event.target.matches('.trailer-Btn')) {
     const movieId = button.dataset.id;
     getVideoInfo(movieId)
+      .catch(error => {
+        console.error('Ошибка получения информации з видео:', error);
+        throw error;
+      })
       .then(videoKey => {
         const videoHtml = `
       <iframe 

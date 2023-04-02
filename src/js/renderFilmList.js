@@ -1,3 +1,4 @@
+// src/js/renderFilmList.js
 import { genres } from './genres';
 
 const gallery = document.querySelector('.film-list');

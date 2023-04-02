@@ -1,43 +1,84 @@
+// src/sass/footer/_footer.scss
 @import '~node_modules/modern-normalize/modern-normalize.css';
 
 .footer {
-    background-color: var(--footer-background-color);
-    
+  background-color: var(--footer-background-color);
+  padding-top: 30px;
+  padding-bottom: 28px;
+  @media screen and (max-width: 320px) {
+    padding-top: 29px;
+    padding-bottom: 30px;
+  }
+
+  @media screen and (max-width: 768px) {
+    padding-bottom: 30px;
+  }
 }
 
-.footer__inf {
+.footer__container {
     display: flex;
     justify-content: center;
-    padding-top: 30px;
-    padding-bottom: 28px;
-    max-width: 482 px;
+    align-items: baseline;
+
+  @media screen and (min-width: 320px) and (max-width: 767px) {
+    display: block;
+    text-align: center;
+  }
 }
 
-.footer__copyrite{
-    color: var(--footer-text-color);
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 19px;
+.footer__title {
+  color: var(--footer-text-color);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: calc(19 / 16);
+  text-align: center;
+  margin-bottom: 10px;
+  margin-right: 4px;
+
+  @media screen and (max-width: 320px) {
+    font-size: 14px;
+    line-height: calc(16 / 14);
+  }
+}
+
+.footer__title-cont {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer__title-part {
+  color: var(--footer-text-color);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: calc(19 / 16);
+  text-align: center;
+
+  @media screen and (max-width: 320px) {
+    font-size: 14px;
+    line-height: calc(16 / 14);
+  }
 }
 
 .footer__heart {
-    padding-left: 10px;
-    padding-right: 10px;
-}
-
-.footer__icon {
-    color: var(--footer-icon-fill)
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .footer__btn {
-    background-color: transparent;
-    text-decoration: underline;
-    border-color: transparent;
-    color: var(--footer-text-color);
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 19px;
-    cursor: pointer;
+  background-color: transparent;
+  text-decoration: underline;
+  border-color: transparent;
+  color: var(--footer-text-color);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: calc(19 / 16);
+
+  @media screen and (max-width: 320px) {
+    font-size: 14px;
+    line-height: calc(16 / 14);
+  }
 }
