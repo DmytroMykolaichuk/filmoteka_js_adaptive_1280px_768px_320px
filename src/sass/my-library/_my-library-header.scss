@@ -161,16 +161,23 @@
   font-size: 12px;
   line-height: calc(16 / 12);
   color: #ffffff;
+  cursor: pointer;
 
   min-width: 130px;
   min-height: 42px;
   border: 1px solid #ffffff;
   border-radius: 5px;
   background-color: transparent;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   @media screen and (min-width: 768px) {
     min-width: 150px;
   }
+}
+
+.lib-btn:hover,
+.lib-btn:focus {
+  background-color: #ff6b01;
 }
 
 .lib-btn.current {

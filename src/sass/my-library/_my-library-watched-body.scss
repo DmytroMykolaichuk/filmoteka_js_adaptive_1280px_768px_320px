@@ -19,6 +19,18 @@
   }
 }
 
+.empty-wrapper {
+  display: flex;
+  justify-content: center;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.empty-image {
+  width: 100%;
+}
+
 .mylib-wrapper {
   padding-top: 20px;
 
@@ -37,9 +49,7 @@
 }
 
 .movie-card {
-  min-height: 320px;
   width: 100%;
-  outline: 2px dotted red;
 
   @media screen and (min-width: 768px) {
     width: calc((100% - 32px) / 2);
