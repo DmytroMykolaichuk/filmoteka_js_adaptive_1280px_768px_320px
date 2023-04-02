@@ -1,14 +1,38 @@
-// src/index.html
+// src/index.js
+import Pagination from 'tui-pagination';
+import 'tui-pagination/dist/tui-pagination.css';
+import axios from 'axios';
 import { getPopularFilms } from './js/api';
 import { renderFilmList } from './js/renderFilmList';
-import { getSearchMovie, onSearch, addMovie } from './js/search';
+import {
+  getSearchMovie,
+  onSearch,
+  addMovie,
+  addSearchedMovie,
+} from './js/search';
 import { clickOnFilmCard } from './js/film-modal';
 import { playVideoTrailer, getVideoInfo } from './js/trailer';
-import { onClickInGanre } from './js/choise-ganre'
+import { onClickInGanre } from './js/choise-ganre';
 
+import {
+  updateFilmList,
+  updateSearchFilmList,
+  initPagination,
+  initSearchPagination,
+} from './js/pagination';
+
+export const ITEMS_PER_PAGE = 18;
+export let searchName = null;
 
 export async function addItem() {
   let data = await getPopularFilms();
-  renderFilmList(data);
+  const totalPages = data.total_pages;
+  const totalItems = totalPages * 20; // 20 results per page
+  initPagination(totalItems);
+  // Отримуємо перші ITEMS_PER_PAGE елементів
+  const limitedResults = data.results.slice(0, ITEMS_PER_PAGE);
+
+  renderFilmList({ ...data, results: limitedResults });
 }
+
 addItem();
