@@ -2,6 +2,7 @@
 import axios from 'axios';
 import { genres } from './genres';
 import { getVideoInfo } from './trailer';
+import { showPreloader, hidePreloader } from './loader';
 // import { onWathced, onQueue } from './button-modal';
 
 const filmList = document.querySelector('.film-list');
@@ -18,10 +19,12 @@ export async function clickOnFilmCard(event) {
   event.preventDefault();
   if (event.target.nodeName === 'UL') return;
   idCard = event.target.closest('.film-card').id;
+  showPreloader();
 
   const data = await axios.get(
     `https://api.themoviedb.org/3/movie/${idCard}?api_key=352708f90836dd2b75b209ae082e91df&language=en-US&external_source=imdb_id`
   );
+  hidePreloader();
   const modalCard = data.data;
 
   const mainPoster = `https://image.tmdb.org/t/p/w300${modalCard.poster_path}`;

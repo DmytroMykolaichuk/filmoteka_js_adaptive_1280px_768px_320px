@@ -2,6 +2,7 @@
 import axios from 'axios';
 import { renderFilmList } from './renderFilmList';
 import { addItem } from '../index';
+import { showPreloader, hidePreloader } from './loader';
 const gallery = document.querySelector('.film-list');
 const searchFormEl = document.querySelector('.header__movie-search-form');
 const inputEl = document.querySelector('.movie-search-form');
@@ -33,10 +34,14 @@ export function onSearch(event) {
   gallery.innerHTML = '';
   name = inputEl.value.trim();
   page = 1;
+  
   if (name !== '') {
     errorEl.classList.add('visually-hidden');
     page = 1;
-    addSearchedMovie();
+    showPreloader();
+    addSearchedMovie().then(() => {
+      hidePreloader();
+    });
   } else {
     errorEl.classList.remove('visually-hidden');
     return console.log(
