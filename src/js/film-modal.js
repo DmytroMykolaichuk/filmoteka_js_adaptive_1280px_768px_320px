@@ -5,8 +5,9 @@ import { getVideoInfo } from './trailer';
 
 const filmList = document.querySelector('.film-list');
 filmList.addEventListener('click', clickOnFilmCard);
-const backdrop = document.querySelector('.modal-container');
-const modal = document.querySelector('.modal-body');
+const backdrop = document.querySelector('.overlay');
+const modal = document.querySelector('.modal');
+const modalBody = document.querySelector('.modal-body');
 const body = document.querySelector('body');
 
 let idCard = '';
@@ -16,13 +17,11 @@ export async function clickOnFilmCard(event) {
   event.preventDefault();
   if (event.target.nodeName === 'UL') return;
   idCard = event.target.closest('.film-card').id;
-  //   console.log(idCard);
+
   const data = await axios.get(
     `https://api.themoviedb.org/3/movie/${idCard}?api_key=352708f90836dd2b75b209ae082e91df&language=en-US&external_source=imdb_id`
   );
   const modalCard = data.data;
-  // console.log(data.data);
-  // console.log(modalCard.genres.id);
 
   const mainPoster = `https://image.tmdb.org/t/p/w300${modalCard.poster_path}`;
   const posterFake = `https://shop-cdn1.vigbo.tech/shops/48947/products/18863233/images/2-be392e7cfe9a0fa843b29c1e22be8909.jpg`;
@@ -87,13 +86,16 @@ export async function clickOnFilmCard(event) {
             
     </div>`;
 
-  backdrop.removeAttribute('hidden', '');
+  backdrop.classList.add('active');
+  modal.classList.add('active');
+
+  modal.removeAttribute('hidden', '');
   window.addEventListener('keydown', pressEscapeKey);
 
   body.classList.toggle('no-scroll');
 
-  modal.innerHTML = '';
-  modal.insertAdjacentHTML('beforeend', markup);
+  modalBody.innerHTML = '';
+  modalBody.insertAdjacentHTML('beforeend', markup);
 
   getVideoInfo(idCard).catch(() => {
     const trailerMovieBtn = document.querySelector('.trailer-Btn');
@@ -113,7 +115,9 @@ window.addEventListener('click', event => {
 function closeModal() {
   // Скрыть модальное окно
   closeModalOnClick.setAttribute('hidden', '');
-  backdrop.setAttribute('hidden', '');
+  modal.setAttribute('hidden', '');
+  backdrop.classList.remove('active');
+  modal.classList.remove('active');
 
   body.classList.toggle('no-scroll');
   // Удалить обработчики событий
