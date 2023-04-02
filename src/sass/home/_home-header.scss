@@ -144,7 +144,16 @@ a {
 .movie-search-form::placeholder {
   color: #ffffff;
 }
+input:-webkit-autofill {
+  border-bottom: 0.5px solid #ffffff;
+  -webkit-text-fill-color: rgb(255, 255, 255);
+  -webkit-box-shadow: transparent;
+  transition: background-color 5000s ease-in-out 0s;
+}
 
+.movie-search-form :focus {
+  background-color: transparent;
+}
 .form-group {
   display: flex;
   align-items: center;
@@ -168,7 +177,9 @@ a {
   right: 0;
   top: 0;
 }
-
 .search-error-message {
+  margin-top: 10px;
+}
+.search-error-message p {
   color: red;
 }

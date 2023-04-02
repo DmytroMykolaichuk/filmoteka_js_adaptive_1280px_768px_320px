@@ -51,9 +51,8 @@ export async function addSearchedMovie() {
     errorEl.classList.add('visually-hidden');
     pages = searchResult.total_pages;
     renderFilmList(searchResult);
-    console.log(searchResult);
-    console.log(pages);
-  } else {
+    } 
+    else {
     errorEl.classList.remove('visually-hidden');
     addItem();
     return console.log(
