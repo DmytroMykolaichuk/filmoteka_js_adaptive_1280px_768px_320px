@@ -1,0 +1,170 @@
+@import '~node_modules/modern-normalize/modern-normalize.css';
+
+ul,
+ol {
+  margin: 0;
+  padding-left: 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.list {
+  list-style: none;
+}
+
+.link {
+  text-decoration: none;
+}
+
+.visually-hidden {
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  border: 0;
+  padding: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  margin: -1px;
+}
+
+.header-container {
+  background-color: rgba(0, 0, 0, 0.56);
+  background-image: linear-gradient(
+      to right,
+      rgba(47, 48, 58, 0.4),
+      rgba(47, 48, 58, 0.4)
+    ),
+    url('/images/abstract-background-with-red-lines 1.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  text-align: center;
+  margin: 0 auto;
+  padding: 40 32 80 32;
+}
+
+.navigation__titles {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 0;
+}
+
+.logo {
+  color: #ffffff;
+  display: inline-block;
+  align-items: center;
+}
+
+.logo_title {
+  font-family: 'Roboto';
+  font-weight: 500;
+  font-size: 30px;
+  line-height: calc(35 / 30);
+  margin-left: 10px;
+}
+
+.hero-list {
+  display: flex;
+  align-items: center;
+}
+
+.hero-item {
+  font-family: 'Roboto';
+  font-weight: 500;
+  font-size: 12px;
+  line-height: calc(14 / 12);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  text-transform: uppercase;
+  position: relative;
+}
+
+.hero-item:not(:last-child) {
+  margin-right: 39px;
+}
+
+.hero-item.current:after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: #ff001b;
+  border-radius: 2px;
+  display: block;
+}
+
+.header__movie-search-form {
+  margin: 0 auto;
+  margin-top: 40px;
+}
+
+.movie-search-form {
+  border-color: transparent;
+  border-bottom: 0.5px solid #ffffff;
+  background-color: inherit;
+  width: 100%;
+  font-family: 'Roboto';
+  font-weight: 400;
+  font-size: 14px;
+  line-height: calc(16 / 14);
+  color: #ffffff;
+  padding-bottom: 4px;
+}
+
+.movie-search-form::placeholder {
+  color: #ffffff;
+}
+
+.form-group {
+  display: flex;
+  align-items: center;
+  max-width: 394px;
+  height: 20px;
+  margin: 0 auto;
+}
+
+.input-container {
+  position: relative;
+  width: 100%;
+}
+
+.header__movie-search-button {
+  border-color: transparent;
+  background-color: transparent;
+  box-shadow: none;
+  width: 12px;
+  height: 12px;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.search-error-message {
+  color: red;
+}
