@@ -1,11 +1,15 @@
 // src/js/film-modal.js
 import axios from 'axios';
 import { genres } from './genres';
+import { getVideoInfo } from './trailer';
+import { showPreloader, hidePreloader } from './loader';
+// import { onWathced, onQueue } from './button-modal';
 
 const filmList = document.querySelector('.film-list');
 filmList.addEventListener('click', clickOnFilmCard);
-const backdrop = document.querySelector('.modal-container');
-const modal = document.querySelector('.modal-body');
+const backdrop = document.querySelector('.overlay');
+const modal = document.querySelector('.modal');
+const modalBody = document.querySelector('.modal-body');
 const body = document.querySelector('body');
 
 let idCard = '';
@@ -15,13 +19,13 @@ export async function clickOnFilmCard(event) {
   event.preventDefault();
   if (event.target.nodeName === 'UL') return;
   idCard = event.target.closest('.film-card').id;
-  //   console.log(idCard);
+  showPreloader();
+
   const data = await axios.get(
     `https://api.themoviedb.org/3/movie/${idCard}?api_key=352708f90836dd2b75b209ae082e91df&language=en-US&external_source=imdb_id`
   );
+  hidePreloader();
   const modalCard = data.data;
-  // console.log(data.data);
-  // console.log(modalCard.genres.id);
 
   const mainPoster = `https://image.tmdb.org/t/p/w300${modalCard.poster_path}`;
   const posterFake = `https://shop-cdn1.vigbo.tech/shops/48947/products/18863233/images/2-be392e7cfe9a0fa843b29c1e22be8909.jpg`;
@@ -75,10 +79,10 @@ export async function clickOnFilmCard(event) {
             <button type="button" class="trailer-Btn btn__queue btn" data-id=${
               modalCard.id
             }>trailer</button>    
-            <button type="button" class="add-to-watched-Btn btn__watch btn" data-id=${
+            <button type="button" class="add-to-watched-Btn click-watche btn__watch btn" data-id=${
               modalCard.id
             }>Add to watched</button>
-                <button type="button" class="add-to-queue-Btn btn__queue btn" data-id=${
+                <button type="button" class="add-to-queue-Btn click-queue btn__queue btn" data-id=${
                   modalCard.id
                 }>Add to queue</button>
                 
@@ -86,14 +90,59 @@ export async function clickOnFilmCard(event) {
             
     </div>`;
 
-  backdrop.removeAttribute('hidden', '');
+  backdrop.classList.add('active');
+  modal.classList.add('active');
+
+  modal.removeAttribute('hidden', '');
   window.addEventListener('keydown', pressEscapeKey);
 
   body.classList.toggle('no-scroll');
 
-  modal.innerHTML = '';
-  modal.insertAdjacentHTML('beforeend', markup);
-}
+  modalBody.innerHTML = '';
+  modalBody.insertAdjacentHTML('beforeend', markup);
+
+  getVideoInfo(idCard).catch(() => {
+    const trailerMovieBtn = document.querySelector('.trailer-Btn');
+    trailerMovieBtn.classList.add('trailer-btn-none');
+  });
+
+
+    const btnWatched = document.querySelector('.click-watche')
+    const btnQueue = document.querySelector('.click-queue')
+    
+    btnQueue.addEventListener('click', onQueue)
+    btnWatched.addEventListener('click', onWathced)
+
+    function onQueue(){
+      const data = localStorage.getItem('queue')
+      if(!data){
+        const arrQueue = []
+        arrQueue.push(idCard)
+        localStorage.setItem('queue', JSON.stringify(arrQueue))
+        return 
+      }
+      const oldQueueList = JSON.parse(data)
+      if(oldQueueList.includes(idCard)){return console.log('yes')}
+        const newQueueList = oldQueueList
+        newQueueList.push(idCard)
+        localStorage.setItem('queue',JSON.stringify(newQueueList))
+    }
+
+    function onWathced(){
+      const data = localStorage.getItem('wathced')
+        if(!data){
+          const arrWathced = []
+          arrWathced.push(idCard)
+          localStorage.setItem('wathced', JSON.stringify(arrWathced))
+          return 
+        }
+        const oldWathcedList = JSON.parse(data)
+        if(oldWathcedList.includes(idCard)){return console.log('yes')}
+          const newWathcedList = oldWathcedList
+          newWathcedList.push(idCard)
+          localStorage.setItem('wathced',JSON.stringify(newWathcedList))
+    }
+  }
 
 const closeModalOnClick = document.querySelector('.js-modal-close');
 closeModalOnClick.addEventListener('click', closeModal);
@@ -107,7 +156,9 @@ window.addEventListener('click', event => {
 function closeModal() {
   // Скрыть модальное окно
   closeModalOnClick.setAttribute('hidden', '');
-  backdrop.setAttribute('hidden', '');
+  modal.setAttribute('hidden', '');
+  backdrop.classList.remove('active');
+  modal.classList.remove('active');
 
   body.classList.toggle('no-scroll');
   // Удалить обработчики событий
@@ -129,7 +180,7 @@ function pressEscapeKey(event) {
   }
 }
 
-const btn = document.querySelectorAll('.btn');
-btn.forEach(el => {
-  el.addEventListener('mouseout', () => btn.blur());
-});
+// const btn = document.querySelectorAll('.btn');
+// btn.forEach(el => {
+//   el.addEventListener('mouseout', () => btn.blur());
+// })

@@ -24,6 +24,9 @@ import {
 export const ITEMS_PER_PAGE = 18;
 export let searchName = null;
 
+import { funcAnimeLogo, funcAnimeHeart } from './js/SVG-animation';
+
+
 export async function addItem() {
   let data = await getPopularFilms();
   const totalPages = data.total_pages;
@@ -36,3 +39,30 @@ export async function addItem() {
 }
 
 addItem();
+
+
+// Scroll to top
+const button = document.querySelector('.btn-scroll');
+
+const displayButton = () => {
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 100) {
+      button.style.display = "block";
+    } else {
+      button.style.display = "none";
+    }
+  });
+};
+
+const scrollToTop = () => {
+  button.addEventListener("click", () => {
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    }); 
+  });
+};
+
+displayButton();
+scrollToTop();
