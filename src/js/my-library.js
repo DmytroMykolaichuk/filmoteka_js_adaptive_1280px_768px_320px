@@ -65,7 +65,7 @@ export async function onCardWatch() {
   }
 }
 onCardWatch();
-
+//////////addEventListener//////
 queueButton.addEventListener('click', () => {
   async function onCardQueue() {
     containerListWatchedCard.innerHTML = '';
