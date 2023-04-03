@@ -23,10 +23,11 @@
   opacity: 0;
   visibility: hidden;
 
-  transform: scale(0.2);
+  // transform: scale(0.2);
   transition: all 1s linear;
+
   // transition: opacity 500ms cubic-bezier(0.4, 0, 0.2, 1),
-  // visibility 500ms cubic-bezier(0.4, 0, 0.2, 1);
+  //   visibility 500ms cubic-bezier(0.4, 0, 0.2, 1);
 
   -webkit-animation-name: animatetop;
   -webkit-animation-duration: 1s;
@@ -35,22 +36,22 @@
 
   @-webkit-keyframes animatetop {
     from {
-      top: 300px;
+      top: 100%;
       opacity: 0;
     }
     to {
-      top: -110;
+      bottom: auto;
       opacity: 1;
     }
   }
 
   @keyframes animatetop {
     from {
-      bottom: 100%;
+      top: 100%;
       opacity: 0;
     }
     to {
-      bottom: -100%;
+      bottom: auto;
       opacity: 1;
     }
   }
@@ -62,11 +63,11 @@
 
     @-webkit-keyframes animatetop {
       from {
-        top: 300px;
+        bottom: 100px;
         opacity: 0;
       }
       to {
-        top: -110;
+        bottom: -10px;
         opacity: 1;
       }
     }
@@ -77,7 +78,7 @@
         opacity: 0;
       }
       to {
-        bottom: -100px;
+        bottom: -10px;
         opacity: 1;
       }
     }
@@ -174,9 +175,6 @@
   max-width: 240px;
   max-height: 357px;
 
-  //   height: auto;
-  // margin-bottom: 20px;
-
   @media screen and (min-width: 768px) {
     max-width: 364px;
     max-height: 374px;
@@ -206,11 +204,6 @@
     font-size: 20px;
     line-height: calc(23px / 20px);
   }
-
-  // @media screen and (min-width: 1280px) {
-  //   font-size: 20px;
-  //   line-height: calc(23px / 20px);
-  // }
 }
 .movie-description {
   margin-top: 0;
@@ -371,8 +364,8 @@
 }
 
 .add-to-watched-Btn:hover,
-.add-to-queue-Btn:hover,
 .add-to-watched-Btn:focus,
+.add-to-queue-Btn:hover,
 .add-to-queue-Btn:focus {
   background-color: #ff6b01;
   border: none;
@@ -391,12 +384,6 @@
   border: none;
   color: #ffffff;
 }
-
-// .watch-button .active {
-//   background-color: #ff6b01;
-//   border: none;
-//   color: #ffffff;
-// }
 
 .no-scroll {
   overflow: hidden;

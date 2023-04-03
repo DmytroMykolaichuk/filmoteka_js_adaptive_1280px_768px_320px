@@ -5,8 +5,14 @@ import { getVideoInfo } from './trailer';
 import { showPreloader, hidePreloader } from './loader';
 // import { onWathced, onQueue } from './button-modal';
 
+const btnWatched = document.querySelector('.click-watche');
+const btnQueue = document.querySelector('.click-queue');
+
 const filmList = document.querySelector('.film-list');
 filmList.addEventListener('click', clickOnFilmCard);
+
+const closeModalOnClick = document.querySelector('.js-modal-close');
+closeModalOnClick.addEventListener('click', closeModal);
 
 const backdrop = document.querySelector('.overlay');
 
@@ -109,46 +115,46 @@ export async function clickOnFilmCard(event) {
     trailerMovieBtn.classList.add('trailer-btn-none');
   });
 
+  btnQueue.addEventListener('click', onQueue);
+  btnWatched.addEventListener('click', onWathced);
 
-    const btnWatched = document.querySelector('.click-watche')
-    const btnQueue = document.querySelector('.click-queue')
-    
-    btnQueue.addEventListener('click', onQueue)
-    btnWatched.addEventListener('click', onWathced)
+  onQueue();
+  onWathced();
+}
 
-    function onQueue(){
-      const data = localStorage.getItem('queue')
-      if(!data){
-        const arrQueue = []
-        arrQueue.push(idCard)
-        localStorage.setItem('queue', JSON.stringify(arrQueue))
-        return 
-      }
-      const oldQueueList = JSON.parse(data)
-      if(oldQueueList.includes(idCard)){return console.log('yes')}
-        const newQueueList = oldQueueList
-        newQueueList.push(idCard)
-        localStorage.setItem('queue',JSON.stringify(newQueueList))
-    }
-
-    function onWathced(){
-      const data = localStorage.getItem('wathced')
-        if(!data){
-          const arrWathced = []
-          arrWathced.push(idCard)
-          localStorage.setItem('wathced', JSON.stringify(arrWathced))
-          return 
-        }
-        const oldWathcedList = JSON.parse(data)
-        if(oldWathcedList.includes(idCard)){return console.log('yes')}
-          const newWathcedList = oldWathcedList
-          newWathcedList.push(idCard)
-          localStorage.setItem('wathced',JSON.stringify(newWathcedList))
-    }
+function onQueue() {
+  const data = localStorage.getItem('queue');
+  if (!data) {
+    const arrQueue = [];
+    arrQueue.push(idCard);
+    localStorage.setItem('queue', JSON.stringify(arrQueue));
+    return;
   }
+  const oldQueueList = JSON.parse(data);
+  if (oldQueueList.includes(idCard)) {
+    return console.log('yes');
+  }
+  const newQueueList = oldQueueList;
+  newQueueList.push(idCard);
+  localStorage.setItem('queue', JSON.stringify(newQueueList));
+}
 
-const closeModalOnClick = document.querySelector('.js-modal-close');
-closeModalOnClick.addEventListener('click', closeModal);
+function onWathced() {
+  const data = localStorage.getItem('wathced');
+  if (!data) {
+    const arrWathced = [];
+    arrWathced.push(idCard);
+    localStorage.setItem('wathced', JSON.stringify(arrWathced));
+    return;
+  }
+  const oldWathcedList = JSON.parse(data);
+  if (oldWathcedList.includes(idCard)) {
+    return console.log('yes');
+  }
+  const newWathcedList = oldWathcedList;
+  newWathcedList.push(idCard);
+  localStorage.setItem('wathced', JSON.stringify(newWathcedList));
+}
 
 window.addEventListener('click', event => {
   if (event.target === backdrop) {
@@ -162,6 +168,12 @@ function closeModal() {
   modal.setAttribute('hidden', '');
   backdrop.classList.remove('active');
   modal.classList.remove('active');
+
+  if (!modal.hasClass('show')) {
+    modal.addClass('show');
+  } else {
+    modal.removeClass('show');
+  }
 
   body.classList.toggle('no-scroll');
   // Удалить обработчики событий
