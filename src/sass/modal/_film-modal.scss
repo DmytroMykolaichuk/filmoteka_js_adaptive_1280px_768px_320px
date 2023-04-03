@@ -1,4 +1,18 @@
 // src/sass/modal/_film-modal.scss
+.overlay {
+  opacity: 0;
+  visibility: hidden;
+
+  position: fixed;
+  z-index: 20;
+  top: 0%;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  transition: opacity 300ms cubic-bezier(0.4, 0, 0.2, 1),
+    visibility 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 .modal {
   position: fixed;
   top: 50%;
@@ -22,8 +36,16 @@
 
   opacity: 0;
   visibility: hidden;
-  transition: opacity 500ms cubic-bezier(0.4, 0, 0.2, 1),
-    visibility 500ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  transition: all 1s linear;
+
+  // transition: opacity 500ms cubic-bezier(0.4, 0, 0.2, 1),
+  //   visibility 500ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.5s;
+  animation-name: animatetop;
+  animation-duration: 0.5s;
 
   @media screen and (min-width: 768px) {
     max-width: 704px;
@@ -37,22 +59,33 @@
   }
 }
 
-.overlay {
-  opacity: 0;
-  visibility: hidden;
+// .is-hidden {
 
-  position: fixed;
-  z-index: 20;
-  top: 0%;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.4);
-  transition: 0.3s all;
-}
+//   @keyframes animatetop {
+//     0% {
+//       transform: translate(-50%, -50%) scale(1) rotate(-360deg);
+//     }
 
-.active {
+//     100% {
+//       transform: translate(-50%, -50%) scale(0) rotate(0deg);
+//     }
+//   }
+// }
+
+.modal.active,
+.overlay.active {
   opacity: 1;
   visibility: visible;
+  // pointer-events: none;
+
+  @keyframes animatetop {
+    0% {
+      transform: translate(-50%, -50%) scale(0) rotate(0deg);
+    }
+    100% {
+      transform: translate(-50%, -50%) scale(1) rotate(-360deg);
+    }
+  }
 }
 
 .modal-close {
@@ -317,11 +350,10 @@
   color: #ffffff;
 }
 
-.done-watched{
+.done-watched {
   position: relative;
-  
 
-  &::before{
+  &::before {
     content: 'Watched';
     position: absolute;
     top: -15px;
@@ -337,7 +369,7 @@
   }
 
   @media screen and(max-width: 767px) {
-    &::before{
+    &::before {
       top: 0;
       left: 0;
       border-top-right-radius: 0;
@@ -372,14 +404,12 @@
   //   border-top-right-radius:50%;
   //   background-color: #f51a1a;
   // }
-
 }
 
-.done-queue{
+.done-queue {
   position: relative;
-  
 
-  &::before{
+  &::before {
     content: 'in queue';
     position: absolute;
     top: -15px;
@@ -395,14 +425,13 @@
   }
 
   @media screen and(max-width: 767px) {
-    &::before{
+    &::before {
       top: 0;
       left: 0;
       border-top-right-radius: 0;
       border-bottom-right-radius: 20%;
     }
   }
-
 }
 
 // .watch-button .active {
