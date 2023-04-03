@@ -2,7 +2,13 @@
 import axios from 'axios';
 import { renderFilmList } from './renderFilmList';
 import { addItem } from '../index';
+
+import { initSearchPagination, updateSearchFilmList } from './pagination';
+import { ITEMS_PER_PAGE } from '..';
+
+
 import { showPreloader, hidePreloader } from './loader';
+
 const gallery = document.querySelector('.film-list');
 const searchFormEl = document.querySelector('.header__movie-search-form');
 const inputEl = document.querySelector('.movie-search-form');
@@ -16,7 +22,9 @@ let name;
 let page = 1;
 let pages;
 
-export async function getSearchMovie() {
+export let isSearchActive = false;
+
+export async function getSearchMovie(name, page) {
   try {
     const { data } = await instance.get(
       `search/movie?api_key=${KEY}&language=en-US&query=${name}&page=${page}`
@@ -38,9 +46,15 @@ export function onSearch(event) {
   if (name !== '') {
     errorEl.classList.add('visually-hidden');
     page = 1;
+
+    isSearchActive = true;
+    addSearchedMovie(name, page).then(() => {
+      isSearchActive = false;
+
     showPreloader();
     addSearchedMovie().then(() => {
       hidePreloader();
+
     });
   } else {
     errorEl.classList.remove('visually-hidden');
@@ -50,10 +64,22 @@ export function onSearch(event) {
   }
 }
 
-export async function addSearchedMovie() {
-  const searchResult = await getSearchMovie();
+export async function addSearchedMovie(name, page) {
+  const searchResult = await getSearchMovie(name, page);
   if (searchResult.results.length !== 0) {
     errorEl.classList.add('visually-hidden');
+
+    const totalPages = searchResult.total_pages;
+    const totalItems = totalPages * 20; // 20 results per page
+    initSearchPagination(totalItems, name);
+
+    // Отримуємо перші ITEMS_PER_PAGE елементів
+    const limitedResults = searchResult.results.slice(0, ITEMS_PER_PAGE);
+    renderFilmList({ ...searchResult, results: limitedResults });
+
+    console.log(searchResult);
+    console.log(pages);
+
     pages = searchResult.total_pages;
     renderFilmList(searchResult);
   } else {
