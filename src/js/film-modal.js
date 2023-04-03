@@ -2,6 +2,8 @@
 import axios from 'axios';
 import { genres } from './genres';
 import { getVideoInfo } from './trailer';
+import { showPreloader, hidePreloader } from './loader';
+// import { onWathced, onQueue } from './button-modal';
 
 const filmList = document.querySelector('.film-list');
 filmList.addEventListener('click', clickOnFilmCard);
@@ -20,10 +22,12 @@ export async function clickOnFilmCard(event) {
   event.preventDefault();
   if (event.target.nodeName === 'UL') return;
   idCard = event.target.closest('.film-card').id;
+  showPreloader();
 
   const data = await axios.get(
     `https://api.themoviedb.org/3/movie/${idCard}?api_key=352708f90836dd2b75b209ae082e91df&language=en-US&external_source=imdb_id`
   );
+  hidePreloader();
   const modalCard = data.data;
 
   const mainPoster = `https://image.tmdb.org/t/p/w300${modalCard.poster_path}`;
@@ -78,10 +82,10 @@ export async function clickOnFilmCard(event) {
             <button type="button" class="trailer-Btn btn__queue btn" data-id=${
               modalCard.id
             }>trailer</button>    
-            <button type="button" class="add-to-watched-Btn btn__watch btn" data-id=${
+            <button type="button" class="add-to-watched-Btn click-watche btn__watch btn" data-id=${
               modalCard.id
             }>Add to watched</button>
-                <button type="button" class="add-to-queue-Btn btn__queue btn" data-id=${
+                <button type="button" class="add-to-queue-Btn click-queue btn__queue btn" data-id=${
                   modalCard.id
                 }>Add to queue</button>
                 
@@ -104,7 +108,44 @@ export async function clickOnFilmCard(event) {
     const trailerMovieBtn = document.querySelector('.trailer-Btn');
     trailerMovieBtn.classList.add('trailer-btn-none');
   });
-}
+
+
+    const btnWatched = document.querySelector('.click-watche')
+    const btnQueue = document.querySelector('.click-queue')
+    
+    btnQueue.addEventListener('click', onQueue)
+    btnWatched.addEventListener('click', onWathced)
+
+    function onQueue(){
+      const data = localStorage.getItem('queue')
+      if(!data){
+        const arrQueue = []
+        arrQueue.push(idCard)
+        localStorage.setItem('queue', JSON.stringify(arrQueue))
+        return 
+      }
+      const oldQueueList = JSON.parse(data)
+      if(oldQueueList.includes(idCard)){return console.log('yes')}
+        const newQueueList = oldQueueList
+        newQueueList.push(idCard)
+        localStorage.setItem('queue',JSON.stringify(newQueueList))
+    }
+
+    function onWathced(){
+      const data = localStorage.getItem('wathced')
+        if(!data){
+          const arrWathced = []
+          arrWathced.push(idCard)
+          localStorage.setItem('wathced', JSON.stringify(arrWathced))
+          return 
+        }
+        const oldWathcedList = JSON.parse(data)
+        if(oldWathcedList.includes(idCard)){return console.log('yes')}
+          const newWathcedList = oldWathcedList
+          newWathcedList.push(idCard)
+          localStorage.setItem('wathced',JSON.stringify(newWathcedList))
+    }
+  }
 
 const closeModalOnClick = document.querySelector('.js-modal-close');
 closeModalOnClick.addEventListener('click', closeModal);
@@ -142,7 +183,7 @@ function pressEscapeKey(event) {
   }
 }
 
-const btn = document.querySelectorAll('.btn');
-btn.forEach(el => {
-  el.addEventListener('mouseout', () => btn.blur());
-});
+// const btn = document.querySelectorAll('.btn');
+// btn.forEach(el => {
+//   el.addEventListener('mouseout', () => btn.blur());
+// })

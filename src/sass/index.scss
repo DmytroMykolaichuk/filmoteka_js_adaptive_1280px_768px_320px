@@ -1,6 +1,7 @@
 // src/sass/index.scss
 @import './components/container';
 @import './components/variables';
+@import './components/reset';
 @import './home/home-header';
 @import './home/choise-genre';
 @import './home/home-body';
@@ -10,3 +11,5 @@
 @import './my-library/my-library-header';
 @import './my-library/my-library-watched-body';
 @import './film-card';
+@import './loader-and-scroll/loader.scss';
+@import './loader-and-scroll/scroll.scss';

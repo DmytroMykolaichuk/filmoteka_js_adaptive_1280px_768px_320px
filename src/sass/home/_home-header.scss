@@ -57,13 +57,32 @@ a {
       rgba(47, 48, 58, 0.4),
       rgba(47, 48, 58, 0.4)
     ),
-    url('/images/abstract-background-with-red-lines 1.jpg');
+    url('/images/abstract-background-with-red-lines_mob.jpg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   text-align: center;
   margin: 0 auto;
-  padding: 40 32 80 32;
+  padding: 40px 0 92px;
+
+  @media screen and (min-width: 768px) {
+    background-image: linear-gradient(
+        to right,
+        rgba(47, 48, 58, 0.4),
+        rgba(47, 48, 58, 0.4)
+      ),
+      url('/images/abstract-background-with-red-lines_tablet.jpg');
+    padding: 40px 0 81px;
+  }
+  @media screen and (min-width: 1280px) {
+    background-image: linear-gradient(
+        to right,
+        rgba(47, 48, 58, 0.4),
+        rgba(47, 48, 58, 0.4)
+      ),
+      url('/images/abstract-background-with-red-lines 1.jpg');
+    padding: 40px 0 80px;
+  }
 }
 
 .navigation__titles {
@@ -86,6 +105,10 @@ a {
   line-height: calc(35 / 30);
   margin-left: 10px;
   color: #ffffff;
+  display: none;
+  @media screen and (min-width: 768px) {
+    display: inline-block;
+  }
 }
 
 .hero-list {
@@ -144,7 +167,16 @@ a {
 .movie-search-form::placeholder {
   color: #ffffff;
 }
+input:-webkit-autofill {
+  border-bottom: 0.5px solid #ffffff;
+  -webkit-text-fill-color: rgb(255, 255, 255);
+  -webkit-box-shadow: transparent;
+  transition: background-color 5000s ease-in-out 0s;
+}
 
+.movie-search-form :focus {
+  background-color: transparent;
+}
 .form-group {
   display: flex;
   align-items: center;
@@ -170,5 +202,23 @@ a {
 }
 
 .search-error-message {
-  color: red;
+  margin-top: 10px;
+  position: relative;
+  text-align: left;
+}
+.search-error-message p {
+  font-family: 'Roboto';
+  color: #ff001b;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: calc(16 / 14);
+  position: absolute;
+
+  @media screen and (min-width: 768px) {
+    left: 18%;
+  }
+
+  @media screen and (min-width: 1280px) {
+    left: 31%;
+  }
 }
