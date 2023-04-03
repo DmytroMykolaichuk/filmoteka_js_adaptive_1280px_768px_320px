@@ -144,6 +144,8 @@ export async function clickOnFilmCard(event) {
           const arrQueue = []
           arrQueue.push(idCard)
           localStorage.setItem('queue', JSON.stringify(arrQueue))
+          btnQueue.classList.add('done-queue')
+          btnQueue.textContent ='remove'
           btnQueue.blur()
           return 
         }
@@ -169,6 +171,8 @@ export async function clickOnFilmCard(event) {
           const arrWathced = []
           arrWathced.push(idCard)
           localStorage.setItem('wathced', JSON.stringify(arrWathced))
+          btnWatched.classList.add('done-watched')
+          btnWatched.textContent ='remove'
           btnWatched.blur()
           return 
         }
