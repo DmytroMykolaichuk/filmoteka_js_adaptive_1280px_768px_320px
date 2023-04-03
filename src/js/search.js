@@ -3,8 +3,8 @@ import axios from 'axios';
 import { renderFilmList } from './renderFilmList';
 import { addItem } from '../index';
 
-import { initSearchPagination, updateSearchFilmList } from './pagination';
-import { ITEMS_PER_PAGE } from '..';
+// import { initSearchPagination, updateSearchFilmList } from './pagination';
+// import { ITEMS_PER_PAGE } from '..';
 
 
 import { showPreloader, hidePreloader } from './loader';
