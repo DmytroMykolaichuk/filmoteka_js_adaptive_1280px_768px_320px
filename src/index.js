@@ -24,8 +24,11 @@ import { onClickInGanre } from './js/choise-ganre';
 export const ITEMS_PER_PAGE = 18;
 export let searchName = null;
 
-import { funcAnimeLogo, funcAnimeHeart } from './js/SVG-animation';
-
+import {
+  funcAnimeLogo,
+  funcAnimeHeart,
+  funcAnimeHaederLib,
+} from './js/SVG-animation';
 
 export async function addItem() {
   let data = await getPopularFilms();
@@ -42,31 +45,28 @@ export async function addItem() {
 
 addItem();
 
-
 // Scroll to top
 const button = document.querySelector('.btn-scroll');
 
 const displayButton = () => {
   window.addEventListener('scroll', () => {
     if (window.scrollY > 100) {
-      button.style.display = "block";
+      button.style.display = 'block';
     } else {
-      button.style.display = "none";
+      button.style.display = 'none';
     }
   });
 };
 
 const scrollToTop = () => {
-  button.addEventListener("click", () => {
+  button.addEventListener('click', () => {
     window.scroll({
       top: 0,
       left: 0,
-      behavior: 'smooth'
-    }); 
+      behavior: 'smooth',
+    });
   });
 };
 
 displayButton();
 scrollToTop();
-
-

@@ -2,7 +2,7 @@
 import axios from 'axios';
 import { genres } from './genres';
 import { getVideoInfo } from './trailer';
-import { showPreloader, hidePreloader } from './loader';
+// import { showPreloader, hidePreloader } from './loader';
 // import { onWathced, onQueue } from './button-modal';
 
 const filmList = document.querySelector('.film-list');
@@ -19,12 +19,12 @@ export async function clickOnFilmCard(event) {
   event.preventDefault();
   if (event.target.nodeName === 'UL') return;
   idCard = event.target.closest('.film-card').id;
-  showPreloader();
+  // showPreloader();
 
   const data = await axios.get(
     `https://api.themoviedb.org/3/movie/${idCard}?api_key=352708f90836dd2b75b209ae082e91df&language=en-US&external_source=imdb_id`
   );
-  hidePreloader();
+  // hidePreloader();
   const modalCard = data.data;
 
   const mainPoster = `https://image.tmdb.org/t/p/w300${modalCard.poster_path}`;
@@ -32,28 +32,31 @@ export async function clickOnFilmCard(event) {
 
   const styleBtn = {
     textWatched: 'Add to watched',
-    textQueue:'Add to queue',
-    classWatched:'add-to-watched-Btn click-watche btn__watch btn',
-    classQueue: 'add-to-queue-Btn click-queue btn__queue btn'
-    } 
+    textQueue: 'Add to queue',
+    classWatched: 'add-to-watched-Btn click-watche btn__watch btn',
+    classQueue: 'add-to-queue-Btn click-queue btn__queue btn',
+  };
 
-    function statusBtn(){
-      const dataWatched = localStorage.getItem('wathced')
-      const dataQueue = localStorage.getItem('queue')
-      if(!dataWatched || !dataQueue){return}
-      const oldWatchedList = JSON.parse(dataWatched)
-      const oldQueueList = JSON.parse(dataQueue)
-      if(oldWatchedList.includes(idCard)){
-        styleBtn.textWatched= 'remove'
-        styleBtn.classWatched = 'add-to-watched-Btn click-watche btn__watch btn done-watched'
-      }
-      if(oldQueueList.includes(idCard)){
-        styleBtn.textQueue= 'remove'
-        styleBtn.classQueue = 'add-to-watched-Btn click-watche btn__watch btn done-queue'
-      }
+  function statusBtn() {
+    const dataWatched = localStorage.getItem('wathced');
+    const dataQueue = localStorage.getItem('queue');
+    if (!dataWatched || !dataQueue) {
+      return;
     }
-    statusBtn()
-
+    const oldWatchedList = JSON.parse(dataWatched);
+    const oldQueueList = JSON.parse(dataQueue);
+    if (oldWatchedList.includes(idCard)) {
+      styleBtn.textWatched = 'remove';
+      styleBtn.classWatched =
+        'add-to-watched-Btn click-watche btn__watch btn done-watched';
+    }
+    if (oldQueueList.includes(idCard)) {
+      styleBtn.textQueue = 'remove';
+      styleBtn.classQueue =
+        'add-to-watched-Btn click-watche btn__watch btn done-queue';
+    }
+  }
+  statusBtn();
 
   markup = `<img src= "${modalCard.poster_path ? mainPoster : posterFake}"
             alt="${
@@ -104,12 +107,16 @@ export async function clickOnFilmCard(event) {
             <button type="button" class="trailer-Btn btn__queue btn" data-id=${
               modalCard.id
             }>trailer</button>    
-            <button type="button" class="${styleBtn.classWatched} add-to-watched-Btn click-watche btn__watch btn" data-id=${
-              modalCard.id
-            }>${styleBtn.textWatched}</button>
-                <button type="button" class="${styleBtn.classQueue} add-to-queue-Btn click-queue btn__queue btn" data-id=${
-                  modalCard.id
-                }>${styleBtn.textQueue}</button>
+            <button type="button" class="${
+              styleBtn.classWatched
+            } add-to-watched-Btn click-watche btn__watch btn" data-id=${
+    modalCard.id
+  }>${styleBtn.textWatched}</button>
+                <button type="button" class="${
+                  styleBtn.classQueue
+                } add-to-queue-Btn click-queue btn__queue btn" data-id=${
+    modalCard.id
+  }>${styleBtn.textQueue}</button>
                 
             </div>
             
@@ -131,67 +138,68 @@ export async function clickOnFilmCard(event) {
     trailerMovieBtn.classList.add('trailer-btn-none');
   });
 
+  const btnWatched = document.querySelector('.click-watche');
+  const btnQueue = document.querySelector('.click-queue');
 
-    const btnWatched = document.querySelector('.click-watche')
-    const btnQueue = document.querySelector('.click-queue')
-    
-    btnQueue.addEventListener('click', onQueue)
-    btnWatched.addEventListener('click', onWathced)
+  btnQueue.addEventListener('click', onQueue);
+  btnWatched.addEventListener('click', onWathced);
 
-    function onQueue(){
-      const dataQueue = localStorage.getItem('queue')
-        if(!dataQueue){
-          const arrQueue = []
-          arrQueue.push(idCard)
-          localStorage.setItem('queue', JSON.stringify(arrQueue))
-          btnQueue.classList.add('done-queue')
-          btnQueue.textContent ='remove'
-          btnQueue.blur()
-          return 
-        }
-        let oldQueueList = JSON.parse(dataQueue)
-        if(oldQueueList.includes(idCard)){
-          oldQueueList = oldQueueList.filter(el=> el !== idCard)
-          localStorage.setItem('queue',JSON.stringify(oldQueueList))
-          btnQueue.classList.remove('done-queue')
-          btnQueue.textContent='Add to queue'
-          btnQueue.blur()
-          return }
-          const newQueueList = oldQueueList
-          newQueueList.push(idCard)
-          localStorage.setItem('queue',JSON.stringify(newQueueList))
-          btnQueue.classList.add('done-queue')
-          btnQueue.textContent ='remove'
-          btnQueue.blur()
+  function onQueue() {
+    const dataQueue = localStorage.getItem('queue');
+    if (!dataQueue) {
+      const arrQueue = [];
+      arrQueue.push(idCard);
+      localStorage.setItem('queue', JSON.stringify(arrQueue));
+      btnQueue.classList.add('done-queue');
+      btnQueue.textContent = 'remove';
+      btnQueue.blur();
+      return;
     }
-
-    function onWathced(){
-      const dataWatched = localStorage.getItem('wathced')
-        if(!dataWatched){
-          const arrWathced = []
-          arrWathced.push(idCard)
-          localStorage.setItem('wathced', JSON.stringify(arrWathced))
-          btnWatched.classList.add('done-watched')
-          btnWatched.textContent ='remove'
-          btnWatched.blur()
-          return 
-        }
-        let oldWathcedList = JSON.parse(dataWatched)
-        if(oldWathcedList.includes(idCard)){
-          oldWathcedList = oldWathcedList.filter(el=> el !== idCard)
-          localStorage.setItem('wathced',JSON.stringify(oldWathcedList))
-          btnWatched.classList.remove('done-watched')
-          btnWatched.textContent='Add to watched'
-          btnWatched.blur()
-          return }
-          const newWathcedList = oldWathcedList
-          newWathcedList.push(idCard)
-          localStorage.setItem('wathced',JSON.stringify(newWathcedList))
-          btnWatched.classList.add('done-watched')
-          btnWatched.textContent ='remove'
-          btnWatched.blur()
+    let oldQueueList = JSON.parse(dataQueue);
+    if (oldQueueList.includes(idCard)) {
+      oldQueueList = oldQueueList.filter(el => el !== idCard);
+      localStorage.setItem('queue', JSON.stringify(oldQueueList));
+      btnQueue.classList.remove('done-queue');
+      btnQueue.textContent = 'Add to queue';
+      btnQueue.blur();
+      return;
     }
+    const newQueueList = oldQueueList;
+    newQueueList.push(idCard);
+    localStorage.setItem('queue', JSON.stringify(newQueueList));
+    btnQueue.classList.add('done-queue');
+    btnQueue.textContent = 'remove';
+    btnQueue.blur();
   }
+
+  function onWathced() {
+    const dataWatched = localStorage.getItem('wathced');
+    if (!dataWatched) {
+      const arrWathced = [];
+      arrWathced.push(idCard);
+      localStorage.setItem('wathced', JSON.stringify(arrWathced));
+      btnWatched.classList.add('done-watched');
+      btnWatched.textContent = 'remove';
+      btnWatched.blur();
+      return;
+    }
+    let oldWathcedList = JSON.parse(dataWatched);
+    if (oldWathcedList.includes(idCard)) {
+      oldWathcedList = oldWathcedList.filter(el => el !== idCard);
+      localStorage.setItem('wathced', JSON.stringify(oldWathcedList));
+      btnWatched.classList.remove('done-watched');
+      btnWatched.textContent = 'Add to watched';
+      btnWatched.blur();
+      return;
+    }
+    const newWathcedList = oldWathcedList;
+    newWathcedList.push(idCard);
+    localStorage.setItem('wathced', JSON.stringify(newWathcedList));
+    btnWatched.classList.add('done-watched');
+    btnWatched.textContent = 'remove';
+    btnWatched.blur();
+  }
+}
 
 const closeModalOnClick = document.querySelector('.js-modal-close');
 closeModalOnClick.addEventListener('click', closeModal);
