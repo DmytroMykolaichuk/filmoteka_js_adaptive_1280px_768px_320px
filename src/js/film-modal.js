@@ -30,6 +30,31 @@ export async function clickOnFilmCard(event) {
   const mainPoster = `https://image.tmdb.org/t/p/w300${modalCard.poster_path}`;
   const posterFake = `https://shop-cdn1.vigbo.tech/shops/48947/products/18863233/images/2-be392e7cfe9a0fa843b29c1e22be8909.jpg`;
 
+  const styleBtn = {
+    textWatched: 'Add to watched',
+    textQueue:'Add to queue',
+    classWatched:'add-to-watched-Btn click-watche btn__watch btn',
+    classQueue: 'add-to-queue-Btn click-queue btn__queue btn'
+    } 
+
+    function statusBtn(){
+      const dataWatched = localStorage.getItem('wathced')
+      const dataQueue = localStorage.getItem('queue')
+      if(!dataWatched || !dataQueue){return}
+      const oldWatchedList = JSON.parse(dataWatched)
+      const oldQueueList = JSON.parse(dataQueue)
+      if(oldWatchedList.includes(idCard)){
+        styleBtn.textWatched= 'remove'
+        styleBtn.classWatched = 'add-to-watched-Btn click-watche btn__watch btn done-watched'
+      }
+      if(oldQueueList.includes(idCard)){
+        styleBtn.textQueue= 'remove'
+        styleBtn.classQueue = 'add-to-watched-Btn click-watche btn__watch btn done-queue'
+      }
+    }
+    statusBtn()
+
+
   markup = `<img src= "${modalCard.poster_path ? mainPoster : posterFake}"
             alt="${
               modalCard.title || modalCard.original_title || modalCard.name
@@ -79,12 +104,12 @@ export async function clickOnFilmCard(event) {
             <button type="button" class="trailer-Btn btn__queue btn" data-id=${
               modalCard.id
             }>trailer</button>    
-            <button type="button" class="add-to-watched-Btn click-watche btn__watch btn" data-id=${
+            <button type="button" class="${styleBtn.classWatched} add-to-watched-Btn click-watche btn__watch btn" data-id=${
               modalCard.id
-            }>Add to watched</button>
-                <button type="button" class="add-to-queue-Btn click-queue btn__queue btn" data-id=${
+            }>${styleBtn.textWatched}</button>
+                <button type="button" class="${styleBtn.classQueue} add-to-queue-Btn click-queue btn__queue btn" data-id=${
                   modalCard.id
-                }>Add to queue</button>
+                }>${styleBtn.textQueue}</button>
                 
             </div>
             
@@ -114,33 +139,53 @@ export async function clickOnFilmCard(event) {
     btnWatched.addEventListener('click', onWathced)
 
     function onQueue(){
-      const data = localStorage.getItem('queue')
-      if(!data){
-        const arrQueue = []
-        arrQueue.push(idCard)
-        localStorage.setItem('queue', JSON.stringify(arrQueue))
-        return 
-      }
-      const oldQueueList = JSON.parse(data)
-      if(oldQueueList.includes(idCard)){return console.log('yes')}
-        const newQueueList = oldQueueList
-        newQueueList.push(idCard)
-        localStorage.setItem('queue',JSON.stringify(newQueueList))
+      const dataQueue = localStorage.getItem('queue')
+        if(!dataQueue){
+          const arrQueue = []
+          arrQueue.push(idCard)
+          localStorage.setItem('queue', JSON.stringify(arrQueue))
+          btnQueue.blur()
+          return 
+        }
+        let oldQueueList = JSON.parse(dataQueue)
+        if(oldQueueList.includes(idCard)){
+          oldQueueList = oldQueueList.filter(el=> el !== idCard)
+          localStorage.setItem('queue',JSON.stringify(oldQueueList))
+          btnQueue.classList.remove('done-queue')
+          btnQueue.textContent='Add to watched'
+          btnQueue.blur()
+          return }
+          const newQueueList = oldQueueList
+          newQueueList.push(idCard)
+          localStorage.setItem('queue',JSON.stringify(newQueueList))
+          btnQueue.classList.add('done-queue')
+          btnQueue.textContent ='remove'
+          btnQueue.blur()
     }
 
     function onWathced(){
-      const data = localStorage.getItem('wathced')
-        if(!data){
+      const dataWatched = localStorage.getItem('wathced')
+        if(!dataWatched){
           const arrWathced = []
           arrWathced.push(idCard)
           localStorage.setItem('wathced', JSON.stringify(arrWathced))
+          btnWatched.blur()
           return 
         }
-        const oldWathcedList = JSON.parse(data)
-        if(oldWathcedList.includes(idCard)){return console.log('yes')}
+        let oldWathcedList = JSON.parse(dataWatched)
+        if(oldWathcedList.includes(idCard)){
+          oldWathcedList = oldWathcedList.filter(el=> el !== idCard)
+          localStorage.setItem('wathced',JSON.stringify(oldWathcedList))
+          btnWatched.classList.remove('done-watched')
+          btnWatched.textContent='Add to queue'
+          btnWatched.blur()
+          return }
           const newWathcedList = oldWathcedList
           newWathcedList.push(idCard)
           localStorage.setItem('wathced',JSON.stringify(newWathcedList))
+          btnWatched.classList.add('done-watched')
+          btnWatched.textContent ='remove'
+          btnWatched.blur()
     }
   }
 
