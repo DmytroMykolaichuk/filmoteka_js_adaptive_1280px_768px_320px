@@ -56,6 +56,7 @@ export function onSearch(event) {
       hidePreloader();
 
     });
+  });
   } else {
     errorEl.classList.remove('visually-hidden');
     return console.log(

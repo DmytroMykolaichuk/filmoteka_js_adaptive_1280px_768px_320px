@@ -4,7 +4,7 @@
   "description": "",
   "homepage": "https://dmytromykolaichuk.github.io/filmoteka_js_adaptive_1280px_768px_320px",
   "scripts": {
-    "start": "parcel src/*.html ",
+    "start": "parcel src/*.html --port 4321",
     "build": "parcel build src/*.html --public-url /filmoteka_js_adaptive_1280px_768px_320px/"
   },
   "repository": {
