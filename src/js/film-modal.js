@@ -154,7 +154,7 @@ export async function clickOnFilmCard(event) {
           oldQueueList = oldQueueList.filter(el=> el !== idCard)
           localStorage.setItem('queue',JSON.stringify(oldQueueList))
           btnQueue.classList.remove('done-queue')
-          btnQueue.textContent='Add to watched'
+          btnQueue.textContent='Add to queue'
           btnQueue.blur()
           return }
           const newQueueList = oldQueueList
@@ -181,7 +181,7 @@ export async function clickOnFilmCard(event) {
           oldWathcedList = oldWathcedList.filter(el=> el !== idCard)
           localStorage.setItem('wathced',JSON.stringify(oldWathcedList))
           btnWatched.classList.remove('done-watched')
-          btnWatched.textContent='Add to queue'
+          btnWatched.textContent='Add to watched'
           btnWatched.blur()
           return }
           const newWathcedList = oldWathcedList
