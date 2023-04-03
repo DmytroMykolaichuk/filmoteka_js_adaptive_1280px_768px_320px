@@ -34,7 +34,6 @@ export async function onClickInGanre(e){
       if(el.genre_ids.includes(+choiceUser)){
       markup += ` <li class ="film-item">
       <a id='${el.id}' class="film-card" href="#">
-        <div>
         <div class='thumb'>
         <img
             class = 'poster'
@@ -45,10 +44,9 @@ export async function onClickInGanre(e){
           <div class='film-data'>
             <h2 class="title-film">${el.title}</h2>
             <p>
-              <span class='info-film'>${genreMarkup.join(', ')} | ${release}</span> 
-              <span class ="rating">${el.vote_average.toFixed(1)}</span>
+            <span class='info-film'>${genreMarkup.join(', ')} | ${release}</span> 
+            <span class ="rating">IMDB:<br>${el.vote_average.toFixed(1)}</span>
             </p>
-          </div>
         </div>
       </a>
     </li>`;

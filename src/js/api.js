@@ -1,5 +1,6 @@
 // src/js/api.js
 import axios from 'axios';
+import { showPreloader, hidePreloader } from './loader';
 
 export async function getPopularFilms(page) {
   const BASE_URL = 'https://api.themoviedb.org/3/trending/movie/day';
@@ -10,9 +11,10 @@ export async function getPopularFilms(page) {
       page: page,
     },
   };
-
+  showPreloader();
   try {
     let { data } = await axios.get(BASE_URL, options);
+    hidePreloader();
     return data;
   } catch (error) {
     console.log(error);

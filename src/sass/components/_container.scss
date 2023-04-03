@@ -1,1 +1,13 @@
 // src/sass/components/_container.scss
+.container {
+    width: 100%;
+    padding-left: 32px;
+    padding-right: 32px;
+    margin: 0 auto;
+
+   @media screen and (min-width: 320px) {
+    padding-left: 20px;
+    padding-right: 20px;
+    }
+
+}

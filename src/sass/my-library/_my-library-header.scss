@@ -1,14 +1,10 @@
 // src/sass/my-library/_my-library-header.scss
 .lib-header {
-  height: 230px;
 
-  background-image: linear-gradient(
-      to right,
-      rgba(0, 0, 0, 0.56),
-      rgba(0, 0, 0, 0.56)
-    ),
+  background-image: linear-gradient(to right, rgba(0, 0, 0, .56),
+      rgba(0, 0, 0, .56)),
     url(../img/my-library/hbg-320-x1.jpg);
-  background-size: 100% 230px;
+  background-size: 100% 100%;
   background-repeat: no-repeat;
   background-position: center;
 
@@ -24,15 +20,9 @@
   }
 
   @media screen and (min-width: 768px) {
-    height: 219px;
-
-    background-image: linear-gradient(
-        to right,
-        rgba(0, 0, 0, 0.56),
-        rgba(0, 0, 0, 0.56)
-      ),
+    background-image: linear-gradient(to right, rgba(0, 0, 0, .56),
+        rgba(0, 0, 0, .56)),
       url(../img/my-library/hbg-768-x1.jpg);
-    background-size: 100% 219px;
 
     @media (min-device-pixel-ratio: 2),
       (min-resolution: 192dpi),
@@ -47,17 +37,9 @@
   }
 
   @media screen and (min-width: 1280px) {
-    height: 216px;
-    padding-top: 40px;
-    padding-bottom: 60px;
-
-    background-image: linear-gradient(
-        to right,
-        rgba(0, 0, 0, 0.56),
-        rgba(0, 0, 0, 0.56)
-      ),
+    background-image: linear-gradient(to right, rgba(0, 0, 0, .56),
+        rgba(0, 0, 0, .56)),
       url(../img/my-library/hbg-1280-x1.jpg);
-    background-size: 100% 216px;
 
     @media (min-device-pixel-ratio: 2),
       (min-resolution: 192dpi),
@@ -93,72 +75,30 @@
   }
 }
 
-// .nav-wrapper {
-//   display: flex;
-//   justify-content: space-between;
-//   align-items: center;
+.header-wrapper {
+  padding-top: 40px;
+  padding-bottom: 60px;
+}
 
-//   padding-top: 20px;
-// }
-
-// .nav-wrapper > a {
-//   display: flex;
-//   gap: 10px;
-//   align-items: baseline;
-
-//   padding-top: 20px;
-//   padding-bottom: 20px;
-// }
-
-// .prod-name {
-//   font-family: 'Roboto';
-//   font-weight: 500;
-//   font-size: 30px;
-//   line-height: calc(35 / 30);
-//   color: #ffffff;
-
-//   @media screen and (max-width: 767px) {
-//     position: absolute;
-//     width: 1px;
-//     height: 1px;
-//     margin: -1px;
-//     border: 0;
-//     padding: 0;
-//     white-space: nowrap;
-//     clip-path: inset(100%);
-//     clip: rect(0 0 0 0);
-//     overflow: hidden;
-//   }
-// }
-
-// .nav-list {
-//   padding-left: 0;
-//   margin-top: 0;
-//   margin-bottom: 0;
-//   list-style-type: none;
-
-//   display: flex;
-//   gap: 40px;
-// }
-
-// .nav-list a {
-//   font-family: 'Roboto';
-//   font-weight: 500;
-//   font-size: 12px;
-//   line-height: calc(14 / 12);
-//   color: #ffffff;
-
-//   padding-top: 20px;
-//   padding-bottom: 20px;
-// }
-
-// .nav-list .current {
-//   text-decoration: solid underline #ff001b 3px;
-// }
+// 50/50========================
+.logo_title {
+  @media screen and (max-width: 767px) {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    white-space: nowrap;
+    clip-path: inset(100%);
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+  }
+}
 
 .btn-list {
   padding-left: 0;
-  margin-top: 40px;
+  margin-top: 60px;
   margin-bottom: 0;
   list-style-type: none;
 
@@ -167,7 +107,7 @@
   gap: 20px;
 
   @media screen and (min-width: 768px) {
-    margin-top: 20px;
+    margin-top: 40px;
     gap: 32px;
   }
 
