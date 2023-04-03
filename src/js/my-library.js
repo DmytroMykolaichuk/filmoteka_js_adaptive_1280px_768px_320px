@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { onClickWatchedBtn, onClickQueueBtn, onClickClearAll } from "./buttons-my-library";
 import { genres } from './genres';
 import { clickOnFilmCard } from './film-modal';
 import { getVideoInfo } from './trailer';
