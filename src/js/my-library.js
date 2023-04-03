@@ -19,21 +19,23 @@ const API_KEY = '352708f90836dd2b75b209ae082e91df';
 const queueButton = document.getElementById('queue');
 queueButton.addEventListener('click', () => {});
 
-async function onCardWatch() {
+
+export async function onCardWatch() {
   containerListWatchedCard.innerHTML = '';
   for (const idFilm of dataWatchedCards) {
     const oneFilmCard = await getWatchedFilms(idFilm);
-    let release = Number.parseInt(
-      oneFilmCard.release_date || oneFilmCard.first_air_date
-    );
+
+    let release = Number.parseInt(oneFilmCard.release_date || oneFilmCard.first_air_date);
     const mainPoster = `https://image.tmdb.org/t/p/w300${oneFilmCard.poster_path}`;
     const posterFake = `https://shop-cdn1.vigbo.tech/shops/48947/products/18863233/images/2-be392e7cfe9a0fa843b29c1e22be8909.jpg`;
     let genreMarkup = [];
+
     genres.forEach(genre => {
       if (oneFilmCard.genres.includes(genre.id)) {
         genreMarkup.push(genre.name);
       }
     });
+
     let markup = '';
     markup += ` <li class ="film-item">
                 <a id='${oneFilmCard.id}' class="film-card" href="#">
@@ -59,8 +61,6 @@ async function onCardWatch() {
                     </div>
                   </a>
               </li>`;
-    console.log(markup);
-    console.log(oneFilmCard);
     containerListWatchedCard.insertAdjacentHTML('beforeend', markup);
   }
 }
