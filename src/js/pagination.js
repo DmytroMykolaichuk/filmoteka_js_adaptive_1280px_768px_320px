@@ -3,7 +3,7 @@ import 'tui-pagination/dist/tui-pagination.css';
 import Pagination from 'tui-pagination';
 import { getPopularFilms } from './api';
 import { renderFilmList } from './renderFilmList';
-import { ITEMS_PER_PAGE, isSearchActive, state } from '..';
+import { ITEMS_PER_PAGE, isSearchActive, state } from '../index';
 
 const visiblePages = 5;
 
