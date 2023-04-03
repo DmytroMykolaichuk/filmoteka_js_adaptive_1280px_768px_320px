@@ -3,7 +3,7 @@ import axios from 'axios';
 import { renderFilmList } from './renderFilmList';
 import { addItem } from '../index';
 import { initSearchPagination, updateSearchFilmList } from './pagination';
-import { ITEMS_PER_PAGE } from '..';
+import { ITEMS_PER_PAGE } from '../index';
 
 const gallery = document.querySelector('.film-list');
 const searchFormEl = document.querySelector('.header__movie-search-form');
