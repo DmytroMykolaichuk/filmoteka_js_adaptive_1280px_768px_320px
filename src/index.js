@@ -20,8 +20,6 @@ const button = document.querySelector('.btn-scroll');
 
 const displayButton = () => {
   window.addEventListener('scroll', () => {
-    console.log(window.scrollY);
-  
     if (window.scrollY > 100) {
       button.style.display = "block";
     } else {
