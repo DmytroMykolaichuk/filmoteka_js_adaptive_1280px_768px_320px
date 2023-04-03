@@ -38,13 +38,11 @@ export function onSearch(event) {
   if (name !== '') {
     errorEl.classList.add('visually-hidden');
     page = 1;
+     showPreloader();
     isSearchActive = true;
     addSearchedMovie(name, page).then(() => {
       isSearchActive = false;
-    showPreloader();
-    addSearchedMovie().then(() => {
       hidePreloader();
-    });
   });
   } else {
     errorEl.classList.remove('visually-hidden');
