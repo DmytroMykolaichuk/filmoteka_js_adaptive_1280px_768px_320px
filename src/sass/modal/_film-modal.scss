@@ -1,17 +1,35 @@
 // src/sass/modal/_film-modal.scss
-.modal {
+.overlay {
   position: fixed;
+  z-index: 20;
+  top: 0%;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+
+  transition: opacity 300ms cubic-bezier(0.4, 0, 0.2, 1),
+    visibility 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal {
+  position: relative;
+
+  position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%) scale(1);
-  transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1);
+  max-width: 280px;
+  width: 100%;
+
+  transform: translate(-50%, -50%) scale(1) rotate(-360deg);
+
+  // transform: scale(1) rotate(-360deg);
+  transition: transform 300ms linear;
+
   background-color: #fefefe;
   margin: 0 auto;
 
   border: 1px solid #888;
-  width: 100%;
 
-  max-width: 280px;
   padding: 48px 20px 40px 20px;
 
   height: auto;
@@ -20,10 +38,11 @@
 
   z-index: 50;
 
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 500ms cubic-bezier(0.4, 0, 0.2, 1),
-    visibility 500ms cubic-bezier(0.4, 0, 0.2, 1);
+  // transition: transform 300ms linear;
+
+  .is-hidden & {
+    transform: translate(-50%, -50%) scale(0) rotate(0deg);
+  }
 
   @media screen and (min-width: 768px) {
     max-width: 704px;
@@ -37,22 +56,10 @@
   }
 }
 
-.overlay {
+.is-hidden {
   opacity: 0;
   visibility: hidden;
-
-  position: fixed;
-  z-index: 20;
-  top: 0%;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.4);
-  transition: 0.3s all;
-}
-
-.active {
-  opacity: 1;
-  visibility: visible;
+  pointer-events: none;
 }
 
 .modal-close {
@@ -98,9 +105,6 @@
 .movie-image {
   max-width: 240px;
   max-height: 357px;
-
-  //   height: auto;
-  // margin-bottom: 20px;
 
   @media screen and (min-width: 768px) {
     max-width: 364px;
@@ -317,11 +321,10 @@
   color: #ffffff;
 }
 
-.done-watched{
+.done-watched {
   position: relative;
-  
 
-  &::before{
+  &::before {
     content: 'Watched';
     position: absolute;
     top: -15px;
@@ -337,7 +340,7 @@
   }
 
   @media screen and(max-width: 767px) {
-    &::before{
+    &::before {
       top: 0;
       left: 0;
       border-top-right-radius: 0;
@@ -372,14 +375,12 @@
   //   border-top-right-radius:50%;
   //   background-color: #f51a1a;
   // }
-
 }
 
-.done-queue{
+.done-queue {
   position: relative;
-  
 
-  &::before{
+  &::before {
     content: 'in queue';
     position: absolute;
     top: -15px;
@@ -395,14 +396,13 @@
   }
 
   @media screen and(max-width: 767px) {
-    &::before{
+    &::before {
       top: 0;
       left: 0;
       border-top-right-radius: 0;
       border-bottom-right-radius: 20%;
     }
   }
-
 }
 
 // .watch-button .active {

@@ -7,9 +7,12 @@ import { getVideoInfo } from './trailer';
 
 const filmList = document.querySelector('.film-list');
 filmList.addEventListener('click', clickOnFilmCard);
+
 const backdrop = document.querySelector('.overlay');
+
 const modal = document.querySelector('.modal');
 const modalBody = document.querySelector('.modal-body');
+
 const body = document.querySelector('body');
 
 let idCard = '';
@@ -122,13 +125,14 @@ export async function clickOnFilmCard(event) {
             
     </div>`;
 
-  backdrop.classList.add('active');
-  modal.classList.add('active');
+  // backdrop.classList.remove('is-hidden');
+  // modal.classList.add('active');
 
   modal.removeAttribute('hidden', '');
   window.addEventListener('keydown', pressEscapeKey);
 
   body.classList.toggle('no-scroll');
+  backdrop.classList.toggle('is-hidden');
 
   modalBody.innerHTML = '';
   modalBody.insertAdjacentHTML('beforeend', markup);
@@ -213,11 +217,9 @@ window.addEventListener('click', event => {
 function closeModal() {
   // Скрыть модальное окно
   closeModalOnClick.setAttribute('hidden', '');
-  modal.setAttribute('hidden', '');
-  backdrop.classList.remove('active');
-  modal.classList.remove('active');
 
   body.classList.toggle('no-scroll');
+  backdrop.classList.toggle('is-hidden');
   // Удалить обработчики событий
   window.removeEventListener('click', clickOutsideModal);
   window.removeEventListener('keydown', pressEscapeKey);
