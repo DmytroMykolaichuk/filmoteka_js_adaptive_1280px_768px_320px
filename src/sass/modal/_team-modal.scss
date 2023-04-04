@@ -1,5 +1,10 @@
-// src/sass/modal/_team-modal.scss
-.overlay {
+.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.overlay-team-modal {
   position: fixed;
   z-index: 20;
   top: 0%;
@@ -11,7 +16,7 @@
     visibility 300ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.modal {
+.modal-team {
   position: relative;
 
   position: absolute;
@@ -20,7 +25,7 @@
   max-width: 280px;
   width: 100%;
 
-  transform: translate(-50%, -50%) scale(1) rotate(-360deg);
+  transform: translate(-50%, -50%) scale(1) rotate(0deg);
 
   // transform: scale(1) rotate(-360deg);
   transition: transform 300ms linear;
@@ -41,7 +46,7 @@
   // transition: transform 300ms linear;
 
   .is-hidden & {
-    transform: translate(-50%, -50%) scale(0) rotate(0deg);
+    transform: translate(-50%, -50%) scale(0) rotate(-360deg);
   }
 
   @media screen and (min-width: 768px) {
@@ -56,7 +61,7 @@
   }
 }
 
-.modal-close {
+.modal-team-close {
   width: 40px;
   height: 40px;
   background-color: transparent;
@@ -76,13 +81,13 @@
   }
 }
 
-.modal-close:hover,
-.modal-close:focus {
+.modal-team-close:hover,
+.modal-team-close:focus {
   fill: #ff6b01;
   text-decoration: none;
   outline: none;
 }
-.modal-body {
+.modal-team-body {
   display: flex;
   flex-direction: column;
 
