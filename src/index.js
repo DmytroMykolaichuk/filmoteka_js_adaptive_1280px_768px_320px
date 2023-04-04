@@ -2,7 +2,7 @@
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
 import axios from 'axios';
-import { getPopularFilms } from './js/api';
+import { getPopularFilms, fetchGenres } from './js/api';
 import { renderFilmList } from './js/renderFilmList';
 import {
   getSearchMovie,

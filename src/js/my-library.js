@@ -22,7 +22,7 @@ hidePreloader();
 
 function statusWraper(nameList) {
   const test = JSON.parse(localStorage.getItem(`${nameList}`));
-  console.log(test);
+  // console.log(test);
   if (!localStorage.getItem(`${nameList}`) || test.length < 1) {
     wraperMyLib.style.display = 'flex';
   } else {
