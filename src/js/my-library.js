@@ -2,7 +2,7 @@ import axios from 'axios';
 import {onClickWatchedBtn, onClickQueueBtn, onClickClearAll } from './buttons-my-library';
 import { genres } from './genres';
 import { clickOnFilmCard } from './film-modal';
-import { getVideoInfo } from './trailer';
+import { getVideoInfo, playVideoTrailer } from './trailer';
 import { showPreloader, hidePreloader } from './loader';
 
 const wraperMyLib = document.querySelector('.empty-wrapper')
@@ -17,7 +17,7 @@ hidePreloader();
 
 function statusWraper(nameList){
   const test = JSON.parse(localStorage.getItem(`${nameList}`))
-  console.log(test)
+  // console.log(test)
   if(!localStorage.getItem(`${nameList}`) || test.length<1){
     wraperMyLib.style.display='flex'
   }else{
