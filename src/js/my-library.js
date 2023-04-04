@@ -13,34 +13,39 @@ const BASE_URL = 'https://api.themoviedb.org/3/movie/';
 const API_KEY = '352708f90836dd2b75b209ae082e91df';
 
 // const queueButton = document.getElementById('queue');
+hidePreloader();
 
-function wraper(){
-  const test = JSON.parse(localStorage.getItem('wathced'))
+function statusWraper(nameList){
+  const test = JSON.parse(localStorage.getItem(`${nameList}`))
   console.log(test)
-  if( localStorage.getItem('wathced') || test[0]){
+  if(!localStorage.getItem(`${nameList}`) || test.length<1){
+    wraperMyLib.style.display='flex'
+  }else{
     wraperMyLib.style.display='none'
-    onCardWatch();
-    return
   }
-  wraperMyLib.style.display='flex'
 }
-wraper()
 
 async function getWatchedFilms(page) {
   try {
+    showPreloader();
     const { data } = await axios.get(
       `${BASE_URL}${page}?api_key=${API_KEY}&language=en-US`
     );
+    hidePreloader();
     return data;
   } catch (error) {
     console.log(error);
-  }
+  } 
 }
+
+onCardWatch();
 
 export async function onCardWatch() {
   containerListWatchedCard.innerHTML = '';
-  let markup = '';
+  statusWraper('wathced');
+  
   for (const idFilm of dataWatchedCards) {
+    let markup = '';
     const oneFilmCard = await getWatchedFilms(idFilm);
     let release = Number.parseInt(oneFilmCard.release_date || oneFilmCard.first_air_date);
     const mainPoster = `https://image.tmdb.org/t/p/w300${oneFilmCard.poster_path}`;
@@ -71,20 +76,23 @@ export async function onCardWatch() {
                     </div>
                   </a>
               </li>`;
+
     containerListWatchedCard.insertAdjacentHTML('beforeend', markup);
   }
 }
 
-
 export async function onCardQueue() {
   containerListWatchedCard.innerHTML = '';
-  let markup = '';
+  statusWraper('queue');
+  
   for (const idFilm of dataQueueCards) {
+    let markup = '';
     const oneFilmCard = await getWatchedFilms(idFilm);
     let release = Number.parseInt(oneFilmCard.release_date || oneFilmCard.first_air_date);
     const mainPoster = `https://image.tmdb.org/t/p/w300${oneFilmCard.poster_path}`;
     const posterFake = `https://shop-cdn1.vigbo.tech/shops/48947/products/18863233/images/2-be392e7cfe9a0fa843b29c1e22be8909.jpg`;
     let genreMarkup = [];
+
     oneFilmCard.genres.forEach(element => {
       genreMarkup.push(element.name)
     });
@@ -107,10 +115,36 @@ export async function onCardQueue() {
                   </div>
                 </a>
             </li>`;
+
     containerListWatchedCard.insertAdjacentHTML('beforeend', markup);
   }
 }
-// onCardQueue();
+
+// Scroll to top
+const button = document.querySelector('.btn-scroll');
+
+const displayButton = () => {
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 100) {
+      button.style.display = 'block';
+    } else {
+      button.style.display = 'none';
+    }
+  });
+};
+
+const scrollToTop = () => {
+  button.addEventListener('click', () => {
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    });
+  });
+};
+
+displayButton();
+scrollToTop();
 
 
 
