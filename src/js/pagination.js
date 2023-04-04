@@ -1,15 +1,18 @@
-// src/js/pagination.js
-import 'tui-pagination/dist/tui-pagination.css';
-import Pagination from 'tui-pagination';
-import { getPopularFilms } from './api';
-import { renderFilmList } from './renderFilmList';
-// import { ITEMS_PER_PAGE, isSearchActive, state } from '..';
+// // src/js/pagination.js
+// import 'tui-pagination/dist/tui-pagination.css';
+// import Pagination from 'tui-pagination';
+// import { getPopularFilms } from './api';
+// import { renderFilmList } from './renderFilmList';
+// import { ITEMS_PER_PAGE, state } from '../index';
+// import { getSearchMovie } from './search';
 
+// let isSearchActive = false;
 // const visiblePages = 5;
 
 // const paginationElement = document.getElementById('pagination');
 
 // export function initPagination(totalItems) {
+//   isSearchActive = false;
 //   const paginationOptions = {
 //     totalItems,
 //     itemsPerPage: ITEMS_PER_PAGE,
@@ -46,6 +49,7 @@ import { renderFilmList } from './renderFilmList';
 // }
 
 // export function initSearchPagination(totalItems, name) {
+//   isSearchActive = true;
 //   const paginationOptions = {
 //     totalItems,
 //     itemsPerPage: ITEMS_PER_PAGE,
