@@ -4,6 +4,7 @@ import { renderFilmList } from './renderFilmList';
 import { addItem } from '../index';
 import { initSearchPagination, updateSearchFilmList } from './pagination';
 import { ITEMS_PER_PAGE } from '../index';
+import { showPreloader, hidePreloader } from './loader';
 
 const gallery = document.querySelector('.film-list');
 const searchFormEl = document.querySelector('.header__movie-search-form');
@@ -39,7 +40,13 @@ export function onSearch(event) {
   page = 1;
   if (name !== '') {
     errorEl.classList.add('visually-hidden');
-    addSearchedMovie(name, page);
+    showPreloader();
+    addSearchedMovie(name, page).then(() => {
+        hidePreloader();
+      })
+      .catch((error) => {
+        hidePreloader();
+      });
   } else {
     errorEl.classList.remove('visually-hidden');
     addItem();

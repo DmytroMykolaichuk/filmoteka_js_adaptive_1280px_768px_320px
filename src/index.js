@@ -2,7 +2,7 @@
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
 import axios from 'axios';
-import { getPopularFilms } from './js/api';
+import { getPopularFilms, fetchGenres } from './js/api';
 import { renderFilmList } from './js/renderFilmList';
 import {
   getSearchMovie,
@@ -30,9 +30,14 @@ import {
   funcAnimeHaederLib,
 } from './js/SVG-animation';
 
+
 import { click, addDarkClassToHTML } from './js/theme';
 
+
+import { showPreloader, hidePreloader } from './js/loader';
+
 export async function addItem() {
+  showPreloader();
   let data = await getPopularFilms();
   renderFilmList(data);
 
@@ -44,6 +49,7 @@ export async function addItem() {
   const limitedResults = data.results.slice(0, ITEMS_PER_PAGE);
   const genres = await fetchGenres();
   renderFilmList({ ...data, results: limitedResults }, genres);
+  hidePreloader();
 }
 
 addItem();
