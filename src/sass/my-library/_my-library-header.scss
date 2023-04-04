@@ -3,7 +3,7 @@
 
   background-image: linear-gradient(to right, rgba(0, 0, 0, .56),
       rgba(0, 0, 0, .56)),
-    url(../img/my-library/hbg-320-x1.jpg);
+    url(../images/my-library/hbg-320-x1.jpg);
   background-size: 100% 100%;
   background-repeat: no-repeat;
   background-position: center;
@@ -16,13 +16,13 @@
         rgba(0, 0, 0, 0.56),
         rgba(0, 0, 0, 0.56)
       ),
-      url(../img/my-library/hbg-320-x2.jpg);
+      url(../images/my-library/hbg-320-x2.jpg);
   }
 
   @media screen and (min-width: 768px) {
     background-image: linear-gradient(to right, rgba(0, 0, 0, .56),
         rgba(0, 0, 0, .56)),
-      url(../img/my-library/hbg-768-x1.jpg);
+      url(../images/my-library/hbg-768-x1.jpg);
 
     @media (min-device-pixel-ratio: 2),
       (min-resolution: 192dpi),
@@ -32,14 +32,14 @@
           rgba(0, 0, 0, 0.56),
           rgba(0, 0, 0, 0.56)
         ),
-        url(../img/my-library/hbg-768-x2.jpg);
+        url(../images/my-library/hbg-768-x2.jpg);
     }
   }
 
   @media screen and (min-width: 1280px) {
     background-image: linear-gradient(to right, rgba(0, 0, 0, .56),
         rgba(0, 0, 0, .56)),
-      url(../img/my-library/hbg-1280-x1.jpg);
+      url(../images/my-library/hbg-1280-x1.jpg);
 
     @media (min-device-pixel-ratio: 2),
       (min-resolution: 192dpi),
@@ -49,7 +49,7 @@
           rgba(0, 0, 0, 0.56),
           rgba(0, 0, 0, 0.56)
         ),
-        url(../img/my-library/hbg-1280-x2.jpg);
+        url(../images/my-library/hbg-1280-x2.jpg);
     }
   }
 }

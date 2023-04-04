@@ -57,7 +57,7 @@ a {
       rgba(47, 48, 58, 0.4),
       rgba(47, 48, 58, 0.4)
     ),
-    url('/images/abstract-background-with-red-lines_mob.jpg');
+    url('../images/main/abstract-background-with-red-lines_mob.jpg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -71,7 +71,7 @@ a {
         rgba(47, 48, 58, 0.4),
         rgba(47, 48, 58, 0.4)
       ),
-      url('/images/abstract-background-with-red-lines_tablet.jpg');
+      url('../images/main/abstract-background-with-red-lines_tablet.jpg');
     padding: 40px 0 81px;
   }
   @media screen and (min-width: 1280px) {
@@ -80,7 +80,7 @@ a {
         rgba(47, 48, 58, 0.4),
         rgba(47, 48, 58, 0.4)
       ),
-      url('/images/abstract-background-with-red-lines 1.jpg');
+      url('../images/main/abstract-background-with-red-lines 1.jpg');
     padding: 40px 0 80px;
   }
 }
