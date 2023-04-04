@@ -1,6 +1,6 @@
 import axios from "axios";
 import { genres } from "./genres";
-
+import { showPreloader, hidePreloader } from './loader';
 const gallery = document.querySelector('.film-list');
 
 const choiceGanre = document.querySelector('.choice-ganre')
@@ -11,7 +11,7 @@ ganreContainer.addEventListener('click', onClickInGanre)
 
 export async function onClickInGanre(e){
   if (e.target.nodeName === 'DIV') return;
-
+  showPreloader();
   let markup = ''
   let page = 1 
   const choiceUser = e.target.id
@@ -19,6 +19,7 @@ export async function onClickInGanre(e){
   for(let i =0; i<20; i+=1){
     const data = await axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=352708f90836dd2b75b209ae082e91df&language=en-US&page=${page}&include_adult=false`)
       // console.log(data)
+    
   data.data.results.forEach(el=>{
       page += 1
       let release = Number.parseInt(el.release_date || el.first_air_date);
@@ -30,7 +31,6 @@ export async function onClickInGanre(e){
           genreMarkup.push(genre.name);
         }
       });
-    
       if(el.genre_ids.includes(+choiceUser)){
       markup += ` <li class ="film-item">
       <a id='${el.id}' class="film-card" href="#">
@@ -55,6 +55,8 @@ export async function onClickInGanre(e){
   })
   }
   
-  gallery.innerHTML=''
-  gallery.insertAdjacentHTML('beforeend', markup)
+  gallery.innerHTML = '';
+ 
+  gallery.insertAdjacentHTML('beforeend', markup);
+  hidePreloader();
 }

@@ -1,4 +1,4 @@
-import { onCardWatch, onCardQueue } from "./my-library"
+import { onCardWatch, onCardQueue } from "./my-library";
 
 const queueBtn= document.querySelector('.secondary')
 const watchedBtn= document.querySelector('.lib-btn.current')
@@ -27,7 +27,7 @@ export function onClickQueueBtn(){
 }
 
 
-export function onClickClearAll(){
+export function onClickClearAll() {
   if(watchedBtn.classList.contains('current')){
     localStorage.removeItem('wathced')
     mylibWrapper.innerHTML=''
@@ -36,4 +36,5 @@ export function onClickClearAll(){
   localStorage.removeItem('queue')
   mylibWrapper.innerHTML=''
   location.replace(location.href)
+  
 }
