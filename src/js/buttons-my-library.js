@@ -37,7 +37,7 @@ export function onClickQueueBtn(){
 
 export function onClickClearAll() {
   if(watchedBtn.classList.contains('current')){
-    localStorage.removeItem('wathced')
+    localStorage.removeItem('watched')
     mylibWrapper.innerHTML=''
     wraperMyLib.style.display='flex'
   return}

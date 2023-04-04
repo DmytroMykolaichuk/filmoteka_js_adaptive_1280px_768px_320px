@@ -2,7 +2,7 @@
 import axios from 'axios';
 import { getVideoInfo } from './trailer';
 import { showPreloader, hidePreloader } from './loader';
-// import { onWathced, onQueue } from './button-modal';
+// import { onWatched, onQueue } from './button-modal';
 
 const filmList = document.querySelector('.film-list');
 filmList.addEventListener('click', clickOnFilmCard);
@@ -43,7 +43,7 @@ export async function clickOnFilmCard(event) {
   };
 
   function statusBtn() {
-    const dataWatched = localStorage.getItem('wathced');
+    const dataWatched = localStorage.getItem('watched');
     const dataQueue = localStorage.getItem('queue');
     if (!dataWatched || !dataQueue) {
       return;
@@ -148,7 +148,7 @@ export async function clickOnFilmCard(event) {
   const btnQueue = document.querySelector('.click-queue');
 
   btnQueue.addEventListener('click', onQueue);
-  btnWatched.addEventListener('click', onWathced);
+  btnWatched.addEventListener('click', onWatched);
 
   function onQueue() {
     const dataQueue = localStorage.getItem('queue');
@@ -178,29 +178,29 @@ export async function clickOnFilmCard(event) {
     btnQueue.blur();
   }
 
-  function onWathced() {
-    const dataWatched = localStorage.getItem('wathced');
+  function onWatched() {
+    const dataWatched = localStorage.getItem('watched');
     if (!dataWatched) {
-      const arrWathced = [];
-      arrWathced.push(idCard);
-      localStorage.setItem('wathced', JSON.stringify(arrWathced));
+      const arrWatched = [];
+      arrWatched.push(idCard);
+      localStorage.setItem('watched', JSON.stringify(arrWatched));
       btnWatched.classList.add('done-watched');
       btnWatched.textContent = 'remove';
       btnWatched.blur();
       return;
     }
-    let oldWathcedList = JSON.parse(dataWatched);
-    if (oldWathcedList.includes(idCard)) {
-      oldWathcedList = oldWathcedList.filter(el => el !== idCard);
-      localStorage.setItem('wathced', JSON.stringify(oldWathcedList));
+    let oldWatchedList = JSON.parse(dataWatched);
+    if (oldWatchedList.includes(idCard)) {
+      oldWatchedList = oldWatchedList.filter(el => el !== idCard);
+      localStorage.setItem('watched', JSON.stringify(oldWatchedList));
       btnWatched.classList.remove('done-watched');
       btnWatched.textContent = 'Add to watched';
       btnWatched.blur();
       return;
     }
-    const newWathcedList = oldWathcedList;
-    newWathcedList.push(idCard);
-    localStorage.setItem('wathced', JSON.stringify(newWathcedList));
+    const newWatchedList = oldWatchedList;
+    newWatchedList.push(idCard);
+    localStorage.setItem('watched', JSON.stringify(newWatchedList));
     btnWatched.classList.add('done-watched');
     btnWatched.textContent = 'remove';
     btnWatched.blur();
