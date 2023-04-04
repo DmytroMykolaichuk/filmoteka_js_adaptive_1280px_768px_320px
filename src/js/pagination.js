@@ -1,67 +1,67 @@
-// // src/js/pagination.js
-// import 'tui-pagination/dist/tui-pagination.css';
-// import Pagination from 'tui-pagination';
-// import { getPopularFilms } from './api';
-// import { renderFilmList } from './renderFilmList';
-// import { ITEMS_PER_PAGE, state } from '../index';
-// import { getSearchMovie } from './search';
+// src/js/pagination.js
+import 'tui-pagination/dist/tui-pagination.css';
+import Pagination from 'tui-pagination';
+import { getPopularFilms } from './api';
+import { renderFilmList } from './renderFilmList';
+import { ITEMS_PER_PAGE, state } from '../index';
+import { getSearchMovie } from './search';
 
-// let isSearchActive = false;
-// const visiblePages = 5;
+let isSearchActive = false;
+const visiblePages = 5;
 
-// const paginationElement = document.getElementById('pagination');
+const paginationElement = document.getElementById('pagination');
 
-// export function initPagination(totalItems) {
-//   isSearchActive = false;
-//   const paginationOptions = {
-//     totalItems,
-//     itemsPerPage: ITEMS_PER_PAGE,
-//     visiblePages,
-//     centerAlign: true,
-//   };
+export function initPagination(totalItems) {
+  isSearchActive = false;
+  const paginationOptions = {
+    totalItems,
+    itemsPerPage: ITEMS_PER_PAGE,
+    visiblePages,
+    centerAlign: true,
+  };
 
-//   const pagination = new Pagination(paginationElement, paginationOptions);
-//   pagination.on('afterMove', async event => {
-//     const currentPage = event.page;
-//     if (!isSearchActive) {
-//       const data = await getPopularFilms(currentPage);
-//       updateFilmList(data);
-//     }
-//   });
-// }
+  const pagination = new Pagination(paginationElement, paginationOptions);
+  pagination.on('afterMove', async event => {
+    const currentPage = event.page;
+    if (!isSearchActive) {
+      const data = await getPopularFilms(currentPage);
+      updateFilmList(data);
+    }
+  });
+}
 
-// export async function updateFilmList(data) {
-//   const filmListElement = document.querySelector('.film-list');
-//   filmListElement.innerHTML = '';
-//   // Отримуємо перші ITEMS_PER_PAGE елементів
-//   const limitedResults = data.results.slice(0, ITEMS_PER_PAGE);
+export async function updateFilmList(data) {
+  const filmListElement = document.querySelector('.film-list');
+  filmListElement.innerHTML = '';
+  // Отримуємо перші ITEMS_PER_PAGE елементів
+  const limitedResults = data.results.slice(0, ITEMS_PER_PAGE);
 
-//   renderFilmList({ ...data, results: limitedResults });
-// }
+  renderFilmList({ ...data, results: limitedResults });
+}
 
-// export async function updateSearchFilmList(name, page) {
-//   const filmListElement = document.querySelector('.film-list');
-//   filmListElement.innerHTML = '';
-//   const searchResult = await getSearchMovie(name, page);
-//   // Отримуємо перші ITEMS_PER_PAGE елементів
-//   const limitedResults = searchResult.results.slice(0, ITEMS_PER_PAGE);
-//   renderFilmList({ ...searchResult, results: limitedResults });
-// }
+export async function updateSearchFilmList(name, page) {
+  const filmListElement = document.querySelector('.film-list');
+  filmListElement.innerHTML = '';
+  const searchResult = await getSearchMovie(name, page);
+  // Отримуємо перші ITEMS_PER_PAGE елементів
+  const limitedResults = searchResult.results.slice(0, ITEMS_PER_PAGE);
+  renderFilmList({ ...searchResult, results: limitedResults });
+}
 
-// export function initSearchPagination(totalItems, name) {
-//   isSearchActive = true;
-//   const paginationOptions = {
-//     totalItems,
-//     itemsPerPage: ITEMS_PER_PAGE,
-//     visiblePages,
-//     centerAlign: true,
-//   };
+export function initSearchPagination(totalItems, name) {
+  isSearchActive = true;
+  const paginationOptions = {
+    totalItems,
+    itemsPerPage: ITEMS_PER_PAGE,
+    visiblePages,
+    centerAlign: true,
+  };
 
-//   const pagination = new Pagination(paginationElement, paginationOptions);
-//   pagination.on('afterMove', async event => {
-//     const currentPage = event.page;
-//     if (isSearchActive) {
-//       await updateSearchFilmList(name, currentPage);
-//     }
-//   });
-// }
+  const pagination = new Pagination(paginationElement, paginationOptions);
+  pagination.on('afterMove', async event => {
+    const currentPage = event.page;
+    if (isSearchActive) {
+      await updateSearchFilmList(name, currentPage);
+    }
+  });
+}

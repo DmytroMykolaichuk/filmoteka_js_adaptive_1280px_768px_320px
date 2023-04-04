@@ -59,9 +59,9 @@ export async function addSearchedMovie(name, page) {
     const totalPages = searchResult.total_pages;
     const totalItems = searchResult.total_results;
 
-    // initSearchPagination(totalItems, name);
+    initSearchPagination(totalItems, name);
 
-    // // Отримуємо перші ITEMS_PER_PAGE елементів
+    // Отримуємо перші ITEMS_PER_PAGE елементів
     const limitedResults = searchResult.results.slice(0, ITEMS_PER_PAGE);
     renderFilmList({ ...searchResult, results: limitedResults });
     console.log(searchResult);
