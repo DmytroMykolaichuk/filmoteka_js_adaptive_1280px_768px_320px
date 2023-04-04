@@ -1,4 +1,6 @@
 import axios from 'axios';
+import { click, addDarkClassToHTML } from './theme';
+
 import {
   onClickWatchedBtn,
   onClickQueueBtn,
@@ -17,7 +19,6 @@ const API_KEY = '352708f90836dd2b75b209ae082e91df';
 
 // const queueButton = document.getElementById('queue');
 hidePreloader();
-
 
 function statusWraper(nameList) {
   const test = JSON.parse(localStorage.getItem(`${nameList}`));
@@ -161,3 +162,4 @@ const scrollToTop = () => {
 
 displayButton();
 scrollToTop();
+addDarkClassToHTML();

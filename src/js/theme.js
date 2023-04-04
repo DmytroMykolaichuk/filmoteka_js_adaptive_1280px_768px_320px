@@ -1,25 +1,3 @@
-// const btn = document.querySelector('.click-btn');
-
-// function initialState(themeName) {
-//   localStorage.setItem('theme', themeName);
-//   document.documentElement.className = themeName;
-//   localStorage.setItem('theme', themeName);
-// }
-
-// export function toggleTheme() {
-//   if (localStorage.getItem('theme') === 'dark-theme') {
-//     initialState('light-theme');
-//   } else {
-//     initialState('dark-theme');
-//   }
-// }
-
-// export const chooseTheme = btn.addEventListener('click', e => {
-//   e.preventDefault();
-//   toggleTheme();
-//   console.log('click');
-// });
-
 export const click = document
   .querySelector('.click-btn')
   .addEventListener('click', event => {
