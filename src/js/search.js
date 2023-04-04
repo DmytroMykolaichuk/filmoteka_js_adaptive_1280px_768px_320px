@@ -9,7 +9,7 @@
 // const searchFormEl = document.querySelector('.header__movie-search-form');
 // const inputEl = document.querySelector('.movie-search-form');
 // const errorEl = document.querySelector('.search-error-message');
-
+// const choiceGanre = document.querySelector('.choice-ganre')
 // const KEY = '352708f90836dd2b75b209ae082e91df';
 // const instance = axios.create({
 //   baseURL: 'https://api.themoviedb.org/3/',
@@ -43,6 +43,7 @@
 //     addSearchedMovie(name, page);
 //   } else {
 //     errorEl.classList.remove('visually-hidden');
+//     addItem();
 //     return console.log(
 //       'Sorry, there are no films matching your search query. Please try again.'
 //     );
@@ -51,8 +52,10 @@
 
 // export async function addSearchedMovie(name, page) {
 //   const searchResult = await getSearchMovie(name, page);
+
 //   if (searchResult.results.length !== 0) {
 //     errorEl.classList.add('visually-hidden');
+//     choiceGanre.classList.add('visually-hidden')
 //     const totalPages = searchResult.total_pages;
 //     const totalItems = searchResult.total_results;
 
@@ -65,6 +68,7 @@
 //     console.log(totalItems);
 //   } else {
 //     errorEl.classList.remove('visually-hidden');
+//     page = 1;
 //     addItem();
 //     return console.log(
 //       'Sorry, there are no images matching your search query. Please try again.'
