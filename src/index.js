@@ -40,7 +40,8 @@ export async function addItem() {
   initPagination(totalItems);
   // Отримуємо перші ITEMS_PER_PAGE елементів
   const limitedResults = data.results.slice(0, ITEMS_PER_PAGE);
-  renderFilmList({ ...data, results: limitedResults });
+  const genres = await fetchGenres();
+  renderFilmList({ ...data, results: limitedResults }, genres);
 }
 
 addItem();
