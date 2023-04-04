@@ -13,6 +13,7 @@ import {
 import { clickOnFilmCard } from './js/film-modal';
 import { playVideoTrailer, getVideoInfo } from './js/trailer';
 import { onClickInGanre } from './js/choise-ganre';
+import { openTeamModal } from './js/team-modal';
 
 import {
   updateFilmList,
