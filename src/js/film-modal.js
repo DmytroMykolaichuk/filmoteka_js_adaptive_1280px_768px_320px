@@ -7,6 +7,9 @@ import { showPreloader, hidePreloader } from './loader';
 const filmList = document.querySelector('.film-list');
 filmList.addEventListener('click', clickOnFilmCard);
 
+const closeModalOnClick = document.querySelector('.js-modal-close');
+closeModalOnClick.addEventListener('click', closeModal);
+
 const backdrop = document.querySelector('.overlay');
 
 const modal = document.querySelector('.modal');
@@ -203,9 +206,6 @@ export async function clickOnFilmCard(event) {
     btnWatched.blur();
   }
 }
-
-const closeModalOnClick = document.querySelector('.js-modal-close');
-closeModalOnClick.addEventListener('click', closeModal);
 
 window.addEventListener('click', event => {
   if (event.target === backdrop) {
