@@ -13,7 +13,7 @@ const BASE_URL = 'https://api.themoviedb.org/3/movie/';
 const API_KEY = '352708f90836dd2b75b209ae082e91df';
 
 // const queueButton = document.getElementById('queue');
-
+hidePreloader();
 function wraper(){
   const test = JSON.parse(localStorage.getItem('wathced'))
   console.log(test)
@@ -24,17 +24,19 @@ function wraper(){
   }
   wraperMyLib.style.display='flex'
 }
-wraper()
+wraper();
 
 async function getWatchedFilms(page) {
   try {
+    showPreloader();
     const { data } = await axios.get(
       `${BASE_URL}${page}?api_key=${API_KEY}&language=en-US`
     );
+    hidePreloader();
     return data;
   } catch (error) {
     console.log(error);
-  }
+  } 
 }
 
 export async function onCardWatch() {
@@ -111,6 +113,33 @@ export async function onCardQueue() {
   }
 }
 // onCardQueue();
+
+
+// Scroll to top
+const button = document.querySelector('.btn-scroll');
+
+const displayButton = () => {
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 100) {
+      button.style.display = 'block';
+    } else {
+      button.style.display = 'none';
+    }
+  });
+};
+
+const scrollToTop = () => {
+  button.addEventListener('click', () => {
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    });
+  });
+};
+
+displayButton();
+scrollToTop();
 
 
 
