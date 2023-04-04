@@ -75,3 +75,6 @@ export async function addSearchedMovie(name, page) {
     );
   }
 }
+inputEl.addEventListener("blur", () => {
+  errorEl.classList.add('visually-hidden');
+});
