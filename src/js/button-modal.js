@@ -1,5 +1,5 @@
 
-  export function onWathced(numFilm){
+  export function onWatched(numFilm){
     console.log(5)
     localStorage.setItem('watched',`${numFilm}`)
   }

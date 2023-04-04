@@ -12,7 +12,7 @@ import { showPreloader, hidePreloader } from './loader';
 
 const wraperMyLib = document.querySelector('.empty-wrapper');
 const containerListWatchedCard = document.querySelector('.film-list');
-const dataWatchedCards = JSON.parse(localStorage.getItem('wathced'));
+const dataWatchedCards = JSON.parse(localStorage.getItem('watched'));
 const dataQueueCards = JSON.parse(localStorage.getItem('queue'));
 const BASE_URL = 'https://api.themoviedb.org/3/movie/';
 const API_KEY = '352708f90836dd2b75b209ae082e91df';
@@ -47,7 +47,7 @@ onCardWatch();
 
 export async function onCardWatch() {
   containerListWatchedCard.innerHTML = '';
-  statusWraper('wathced');
+  statusWraper('watched');
 
   for (const idFilm of dataWatchedCards) {
     let markup = '';
