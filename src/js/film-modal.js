@@ -136,10 +136,12 @@ export async function clickOnFilmCard(event) {
   modalBody.insertAdjacentHTML('beforeend', markup);
 
   getVideoInfo(idCard).catch(() => {
+    hidePreloader();
     const trailerMovieBtn = document.querySelector('.trailer-Btn');
     trailerMovieBtn.classList.add('trailer-btn-none');
     const preloader = document.getElementById('.spinner');
     preloader.classList.add('.done');
+    
   });
 
   const btnWatched = document.querySelector('.click-watche');
