@@ -2,7 +2,7 @@
 @import '~node_modules/modern-normalize/modern-normalize.css';
 
 .footer {
-  background-color: var(--footer-background-color);
+  background-color: var(--body);
   padding-top: 30px;
   padding-bottom: 28px;
   @media screen and (max-width: 320px) {
@@ -16,9 +16,9 @@
 }
 
 .footer__container {
-    display: flex;
-    justify-content: center;
-    align-items: baseline;
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
 
   @media screen and (min-width: 320px) and (max-width: 767px) {
     display: block;
@@ -27,7 +27,7 @@
 }
 
 .footer__title {
-  color: var(--footer-text-color);
+  color: var(--second-color);
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -49,7 +49,7 @@
 }
 
 .footer__title-part {
-  color: var(--footer-text-color);
+  color: var(--second-color);
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -71,7 +71,7 @@
   background-color: transparent;
   text-decoration: underline;
   border-color: transparent;
-  color: var(--footer-text-color);
+  color: var(--second-color);
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
