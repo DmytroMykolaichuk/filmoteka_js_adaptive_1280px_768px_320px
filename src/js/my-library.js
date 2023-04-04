@@ -93,6 +93,7 @@ export async function onCardWatch() {
 }
 
 export async function onCardQueue() {
+  showPreloader();
   containerListWatchedCard.innerHTML = '';
   statusWraper('queue');
 
@@ -135,6 +136,7 @@ export async function onCardQueue() {
 
     containerListWatchedCard.insertAdjacentHTML('beforeend', markup);
   }
+  hidePreloader();
 }
 
 // Scroll to top
