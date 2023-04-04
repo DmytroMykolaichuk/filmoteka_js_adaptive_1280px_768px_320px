@@ -31,7 +31,6 @@ export async function getSearchMovie(name, page) {
   }
 }
 
-searchFormEl.addEventListener('submit', onSearch);
 
 export function onSearch(event) {
   event.preventDefault();
@@ -64,17 +63,23 @@ export async function addSearchedMovie(name, page) {
     // Отримуємо перші ITEMS_PER_PAGE елементів
     const limitedResults = searchResult.results.slice(0, ITEMS_PER_PAGE);
     renderFilmList({ ...searchResult, results: limitedResults });
-    console.log(searchResult);
-    console.log(totalItems);
+    // console.log(searchResult);
+    // console.log(totalItems);
   } else {
     errorEl.classList.remove('visually-hidden');
     page = 1;
     addItem();
-    return console.log(
-      'Sorry, there are no images matching your search query. Please try again.'
-    );
+    return
+    // console.log('Sorry, there are no images matching your search query. Please try again.');
   }
 }
-inputEl.addEventListener("blur", () => {
-  errorEl.classList.add('visually-hidden');
-});
+
+if (searchFormEl) {
+    searchFormEl.addEventListener('submit', onSearch);
+} 
+
+if (inputEl) {
+    inputEl.addEventListener("blur", () => {
+        errorEl.classList.add('visually-hidden');
+      });
+} 
