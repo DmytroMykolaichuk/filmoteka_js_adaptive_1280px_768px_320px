@@ -16,7 +16,6 @@ const body = document.querySelector('body');
 
 let idCard = '';
 let markup = '';
-
 export async function clickOnFilmCard(event) {
   event.preventDefault();
   if (event.target.nodeName === 'UL') return;
@@ -139,6 +138,8 @@ export async function clickOnFilmCard(event) {
   getVideoInfo(idCard).catch(() => {
     const trailerMovieBtn = document.querySelector('.trailer-Btn');
     trailerMovieBtn.classList.add('trailer-btn-none');
+    const preloader = document.getElementById('.spinner');
+    preloader.classList.add('.done');
   });
 
   const btnWatched = document.querySelector('.click-watche');
@@ -208,6 +209,7 @@ const closeModalOnClick = document.querySelector('.js-modal-close');
 closeModalOnClick.addEventListener('click', closeModal);
 
 window.addEventListener('click', event => {
+  hidePreloader();
   if (event.target === backdrop) {
     closeModal();
   }
