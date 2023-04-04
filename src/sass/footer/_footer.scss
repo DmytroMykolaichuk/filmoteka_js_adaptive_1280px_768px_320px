@@ -65,10 +65,11 @@
 .footer__heart {
   padding-left: 10px;
   padding-right: 10px;
+  color: #FF6B08;
 
-  // .footer__heart svg {
-  //   fill: currentColor;
-  // }
+  .footer__heart use {
+    fill: currentColor;
+  }
 }
 
 .footer__btn {
