@@ -31,7 +31,6 @@ export async function getSearchMovie(name, page) {
   }
 }
 
-searchFormEl.addEventListener('submit', onSearch);
 
 export function onSearch(event) {
   event.preventDefault();
@@ -74,6 +73,13 @@ export async function addSearchedMovie(name, page) {
     // console.log('Sorry, there are no images matching your search query. Please try again.');
   }
 }
-inputEl.addEventListener("blur", () => {
-  errorEl.classList.add('visually-hidden');
-});
+
+if (searchFormEl) {
+    searchFormEl.addEventListener('submit', onSearch);
+} 
+
+if (inputEl) {
+    inputEl.addEventListener("blur", () => {
+        errorEl.classList.add('visually-hidden');
+      });
+} 
