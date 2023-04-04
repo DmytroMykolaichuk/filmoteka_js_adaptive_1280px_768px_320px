@@ -1,0 +1,46 @@
+.light-theme {
+  --first-color: #fff;
+  --body: #fff;
+  --second-color: #000;
+  --modal: #fefefe;
+  --change: #fefefe;
+}
+
+.dark-theme {
+  --first-color: #000;
+  --body: #2a2e37;
+  --second-color: #fff;
+  --modal: #2a2e37;
+  --change: #ff6b01;
+}
+
+body {
+  background-color: var(--body);
+}
+
+.modal-close-icon {
+  fill: var(--second-color);
+}
+
+.choose {
+  position: absolute;
+  right: 0px;
+  top: 7px;
+}
+
+.theme-container {
+  position: relative;
+  display: flex;
+}
+.changeTheme {
+  cursor: pointer;
+}
+.click-btn {
+  text-transform: uppercase;
+  align-items: center;
+  font-family: Roboto;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.16667;
+  color: var(--change);
+}
