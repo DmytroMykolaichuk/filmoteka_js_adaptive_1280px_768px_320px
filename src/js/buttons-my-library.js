@@ -19,7 +19,7 @@ export function onClickWatchedBtn(){
   watchedBtn.classList.toggle('current')
   
   onCardWatch()
-  // location.replace(location.href)
+  location.replace(location.href)
 }
 
 
