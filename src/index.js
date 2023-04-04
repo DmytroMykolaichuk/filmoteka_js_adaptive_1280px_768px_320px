@@ -30,6 +30,8 @@ import {
   funcAnimeHaederLib,
 } from './js/SVG-animation';
 
+import { click, addDarkClassToHTML } from './js/theme';
+
 export async function addItem() {
   let data = await getPopularFilms();
   renderFilmList(data);
@@ -70,3 +72,4 @@ const scrollToTop = () => {
 
 displayButton();
 scrollToTop();
+addDarkClassToHTML();
