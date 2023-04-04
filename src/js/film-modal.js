@@ -1,6 +1,5 @@
 // src/js/film-modal.js
 import axios from 'axios';
-import { genres } from './genres';
 import { getVideoInfo } from './trailer';
 import { showPreloader, hidePreloader } from './loader';
 // import { onWathced, onQueue } from './button-modal';
