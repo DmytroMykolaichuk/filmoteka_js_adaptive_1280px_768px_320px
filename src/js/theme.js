@@ -2,7 +2,7 @@ export const click = document
   .querySelector('.click-btn')
   .addEventListener('click', event => {
     event.preventDefault();
-    console.log('click');
+//     console.log('click');
     if (localStorage.getItem('theme') === 'dark-theme') {
       localStorage.removeItem('theme');
     } else {
