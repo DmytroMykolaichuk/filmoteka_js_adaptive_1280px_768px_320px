@@ -1,0 +1,174 @@
+// _pagination.scss
+.films {
+  .tui-pagination {
+    .tui-first-child.tui-is-selected {
+      border-left: unset;
+    }
+    .tui-last-child.tui-is-selected {
+      border-right: unset;
+    }
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin: 60px auto 0;
+    width: 374px;
+    height: 40px;
+    background-color: #ffffff;
+
+    .tui-page-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-color: transparent;
+      outline: none;
+      width: 30px;
+      height: 40px;
+      border-radius: 5px;
+
+      font-size: 12px;
+      font-weight: 500;
+      font-family: 'Roboto', sans-serif;
+      font-style: normal;
+      color: #000000;
+
+      &:nth-child(2) {
+        order: -1;
+      }
+
+      &:nth-last-child(2) {
+        order: 1;
+      }
+    }
+
+    .tui-ico-ellip {
+      display: block;
+      width: 100%;
+      height: 100%;
+      background: none;
+      background-image: url(../images/pagination-dots.svg);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 16px;
+      font-size: 0;
+      line-height: 40px;
+      margin: 0;
+    }
+
+    .tui-is-selected {
+      border: none;
+      background-color: var(--footer-icon-fill);
+      color: #ffffff;
+      margin-left: 9px;
+      margin-right: 9px;
+      width: 40px;
+      height: 40px;
+
+      &:hover,
+      &:focus {
+        background-color: var(--footer-icon-fill);
+        color: #ffffff;
+      }
+    }
+
+    .tui-prev,
+    .tui-next {
+      width: 40px;
+      height: 40px;
+      background-color: #f7f7f7;
+
+      span {
+        display: block;
+        width: 100%;
+        height: 100%;
+        background: none;
+        background-image: url(../images/pagination-arrow.svg);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 16px;
+      }
+    }
+
+    .tui-prev {
+      margin-right: unset;
+
+      span {
+        transform: scaleX(-1);
+      }
+    }
+
+    .tui-next {
+      margin-left: unset;
+    }
+
+    .tui-first,
+    .tui-last {
+      width: 40px;
+      height: 40px;
+
+      span {
+        display: block;
+        width: 100%;
+        height: 100%;
+        background: none;
+        text-align: center;
+        line-height: 40px; // Для вертикального вирівнювання тексту
+        background-image: none;
+        font-size: 12px;
+        font-family: 'Roboto', sans-serif;
+        font-style: normal;
+        font-weight: 500;
+        color: #000000;
+      }
+    }
+  }
+}
+
+.dark-theme {
+  .tui-pagination {
+    background-color: #2a2e37;
+
+    .tui-page-btn {
+      color: #ffffff;
+      &:hover,
+      &:focus {
+        color: #000000;
+      }
+    }
+
+    .tui-is-selected {
+      background-color: var(--change);
+      color: #ffffff;
+      &:hover,
+      &:focus {
+        background-color: var(--footer-icon-fill);
+        color: #ffffff;
+      }
+    }
+
+    .tui-prev,
+    .tui-next {
+      background-color: #c2c2c2;
+    }
+
+    .tui-ico-ellip {
+      background-image: url(../images/pagination-dots--white.svg);
+      &:hover,
+      &:focus {
+        background-image: url(../images/pagination-dots.svg);
+      }
+    }
+
+    .tui-first,
+    .tui-last {
+      span {
+        color: #ffffff;
+        &:hover,
+        &:focus {
+          color: #000000;
+        }
+      }
+    }
+  }
+}
