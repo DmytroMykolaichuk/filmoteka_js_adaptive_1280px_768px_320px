@@ -9,7 +9,7 @@ const modal = document.querySelector('.modal-team');
 const backdrop = document.querySelector('.overlay-team-modal');
 const body = document.querySelector('body');
 
-function openTeamModal(event) {
+export function openTeamModal(event) {
   event.preventDefault();
 
   modal.removeAttribute('hidden', '');
