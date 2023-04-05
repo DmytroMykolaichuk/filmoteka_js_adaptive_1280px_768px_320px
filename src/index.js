@@ -20,9 +20,9 @@ import {
   updateSearchFilmList,
   initPagination,
   initSearchPagination,
+  updatePaginationButtons,
 } from './js/pagination';
 
-export const ITEMS_PER_PAGE = 18;
 export let searchName = null;
 
 import {
@@ -31,25 +31,20 @@ import {
   funcAnimeHaederLib,
 } from './js/SVG-animation';
 
-
 import { click, addDarkClassToHTML } from './js/theme';
-
 
 import { showPreloader, hidePreloader } from './js/loader';
 
 export async function addItem() {
   showPreloader();
-  let data = await getPopularFilms();
-  renderFilmList(data);
-
-  data = await getPopularFilms();
+  const data = await getPopularFilms();
   const totalPages = data.total_pages;
-  const totalItems = totalPages * 20; // 20 results per page
+  const totalItems = 400; // 20 results per page
+  // const totalItems = totalPages * 20; // 20 results per page
   initPagination(totalItems);
-  // Отримуємо перші ITEMS_PER_PAGE елементів
-  const limitedResults = data.results.slice(0, ITEMS_PER_PAGE);
   const genres = await fetchGenres();
-  renderFilmList({ ...data, results: limitedResults }, genres);
+  renderFilmList({ ...data }, genres);
+  updatePaginationButtons(totalItems);
   hidePreloader();
 }
 
