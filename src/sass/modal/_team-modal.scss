@@ -101,3 +101,122 @@
     gap: 16px;
   }
 }
+
+.team-modal__title {
+  font-family: 'Roboto';
+  font-weight: 500;
+  font-size: 25px;
+  line-height: calc(35 / 25);
+  margin-left: 10px;
+  color: #ff6b08;
+  text-align: center;
+  padding: 10px;
+}
+
+.team-modal__cards {
+  padding-top: 5px;
+
+  @media screen and (min-width: 768px) {
+    padding: 10px;
+  }
+}
+
+.team-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 10px;
+}
+
+.team-card {
+  flex-basis: calc((100% - 80px) / 3);
+
+  @media screen and (min-width: 768px) {
+    flex-basis: calc((100% - 80px) / 4);
+  }
+  @media screen and (min-width: 1280px) {
+    flex-basis: calc((100% - 80px) / 4);
+  }
+}
+
+.team-card__img {
+  display: flex;
+  flex-direction: column;
+  width: 70px;
+
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
+    line-height: calc(16 / 15);
+    width: 100%;
+  }
+  @media screen and (min-width: 1280px) {
+    display: flex;
+  flex-direction: column;
+  width: 100%;
+  }
+}
+
+.team-name {
+  font-family: 'Roboto';
+font-weight: 500;
+font-size: 12px;
+line-height: calc(12 / 10);
+margin-left: 10px;
+color:  #fff;
+text-align: center;
+margin: 0 0 3px 0;
+
+@media screen and (min-width: 768px) {
+  font-size: 16px;
+line-height: calc(16 / 15);
+margin: 0 0 5px 0;
+}
+@media screen and (min-width: 1280px) {
+  font-size: 20px;
+line-height: calc(20 / 15);
+margin: 0 0 5px 0;
+}
+}
+
+.team-about {
+  font-family: 'Roboto';
+  font-weight: 500;
+  font-size: 10px;
+  line-height: calc(10 / 8);
+  margin-left: 10px;
+  color:  #000;
+  text-align: center;
+  margin: 0;
+
+  @media screen and (min-width: 768px) {
+    font-size: 14px;
+    line-height: calc(14 / 12);
+  }
+  @media screen and (min-width: 1280px) {
+    font-size: 15px;
+    line-height: calc(15 / 12);
+  }
+}
+
+.team-about-cont {
+  background-color: #ff6b08;
+  border-radius: 0 0 10px 10px;
+  padding: 5px 0;
+}
+
+.team-img {
+  width: 70px;
+  height: 70px;
+  margin: 0 auto;
+  margin-bottom: 5px;
+  border-radius: 10px 10px 0 0;
+  @media screen and (min-width: 768px) {
+    width: 133px;
+    height: 133px;
+  }
+  @media screen and (min-width: 1280px) {
+    width: 170px;
+    height: 170px;
+  }
+}
