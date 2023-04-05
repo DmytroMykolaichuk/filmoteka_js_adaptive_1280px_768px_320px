@@ -42,6 +42,13 @@ export const playVideoTrailer = modal.addEventListener('click', event => {
     `;
         const istance = basicLightbox.create(videoHtml);
         istance.show();
+        window.addEventListener('keydown', e => {
+          if (e.code !== 'Escape') {
+            return;
+          }
+
+          istance.close();
+        });
       })
       .catch(error => {
         console.error('Ошибка:', error);

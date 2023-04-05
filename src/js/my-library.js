@@ -14,6 +14,7 @@ import {
 import { clickOnFilmCard } from './film-modal';
 import { getVideoInfo, playVideoTrailer } from './trailer';
 import { showPreloader, hidePreloader } from './loader';
+import { openTeamModal } from './team-modal';
 
 const wraperMyLib = document.querySelector('.empty-wrapper');
 const containerListWatchedCard = document.querySelector('.film-list');
