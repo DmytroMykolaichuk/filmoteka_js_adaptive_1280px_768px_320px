@@ -1,6 +1,11 @@
 import axios from 'axios';
 import { click, addDarkClassToHTML } from './theme';
-
+import { gsap } from 'gsap';
+import {
+  funcAnimeLogo,
+  funcAnimeHeart,
+  funcAnimeHaederLib,
+} from './SVG-animation';
 import {
   onClickWatchedBtn,
   onClickQueueBtn,
