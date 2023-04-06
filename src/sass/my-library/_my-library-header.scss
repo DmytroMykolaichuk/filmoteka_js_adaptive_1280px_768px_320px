@@ -1,5 +1,7 @@
 // src/sass/my-library/_my-library-header.scss
 .lib-header {
+  padding-top: 40px;
+  padding-bottom: 60px;
 
   background-image: linear-gradient(to right, rgba(0, 0, 0, .56),
       rgba(0, 0, 0, .56)),
@@ -75,10 +77,10 @@
   }
 }
 
-.header-wrapper {
-  padding-top: 40px;
-  padding-bottom: 60px;
-}
+// .header-wrapper {
+//   padding-top: 40px;
+//   padding-bottom: 60px;
+// }
 
 // 50/50========================
 .logo_title {
@@ -149,4 +151,7 @@
 .link {
   text-decoration: none;
   display: block;
+}
+.container-lib-header{
+  position: relative;
 }

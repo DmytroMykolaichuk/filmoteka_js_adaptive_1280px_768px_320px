@@ -1,7 +1,7 @@
 <!-- src/partials/my-library/my-library-header.html -->
 <header class="lib-header">
-  <div class="container">
-    <div class="header-wrapper">
+  <div class="container container-lib-header">
+    <!-- <div class="header-wrapper"> -->
       <nav class="navigation">
         <div class="navigation__titles">
           <a href="../index.html" class="logo link">
@@ -21,7 +21,28 @@
           </ul>
         </div>
       </nav>
-      <include src="./partials/home/choose-theme.html"></include>
+      <div class="container-theme">
+        <div class="switch">
+          <div class="toggle-button">
+            <div class="toggle"></div>
+            <div class="moon-mask"></div>
+            <div class="circles-wrapper">
+              <div class="circle"></div>
+              <div class="circle"></div>
+              <div class="circle"></div>
+              <div class="circle"></div>
+              <div class="circle"></div>
+              <div class="circle"></div>
+              <div class="circle"></div>
+              <div class="circle"></div>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="text">
+          <p>n</p>
+          <p>ff</p>
+        </div> -->
+      </div>
       <ul class="btn-list">
         <li>
           <button class="lib-btn current" type="button" data-lib-btn="Watched">
@@ -39,6 +60,6 @@
           </button>
         </li>
       </ul>
-    </div>
+    <!-- </div> -->
   </div>
 </header>

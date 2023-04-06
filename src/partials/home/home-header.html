@@ -1,8 +1,7 @@
 <!-- src/partials/home/home-header.html -->
 
 <header class="header">
-  <div class="container">
-    <!-- ../images/icons.svg#icon-film -->
+  <div class="container header-container">
     <nav class="navigation">
       <div class="navigation__titles">
         <a href="./index.html" class="logo link">
@@ -21,7 +20,28 @@
         </ul>
       </div>
     </nav>
-    <include src="./partials/home/choose-themes.html"></include>
+    <div class="container-theme">
+      <div class="switch">
+        <div class="toggle-button">
+          <div class="toggle"></div>
+          <div class="moon-mask"></div>
+          <div class="circles-wrapper">
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="text">
+        <p>n</p>
+        <p>ff</p>
+      </div> -->
+    </div>
     <form class="header__movie-search-form">
       <div class="form-group">
         <div class="input-container">
@@ -46,6 +66,6 @@
         </p>
       </div>
     </form>
-    <button class="choose-genre-btn">Choose Genre</button>
   </div>
+  <button class="choose-genre-btn">Choose Genre</button>
 </header>
