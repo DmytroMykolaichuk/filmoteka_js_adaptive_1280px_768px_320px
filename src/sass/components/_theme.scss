@@ -73,7 +73,8 @@ body {
   @media screen and (min-width: 768px) {
     right: 32px;
     }
-}
+  }
+
 .switch {
   width: 60px;
   height: 110px;
@@ -84,6 +85,10 @@ body {
   outline: none;
   overflow: hidden;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  &:hover,
+  &:focus{
+      box-shadow: 0 0 5px 5px var(--change);
+    }
 }
 .toggle-button {
   transform: scale(0.8);
