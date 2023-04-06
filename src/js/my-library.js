@@ -16,6 +16,7 @@ import { getVideoInfo, playVideoTrailer } from './trailer';
 import { showPreloader, hidePreloader } from './loader';
 import { openTeamModal } from './team-modal';
 
+const darkWrapper = document.querySelector('.empty-wrapper-dark')
 const wraperMyLib = document.querySelector('.empty-wrapper');
 const containerListWatchedCard = document.querySelector('.film-list');
 const dataWatchedCards = JSON.parse(localStorage.getItem('watched'));
@@ -30,9 +31,19 @@ function statusWraper(nameList) {
   const test = JSON.parse(localStorage.getItem(`${nameList}`));
   // console.log(test);
   if (!localStorage.getItem(`${nameList}`) || test.length < 1) {
-    wraperMyLib.style.display = 'flex';
+    if(localStorage.getItem('theme') === 'dark-theme'){
+      darkWrapper.style.display = 'flex';
+    }else{
+      wraperMyLib.style.display = 'flex';
+    }
+    
   } else {
-    wraperMyLib.style.display = 'none';
+    if(localStorage.getItem('theme') === 'dark-theme'){
+      darkWrapper.style.display = 'none';
+    }else{
+      wraperMyLib.style.display = 'none';
+    }
+    
   }
 }
 

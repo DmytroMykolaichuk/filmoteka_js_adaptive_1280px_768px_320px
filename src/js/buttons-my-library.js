@@ -1,5 +1,6 @@
 import { onCardWatch, onCardQueue } from "./my-library";
 
+const darkWrapper = document.querySelector('.empty-wrapper-dark')
 const wraperMyLib = document.querySelector('.empty-wrapper')
 const queueBtn= document.querySelector('.secondary')
 const watchedBtn= document.querySelector('.lib-btn.current')
@@ -39,10 +40,19 @@ export function onClickClearAll() {
   if(watchedBtn.classList.contains('current')){
     localStorage.removeItem('watched')
     mylibWrapper.innerHTML=''
-    wraperMyLib.style.display='flex'
+    if (localStorage.getItem('theme') === 'dark-theme'){
+      darkWrapper.style.display='flex'
+    }else{
+      wraperMyLib.style.display='flex'
+    }
   return}
   localStorage.removeItem('queue')
   mylibWrapper.innerHTML=''
-  wraperMyLib.style.display='flex'
+  if (localStorage.getItem('theme') === 'dark-theme'){
+    darkWrapper.style.display='flex'
+  }else{
+    wraperMyLib.style.display='flex'
+  }
+  
   
 }
