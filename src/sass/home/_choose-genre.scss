@@ -1,4 +1,4 @@
-.choice-ganre{
+.choose-genre-btn{
     position: absolute;
     bottom: 0;
     left: 50%;
@@ -25,7 +25,7 @@
     }
 }
 
-.ganre-container{
+.genre-container{
     padding: 5px;
     background-color: #2a2f36 ;
 
@@ -48,13 +48,13 @@
   }
 }
 
-.list-ganre{
+.list-genre{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
 
-.item-ganre{
+.item-genre{
     width:calc(100% / 2);
 
     @media screen and(min-width: 768px) {
@@ -65,7 +65,7 @@
     }
 }
 
-.bta-ganre{
+.bta-genre{
     color: #FFFFFF;
     background-color: transparent;
     width: 120px;

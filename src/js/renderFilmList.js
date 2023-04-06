@@ -32,17 +32,14 @@ export async function renderFilmList(data) {
             <div class='film-data'>
               <h2 class="title-film">${el.title}</h2>
               <p>
-                <span class='info-film'>${genreMarkup.join(
-                  ', '
-                )} | ${release}</span> 
-                <span class ="rating">IMDB:<br>${el.vote_average.toFixed(
-                  1
-                )}</span>
+                <span class='info-film'>${genreMarkup.join(', ')} | ${release}</span> 
+                <span class ="rating">IMDB:<br>${el.vote_average.toFixed(1)}</span>
               </p>
             </div>
           </a>
       </li>`;
     })
     .join('');
+  gallery.innerHTML=''
   gallery.insertAdjacentHTML('beforeend', markup);
 }
