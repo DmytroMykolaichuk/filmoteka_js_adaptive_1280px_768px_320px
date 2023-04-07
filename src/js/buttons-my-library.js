@@ -38,7 +38,7 @@ export function onClickQueueBtn(){
 
 export function onClickClearAll() {
   if(watchedBtn.classList.contains('current')){
-    localStorage.removeItem('watched')
+    localStorage.setItem('watched', JSON.stringify([]))
     mylibWrapper.innerHTML=''
     if (localStorage.getItem('theme') === 'dark-theme'){
       darkWrapper.style.display='flex'
@@ -46,7 +46,7 @@ export function onClickClearAll() {
       wraperMyLib.style.display='flex'
     }
   return}
-  localStorage.removeItem('queue')
+  localStorage.setItem('queue', JSON.stringify([]))
   mylibWrapper.innerHTML=''
   if (localStorage.getItem('theme') === 'dark-theme'){
     darkWrapper.style.display='flex'

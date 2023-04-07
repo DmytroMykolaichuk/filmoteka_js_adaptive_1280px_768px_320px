@@ -28,7 +28,7 @@ const API_KEY = '352708f90836dd2b75b209ae082e91df';
 hidePreloader();
 
 export function statusWraper(nameList) {
-  const test = JSON.parse(localStorage.getItem(`${nameList}`));
+  const test = JSON.parse(localStorage.getItem(`${nameList}`)) || [];
   // console.log(test);
   if (!localStorage.getItem(`${nameList}`) || test.length < 1) {
     if(localStorage.getItem('theme') === 'dark-theme'){
@@ -65,11 +65,11 @@ async function getWatchedFilms(page) {
 onCardWatch();
 
 export async function onCardWatch() {
+  showPreloader();
   containerListWatchedCard.innerHTML = '';
   statusWraper('watched');
-
+  let markup = '';
   for (const idFilm of dataWatchedCards) {
-    let markup = '';
     const oneFilmCard = await getWatchedFilms(idFilm);
     let release = Number.parseInt(
       oneFilmCard.release_date || oneFilmCard.first_air_date
@@ -106,18 +106,18 @@ export async function onCardWatch() {
                     </div>
                   </a>
               </li>`;
-
-    containerListWatchedCard.insertAdjacentHTML('beforeend', markup);
   }
+  containerListWatchedCard.insertAdjacentHTML('beforeend', markup);
+  hidePreloader();
 }
 
 export async function onCardQueue() {
   showPreloader();
   containerListWatchedCard.innerHTML = '';
   statusWraper('queue');
-
+  let markup = '';
   for (const idFilm of dataQueueCards) {
-    let markup = '';
+    
     const oneFilmCard = await getWatchedFilms(idFilm);
     let release = Number.parseInt(
       oneFilmCard.release_date || oneFilmCard.first_air_date
@@ -152,9 +152,8 @@ export async function onCardQueue() {
                   </div>
                 </a>
             </li>`;
-
-    containerListWatchedCard.insertAdjacentHTML('beforeend', markup);
   }
+  containerListWatchedCard.insertAdjacentHTML('beforeend', markup);
   hidePreloader();
 }
 
