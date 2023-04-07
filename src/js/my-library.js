@@ -19,8 +19,8 @@ import { openTeamModal } from './team-modal';
 const darkWrapper = document.querySelector('.empty-wrapper-dark')
 const wraperMyLib = document.querySelector('.empty-wrapper');
 const containerListWatchedCard = document.querySelector('.film-list');
-const dataWatchedCards = JSON.parse(localStorage.getItem('watched'));
-const dataQueueCards = JSON.parse(localStorage.getItem('queue'));
+const dataWatchedCards = JSON.parse(localStorage.getItem('watched')) || [];
+const dataQueueCards = JSON.parse(localStorage.getItem('queue')) || [];
 const BASE_URL = 'https://api.themoviedb.org/3/movie/';
 const API_KEY = '352708f90836dd2b75b209ae082e91df';
 
