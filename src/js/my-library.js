@@ -27,13 +27,15 @@ const API_KEY = '352708f90836dd2b75b209ae082e91df';
 // const queueButton = document.getElementById('queue');
 hidePreloader();
 
-function statusWraper(nameList) {
+export function statusWraper(nameList) {
   const test = JSON.parse(localStorage.getItem(`${nameList}`));
   // console.log(test);
   if (!localStorage.getItem(`${nameList}`) || test.length < 1) {
     if(localStorage.getItem('theme') === 'dark-theme'){
       darkWrapper.style.display = 'flex';
+      wraperMyLib.style.display = 'none';
     }else{
+      darkWrapper.style.display = 'none';
       wraperMyLib.style.display = 'flex';
     }
     

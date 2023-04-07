@@ -1,5 +1,6 @@
 import { gsap } from "gsap";
 import { Timeline } from 'gsap/gsap-core';
+// import { statusWraper } from "./my-library";
 
 const animate = gsap.timeline({ paused: true });
 const animateBackground = new Timeline({ paused: true });
@@ -32,6 +33,10 @@ export function onCkickTumbler(){
         // console.log('dark')
         localStorage.setItem('theme', 'dark-theme')
   }
+  // let watchedPage = document.querySelector('.lib-btn.current') || false
+  // if(watchedPage){
+  //   statusWraper(watchedPage.dataset.libbtn)
+  // }
   addDarkClassToHTML()
 }
 
