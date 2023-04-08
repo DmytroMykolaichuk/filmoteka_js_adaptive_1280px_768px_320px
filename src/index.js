@@ -35,7 +35,7 @@ import {
   funcAnimeHaederLib,
 } from './js/SVG-animation';
 
-import {  addDarkClassToHTML } from './js/theme';
+import { addDarkClassToHTML } from './js/theme';
 
 import { showPreloader, hidePreloader } from './js/loader';
 
