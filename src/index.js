@@ -3,7 +3,7 @@ import { fetchMoviesByGenre, onClickGenreBtn } from './js/choose-genre';
 import { gsap } from 'gsap';
 // import Pagination from 'tui-pagination';
 // import 'tui-pagination/dist/tui-pagination.css';
-import { onCkickPlagination } from './js/pagination';
+import { onCkickPlagination,OnClickPlaginationBefore } from './js/pagination';
 import axios from 'axios';
 import { getPopularFilms, fetchGenres } from './js/api';
 import { renderFilmList } from './js/renderFilmList';

@@ -9,12 +9,12 @@ const gallery = document.querySelector('.film-list');
 const searchFormEl = document.querySelector('.header__movie-search-form');
 const inputEl = document.querySelector('.movie-search-form');
 const errorEl = document.querySelector('.search-error-message');
-const choiceGanre = document.querySelector('.choice-ganre');
 const KEY = '352708f90836dd2b75b209ae082e91df';
 const instance = axios.create({
   baseURL: 'https://api.themoviedb.org/3/',
 });
-let name;
+export let searchPlagination=false
+export let name;
 let page = 1;
 let pages;
 
@@ -62,10 +62,12 @@ export async function addSearchedMovie(name, page) {
     const totalItems = searchResult.total_results;
     // initSearchPagination(totalItems, name);
     renderFilmList({ ...searchResult });
+    searchPlagination = true
   } else {
     errorEl.classList.remove('visually-hidden');
     page = 1;
     addItem();
+    searchPlagination = false
     return;
   }
 }
