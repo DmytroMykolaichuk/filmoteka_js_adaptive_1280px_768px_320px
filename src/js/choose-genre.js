@@ -11,6 +11,8 @@ chooseGanresBtn.addEventListener('click', () => {
 });
 listGenres.addEventListener('click', onClickGenreBtn);
 
+export let genreId = null;
+
 export async function onClickGenreBtn(e) {
   if (e.target.nodeName !== 'BUTTON') return;
   showPreloader();
@@ -21,7 +23,7 @@ export async function onClickGenreBtn(e) {
   }
   e.target.classList.add('active-btn-genre');
 
-  const genreId = e.target.id;
+  genreId = e.target.id;
   const data = await fetchMoviesByGenre(genreId);
   renderFilmList(data);
   hidePreloader();
