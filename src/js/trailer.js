@@ -1,57 +1,43 @@
-// src/js/trailer.js
-import axios from 'axios';
+import { getVideoInfo } from './api';
 import * as basicLightbox from 'basiclightbox';
 import '../css/basicLightbox.min.css';
 import { showPreloader, hidePreloader } from './loader';
+import { refs } from './refs';
 
-const modal = document.querySelector('.modal');
+export const playVideoTrailer = refs.modal.addEventListener(
+  'click',
+  async event => {
+    const button = document.querySelector('.trailer-Btn');
 
-export function getVideoInfo(movieId) {
-  showPreloader();
-  return axios
-    .get(
-      `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=352708f90836dd2b75b209ae082e91df`
-    )
-    .then(response => {
-      const videoKey = response.data.results[0].key;
-      hidePreloader();
-      return videoKey;
-    });
-}
-
-export const playVideoTrailer = modal.addEventListener('click', event => {
-  const button = document.querySelector('.trailer-Btn');
-
-  if (event.target.matches('.trailer-Btn')) {
-    const movieId = button.dataset.id;
-    getVideoInfo(movieId)
-      .catch(error => {
-        console.error('Ошибка получения информации з видео:', error);
-        throw error;
-      })
-      .then(videoKey => {
+    if (event.target.matches('.trailer-Btn')) {
+      const movieId = button.dataset.id;
+      try {
+        const videoKey = await getVideoInfo(movieId);
+        if (!videoKey) {
+          button.classList.add('trailer-btn-none');
+          return;
+        }
         const videoHtml = `
-      <iframe 
-        width="560" 
-        height="315" 
-        src="https://www.youtube.com/embed/${videoKey}"
-        frameborder="0" 
-        allow="autoplay; encrypted-media" 
-        allowfullscreen>
-      </iframe>
-    `;
-        const istance = basicLightbox.create(videoHtml);
-        istance.show();
+          <iframe 
+            width="560" 
+            height="315" 
+            src="https://www.youtube.com/embed/${videoKey}"
+            frameborder="0" 
+            allow="autoplay; encrypted-media" 
+            allowfullscreen>
+          </iframe>
+        `;
+        const instance = basicLightbox.create(videoHtml);
+        instance.show();
         window.addEventListener('keydown', e => {
           if (e.code !== 'Escape') {
             return;
           }
-
-          istance.close();
+          instance.close();
         });
-      })
-      .catch(error => {
-        console.error('Ошибка:', error);
-      });
+      } catch (error) {
+        console.error('Ошибка получения информации з видео:', error);
+      }
+    }
   }
-});
+);

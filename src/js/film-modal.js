@@ -1,6 +1,6 @@
 // src/js/film-modal.js
 import axios from 'axios';
-import { getVideoInfo } from './trailer';
+import { getVideoInfo } from './api';
 import { showPreloader, hidePreloader } from './loader';
 // import { onWatched, onQueue } from './button-modal';
 
@@ -144,7 +144,6 @@ export async function clickOnFilmCard(event) {
     trailerMovieBtn.classList.add('trailer-btn-none');
     const preloader = document.getElementById('.spinner');
     preloader.classList.add('.done');
-    
   });
 
   const btnWatched = document.querySelector('.click-watche');
