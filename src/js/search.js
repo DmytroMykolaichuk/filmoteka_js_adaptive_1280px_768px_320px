@@ -2,7 +2,7 @@
 import axios from 'axios';
 import { renderFilmList } from './renderFilmList';
 import { addItem } from '../index';
-import { initSearchPagination, updateSearchFilmList } from './pagination';
+// import { initSearchPagination, updateSearchFilmList } from './pagination';
 import { showPreloader, hidePreloader } from './loader';
 
 const gallery = document.querySelector('.film-list');
@@ -60,7 +60,7 @@ export async function addSearchedMovie(name, page) {
     errorEl.classList.add('visually-hidden');
     const totalPages = searchResult.total_pages;
     const totalItems = searchResult.total_results;
-    initSearchPagination(totalItems, name);
+    // initSearchPagination(totalItems, name);
     renderFilmList({ ...searchResult });
   } else {
     errorEl.classList.remove('visually-hidden');
