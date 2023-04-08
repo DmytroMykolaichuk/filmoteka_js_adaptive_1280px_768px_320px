@@ -1,8 +1,9 @@
 // src/index.js
 import { fetchMoviesByGenre, onClickGenreBtn } from './js/choose-genre';
 import { gsap } from 'gsap';
-import Pagination from 'tui-pagination';
-import 'tui-pagination/dist/tui-pagination.css';
+// import Pagination from 'tui-pagination';
+// import 'tui-pagination/dist/tui-pagination.css';
+import { onCkickPlagination } from './js/pagination';
 import axios from 'axios';
 import { getPopularFilms, fetchGenres } from './js/api';
 import { renderFilmList } from './js/renderFilmList';
@@ -18,13 +19,13 @@ import { playVideoTrailer, getVideoInfo } from './js/trailer';
 
 import { openTeamModal } from './js/team-modal';
 
-import {
-  updateFilmList,
-  updateSearchFilmList,
-  initPagination,
-  initSearchPagination,
-  updatePaginationButtons,
-} from './js/pagination';
+// import {
+//   updateFilmList,
+//   updateSearchFilmList,
+//   initPagination,
+//   initSearchPagination,
+//   updatePaginationButtons,
+// } from './js/pagination';
 
 export let searchName = null;
 
@@ -41,13 +42,13 @@ import { showPreloader, hidePreloader } from './js/loader';
 export async function addItem() {
   showPreloader();
   const data = await getPopularFilms();
-  const totalPages = data.total_pages;
-  const totalItems = 400; // 20 results per page
+  // const totalPages = data.total_pages;
+  // const totalItems = 400; // 20 results per page
   // const totalItems = totalPages * 20; // 20 results per page
-  initPagination(totalItems);
+  // initPagination(totalItems);
   const genres = await fetchGenres();
   renderFilmList({ ...data }, genres);
-  updatePaginationButtons(totalItems);
+  // updatePaginationButtons(totalItems);
   hidePreloader();
 }
 
