@@ -1,0 +1,26 @@
+:root {
+  --footer-background-color: #f7f7f7;
+  --footer-text-color: #545454;
+  --main-orange-color: #ff6b08;
+  --main-white-color: #ffffff;
+  --main-black-color: #000000;
+  --error-message: #ff001b;
+  --second-orange-color: #ff6b01;
+  --trailer-color: #ff0909;
+}
+
+.light-theme {
+  --first-color: #fff;
+  --body: #fff;
+  --second-color: #000;
+  --modal: #fefefe;
+  --change: #fefefe;
+}
+
+.dark-theme {
+  --first-color: #000;
+  --body: #2a2e37;
+  --second-color: #fff;
+  --modal: #2a2e37;
+  --change: #ff6b01;
+}

@@ -1,9 +1,3 @@
-.is-hidden {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-}
-
 .overlay-team-modal {
   position: fixed;
   z-index: 20;
@@ -27,7 +21,6 @@
 
   transform: translate(-50%, -50%) scale(1);
 
-  // transform: scale(1) rotate(-360deg);
   transition: transform 300ms linear;
 
   background-color: var(--body);
@@ -43,10 +36,8 @@
 
   z-index: 50;
 
-  // transition: transform 300ms linear;
-
   .is-hidden & {
-    transform: translate(0, 100%) scale(0) ;
+    transform: translate(0, 100%) scale(0);
   }
 
   @media screen and (min-width: 768px) {
@@ -83,7 +74,7 @@
 
 .modal-team-close:hover,
 .modal-team-close:focus {
-  fill: #ff6b01;
+  fill: var(--second-orange-color);
   text-decoration: none;
   outline: none;
 }
@@ -103,12 +94,11 @@
 }
 
 .team-modal__title {
-  font-family: 'Roboto';
   font-weight: 500;
   font-size: 25px;
   line-height: calc(35 / 25);
   margin-left: 10px;
-  color: #ff6b08;
+  color: var(--main-orange-color);
   text-align: center;
   padding: 10px;
 }
@@ -158,12 +148,11 @@
 }
 
 .team-name {
-  font-family: 'Roboto';
   font-weight: 500;
   font-size: 12px;
   line-height: calc(12 / 10);
   margin-left: 10px;
-  color: #fff;
+  color: var(--main-white-color);
   text-align: center;
   margin: 0 0 3px 0;
 
@@ -180,12 +169,11 @@
 }
 
 .team-about {
-  font-family: 'Roboto';
   font-weight: 500;
   font-size: 10px;
   line-height: calc(10 / 8);
   margin-left: 10px;
-  color: #000;
+  color: var(--main-black-color);
   text-align: center;
   margin: 0;
 
@@ -200,7 +188,7 @@
 }
 
 .team-about-cont {
-  background-color: #ff6b08;
+  background-color: var(--main-orange-color);
   border-radius: 0 0 10px 10px;
   padding: 5px 0;
 }

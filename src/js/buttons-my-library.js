@@ -9,7 +9,7 @@ export function onClickWatchedBtn() {
   if (refs.watchedBtn.classList.contains('current')) {
     return;
   }
-  refs.mylibWrapper.innerHTML = '';
+  refs.gallery.innerHTML = '';
 
   refs.queueBtn.classList.toggle('current');
   refs.watchedBtn.classList.toggle('current');
@@ -22,19 +22,18 @@ export function onClickQueueBtn() {
   if (refs.queueBtn.classList.contains('current')) {
     return;
   }
-  refs.mylibWrapper.innerHTML = '';
+  refs.gallery.innerHTML = '';
 
   refs.queueBtn.classList.toggle('current');
   refs.watchedBtn.classList.toggle('current');
 
   onCardQueue();
-  // location.replace(location.href)
 }
 
 export function onClickClearAll() {
   if (refs.watchedBtn.classList.contains('current')) {
     localStorage.setItem('watched', JSON.stringify([]));
-    refs.mylibWrapper.innerHTML = '';
+    refs.gallery.innerHTML = '';
     if (localStorage.getItem('theme') === 'dark-theme') {
       refs.darkWrapper.style.display = 'flex';
     } else {
@@ -43,7 +42,7 @@ export function onClickClearAll() {
     return;
   }
   localStorage.setItem('queue', JSON.stringify([]));
-  refs.mylibWrapper.innerHTML = '';
+  refs.gallery.innerHTML = '';
   if (localStorage.getItem('theme') === 'dark-theme') {
     refs.darkWrapper.style.display = 'flex';
   } else {

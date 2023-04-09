@@ -1,36 +1,30 @@
-const modalOpenBtn = document.querySelector('.footer__btn');
-modalOpenBtn.addEventListener('click', openTeamModal);
+import { refs } from './refs';
 
-const closeButton = document.querySelector('.js-modal-team-close');
-closeButton.addEventListener('click', closeModal);
-
-const modal = document.querySelector('.modal-team');
-
-const backdrop = document.querySelector('.overlay-team-modal');
-const body = document.querySelector('body');
+refs.modalOpenBtn.addEventListener('click', openTeamModal);
+refs.closeButton.addEventListener('click', closeModal);
 
 export function openTeamModal(event) {
   event.preventDefault();
 
-  modal.removeAttribute('hidden', '');
+  refs.modalFooter.removeAttribute('hidden', '');
   window.addEventListener('keydown', pressEscapeKey);
 
-  body.classList.toggle('no-scroll');
-  backdrop.classList.toggle('is-hidden');
+  refs.body.classList.toggle('no-scroll');
+  refs.backdrop.classList.toggle('is-hidden');
 }
 
 window.addEventListener('click', event => {
-  if (event.target === backdrop) {
+  if (event.target === refs.backdrop) {
     closeModal();
   }
 });
 
 function closeModal() {
   // Скрыть модальное окно
-  closeButton.setAttribute('hidden', '');
+  refs.closeButton.setAttribute('hidden', '');
 
-  body.classList.toggle('no-scroll');
-  backdrop.classList.toggle('is-hidden');
+  refs.body.classList.toggle('no-scroll');
+  refs.backdrop.classList.toggle('is-hidden');
   // Удалить обработчики событий
   window.removeEventListener('click', clickOutsideModal);
   window.removeEventListener('keydown', pressEscapeKey);
@@ -38,7 +32,7 @@ function closeModal() {
 
 // Функция для проверки, находится ли щелчок за пределами модального окна
 function clickOutsideModal(event) {
-  if (event.target === modal) {
+  if (event.target === modalFooter) {
     closeModal();
   }
 }

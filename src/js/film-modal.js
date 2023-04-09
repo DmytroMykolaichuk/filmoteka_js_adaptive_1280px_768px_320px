@@ -1,8 +1,6 @@
-// src/js/film-modal.js
 import axios from 'axios';
 import { getVideoInfo } from './api';
 import { showPreloader, hidePreloader } from './loader';
-// import { onWatched, onQueue } from './button-modal';
 
 const filmList = document.querySelector('.film-list');
 filmList.addEventListener('click', clickOnFilmCard);
@@ -32,7 +30,7 @@ export async function clickOnFilmCard(event) {
   const modalCard = data.data;
 
   const mainPoster = `https://image.tmdb.org/t/p/w300${modalCard.poster_path}`;
-  const posterFake = `https://shop-cdn1.vigbo.tech/shops/48947/products/18863233/images/2-be392e7cfe9a0fa843b29c1e22be8909.jpg`;
+  const posterFake = `https://sd.keepcalms.com/i-w600/keep-calm-poster-not-found.jpg`;
 
   const styleBtn = {
     textWatched: 'Add to watched',

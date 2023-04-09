@@ -14,9 +14,9 @@ export async function onClickGenreBtn(e) {
   if (e.target.nodeName !== 'BUTTON') return;
   showPreloader();
 
-  refs.noActiveBtn || null;
-  if (refs.noActiveBtn) {
-    refs.noActiveBtn.classList.remove('active-btn-genre');
+  let noActiveBtn = document.querySelector('.active-btn-genre') || null;
+  if (noActiveBtn) {
+    noActiveBtn.classList.remove('active-btn-genre');
   }
   e.target.classList.add('active-btn-genre');
 

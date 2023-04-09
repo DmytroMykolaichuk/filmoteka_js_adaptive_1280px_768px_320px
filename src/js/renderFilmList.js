@@ -1,4 +1,3 @@
-// src/js/renderFilmList.js
 import { fetchGenres } from './api';
 import { refs } from './refs';
 
@@ -39,7 +38,7 @@ export async function renderFilmList(data) {
             /></div>
             <div class='film-data'>
               <h2 class="title-film">${title || name}</h2>
-              <p>
+              <p class ="text">
                 <span class='info-film'>${genreMarkup.join(
                   ', '
                 )} | ${release}</span> 

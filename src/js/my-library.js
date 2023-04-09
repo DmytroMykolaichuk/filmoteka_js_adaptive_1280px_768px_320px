@@ -16,7 +16,7 @@ import { getVideoInfo, playVideoTrailer } from './trailer';
 import { showPreloader, hidePreloader } from './loader';
 import { openTeamModal } from './team-modal';
 
-const darkWrapper = document.querySelector('.empty-wrapper-dark')
+const darkWrapper = document.querySelector('.empty-wrapper-dark');
 const wraperMyLib = document.querySelector('.empty-wrapper');
 const containerListWatchedCard = document.querySelector('.film-list');
 const dataWatchedCards = JSON.parse(localStorage.getItem('watched')) || [];
@@ -31,21 +31,19 @@ export function statusWraper(nameList) {
   const test = JSON.parse(localStorage.getItem(`${nameList}`)) || [];
   // console.log(test);
   if (!localStorage.getItem(`${nameList}`) || test.length < 1) {
-    if(localStorage.getItem('theme') === 'dark-theme'){
+    if (localStorage.getItem('theme') === 'dark-theme') {
       darkWrapper.style.display = 'flex';
       wraperMyLib.style.display = 'none';
-    }else{
+    } else {
       darkWrapper.style.display = 'none';
       wraperMyLib.style.display = 'flex';
     }
-    
   } else {
-    if(localStorage.getItem('theme') === 'dark-theme'){
+    if (localStorage.getItem('theme') === 'dark-theme') {
       darkWrapper.style.display = 'none';
-    }else{
+    } else {
       wraperMyLib.style.display = 'none';
     }
-    
   }
 }
 
@@ -95,7 +93,7 @@ export async function onCardWatch() {
                     /></div>
                     <div class='film-data'>
                       <h2 class="title-film">${oneFilmCard.title}</h2>
-                      <p>
+                      <p class="text">
                         <span class='info-film'>${genreMarkup.join(
                           ', '
                         )} | ${release}</span>
@@ -117,7 +115,6 @@ export async function onCardQueue() {
   statusWraper('queue');
   let markup = '';
   for (const idFilm of dataQueueCards) {
-    
     const oneFilmCard = await getWatchedFilms(idFilm);
     let release = Number.parseInt(
       oneFilmCard.release_date || oneFilmCard.first_air_date
@@ -141,7 +138,7 @@ export async function onCardQueue() {
                   /></div>
                   <div class='film-data'>
                     <h2 class="title-film">${oneFilmCard.title}</h2>
-                    <p>
+                    <p class="text">
                       <span class='info-film'>${genreMarkup.join(
                         ', '
                       )} | ${release}</span>
