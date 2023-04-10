@@ -3,7 +3,7 @@ import { onCkickPlagination, OnClickPlaginationBefore } from './js/pagination';
 import { getPopularFilms, fetchGenres } from './js/api';
 import { renderFilmList } from './js/renderFilmList';
 import { clickOnFilmCard } from './js/film-modal';
-import { playVideoTrailer, getVideoInfo } from './js/trailer';
+import { playVideoTrailer } from './js/trailer';
 import { openTeamModal } from './js/team-modal';
 export let searchName = null;
 import {

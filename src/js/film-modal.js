@@ -124,8 +124,10 @@ export async function stuffOnFilmCard(event) {
 
   getVideoInfo(idCard).catch(() => {
     hidePreloader();
-    refs.trailerMovieBtn.classList.add('trailer-btn-none');
-    refs.preloader.classList.add('.done');
+    const trailerMovieBtn = document.querySelector('.trailer-Btn');
+    trailerMovieBtn.classList.add('trailer-btn-none');
+    const preloader = document.getElementById('.spinner');
+    preloader.classList.add('.done');
   });
 
   const btnWatched = document.querySelector('.click-watche');

@@ -23,5 +23,4 @@ export const refs = {
   closeModalOnClick: document.querySelector('.js-modal-close'),
   backdropFilmCard: document.querySelector('.overlay'),
   modalBody: document.querySelector('.modal-body'),
-  trailerMovieBtn: document.querySelector('.trailer-Btn'),
 };
