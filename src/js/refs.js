@@ -24,4 +24,6 @@ export const refs = {
   backdropFilmCard: document.querySelector('.overlay'),
   modalBody: document.querySelector('.modal-body'),
   trailerMovieBtn: document.querySelector('.trailer-Btn'),
+  btnWatched: document.querySelector('.click-watche'),
+  btnQueue: document.querySelector('.click-queue'),
 };
