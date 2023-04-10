@@ -19,4 +19,9 @@ export const refs = {
   inputEl: document.querySelector('.movie-search-form'),
   errorEl: document.querySelector('.search-error-message'),
   containerPlagination: document.getElementById('pagination'),
+  button: document.querySelector('.btn-scroll'),
+  closeModalOnClick: document.querySelector('.js-modal-close'),
+  backdropFilmCard: document.querySelector('.overlay'),
+  modalBody: document.querySelector('.modal-body'),
+  trailerMovieBtn: document.querySelector('.trailer-Btn'),
 };

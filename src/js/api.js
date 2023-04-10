@@ -121,3 +121,29 @@ export async function beforeForGenreIdPagination(genreId) {
     console.log(error);
   }
 }
+
+export async function getWatchedFilms(page) {
+  try {
+    showPreloader();
+    const { data } = await axios.get(
+      `${BASE_URL}movie/${page}?${KEY}&language=en-US`
+    );
+    hidePreloader();
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function filmCard(idCard) {
+  try {
+    showPreloader();
+    const data = await axios.get(
+      `${BASE_URL}movie/${idCard}?${KEY}&language=en-US&external_source=imdb_id`
+    );
+    hidePreloader();
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+}
