@@ -1,4 +1,4 @@
-import axios from 'axios';
+import { getWatchedFilms } from './api';
 import { click, addDarkClassToHTML } from './theme';
 import { gsap } from 'gsap';
 import {
@@ -11,54 +11,34 @@ import {
   onClickQueueBtn,
   onClickClearAll,
 } from './buttons-my-library';
-import { clickOnFilmCard } from './film-modal';
+import { stuffOnFilmCard } from './film-modal';
 import { getVideoInfo, playVideoTrailer } from './trailer';
 import { showPreloader, hidePreloader } from './loader';
 import { openTeamModal } from './team-modal';
+import { refs } from './refs';
 
-const darkWrapper = document.querySelector('.empty-wrapper-dark')
-const wraperMyLib = document.querySelector('.empty-wrapper');
-const containerListWatchedCard = document.querySelector('.film-list');
 const dataWatchedCards = JSON.parse(localStorage.getItem('watched')) || [];
 const dataQueueCards = JSON.parse(localStorage.getItem('queue')) || [];
-const BASE_URL = 'https://api.themoviedb.org/3/movie/';
-const API_KEY = '352708f90836dd2b75b209ae082e91df';
 
-// const queueButton = document.getElementById('queue');
 hidePreloader();
 
 export function statusWraper(nameList) {
   const test = JSON.parse(localStorage.getItem(`${nameList}`)) || [];
-  // console.log(test);
-  if (!localStorage.getItem(`${nameList}`) || test.length < 1) {
-    if(localStorage.getItem('theme') === 'dark-theme'){
-      darkWrapper.style.display = 'flex';
-      wraperMyLib.style.display = 'none';
-    }else{
-      darkWrapper.style.display = 'none';
-      wraperMyLib.style.display = 'flex';
-    }
-    
-  } else {
-    if(localStorage.getItem('theme') === 'dark-theme'){
-      darkWrapper.style.display = 'none';
-    }else{
-      wraperMyLib.style.display = 'none';
-    }
-    
-  }
-}
 
-async function getWatchedFilms(page) {
-  try {
-    showPreloader();
-    const { data } = await axios.get(
-      `${BASE_URL}${page}?api_key=${API_KEY}&language=en-US`
-    );
-    hidePreloader();
-    return data;
-  } catch (error) {
-    console.log(error);
+  if (!localStorage.getItem(`${nameList}`) || test.length < 1) {
+    if (localStorage.getItem('theme') === 'dark-theme') {
+      refs.darkWrapper.style.display = 'flex';
+      refs.wraperMyLib.style.display = 'none';
+    } else {
+      refs.darkWrapper.style.display = 'none';
+      refs.wraperMyLib.style.display = 'flex';
+    }
+  } else {
+    if (localStorage.getItem('theme') === 'dark-theme') {
+      refs.darkWrapper.style.display = 'none';
+    } else {
+      refs.wraperMyLib.style.display = 'none';
+    }
   }
 }
 
@@ -66,7 +46,7 @@ onCardWatch();
 
 export async function onCardWatch() {
   showPreloader();
-  containerListWatchedCard.innerHTML = '';
+  refs.gallery.innerHTML = '';
   statusWraper('watched');
   let markup = '';
   for (const idFilm of dataWatchedCards) {
@@ -75,7 +55,7 @@ export async function onCardWatch() {
       oneFilmCard.release_date || oneFilmCard.first_air_date
     );
     const mainPoster = `https://image.tmdb.org/t/p/w300${oneFilmCard.poster_path}`;
-    const posterFake = `https://shop-cdn1.vigbo.tech/shops/48947/products/18863233/images/2-be392e7cfe9a0fa843b29c1e22be8909.jpg`;
+    const posterFake = `https://sd.keepcalms.com/i-w600/keep-calm-poster-not-found.jpg`;
     let genreMarkup = [];
 
     oneFilmCard.genres.forEach(element => {
@@ -95,7 +75,7 @@ export async function onCardWatch() {
                     /></div>
                     <div class='film-data'>
                       <h2 class="title-film">${oneFilmCard.title}</h2>
-                      <p>
+                      <p class="text">
                         <span class='info-film'>${genreMarkup.join(
                           ', '
                         )} | ${release}</span>
@@ -107,23 +87,22 @@ export async function onCardWatch() {
                   </a>
               </li>`;
   }
-  containerListWatchedCard.insertAdjacentHTML('beforeend', markup);
+  refs.gallery.insertAdjacentHTML('beforeend', markup);
   hidePreloader();
 }
 
 export async function onCardQueue() {
   showPreloader();
-  containerListWatchedCard.innerHTML = '';
+  refs.gallery.innerHTML = '';
   statusWraper('queue');
   let markup = '';
   for (const idFilm of dataQueueCards) {
-    
     const oneFilmCard = await getWatchedFilms(idFilm);
     let release = Number.parseInt(
       oneFilmCard.release_date || oneFilmCard.first_air_date
     );
     const mainPoster = `https://image.tmdb.org/t/p/w300${oneFilmCard.poster_path}`;
-    const posterFake = `https://shop-cdn1.vigbo.tech/shops/48947/products/18863233/images/2-be392e7cfe9a0fa843b29c1e22be8909.jpg`;
+    const posterFake = `https://sd.keepcalms.com/i-w600/keep-calm-poster-not-found.jpg`;
     let genreMarkup = [];
 
     oneFilmCard.genres.forEach(element => {
@@ -141,7 +120,7 @@ export async function onCardQueue() {
                   /></div>
                   <div class='film-data'>
                     <h2 class="title-film">${oneFilmCard.title}</h2>
-                    <p>
+                    <p class="text">
                       <span class='info-film'>${genreMarkup.join(
                         ', '
                       )} | ${release}</span>
@@ -153,25 +132,22 @@ export async function onCardQueue() {
                 </a>
             </li>`;
   }
-  containerListWatchedCard.insertAdjacentHTML('beforeend', markup);
+  refs.gallery.insertAdjacentHTML('beforeend', markup);
   hidePreloader();
 }
-
-// Scroll to top
-const button = document.querySelector('.btn-scroll');
 
 const displayButton = () => {
   window.addEventListener('scroll', () => {
     if (window.scrollY > 100) {
-      button.style.display = 'block';
+      refs.button.style.display = 'block';
     } else {
-      button.style.display = 'none';
+      refs.button.style.display = 'none';
     }
   });
 };
 
 const scrollToTop = () => {
-  button.addEventListener('click', () => {
+  refs.button.addEventListener('click', () => {
     window.scroll({
       top: 0,
       left: 0,

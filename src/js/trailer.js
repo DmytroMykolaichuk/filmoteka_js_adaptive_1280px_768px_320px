@@ -1,25 +1,9 @@
-// src/js/trailer.js
-import axios from 'axios';
 import * as basicLightbox from 'basiclightbox';
 import '../css/basicLightbox.min.css';
-import { showPreloader, hidePreloader } from './loader';
+import { getVideoInfo } from './api';
+import { refs } from './refs';
 
-const modal = document.querySelector('.modal');
-
-export function getVideoInfo(movieId) {
-  showPreloader();
-  return axios
-    .get(
-      `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=352708f90836dd2b75b209ae082e91df`
-    )
-    .then(response => {
-      const videoKey = response.data.results[0].key;
-      hidePreloader();
-      return videoKey;
-    });
-}
-
-export const playVideoTrailer = modal.addEventListener('click', event => {
+export const playVideoTrailer = refs.modal.addEventListener('click', event => {
   const button = document.querySelector('.trailer-Btn');
 
   if (event.target.matches('.trailer-Btn')) {

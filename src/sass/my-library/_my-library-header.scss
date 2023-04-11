@@ -1,10 +1,12 @@
-// src/sass/my-library/_my-library-header.scss
 .lib-header {
   padding-top: 40px;
   padding-bottom: 60px;
 
-  background-image: linear-gradient(to right, rgba(0, 0, 0, .56),
-      rgba(0, 0, 0, .56)),
+  background-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.56),
+      rgba(0, 0, 0, 0.56)
+    ),
     url(../images/my-library/hbg-320-x1.jpg);
   background-size: 100% 100%;
   background-repeat: no-repeat;
@@ -22,8 +24,11 @@
   }
 
   @media screen and (min-width: 768px) {
-    background-image: linear-gradient(to right, rgba(0, 0, 0, .56),
-        rgba(0, 0, 0, .56)),
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.56),
+        rgba(0, 0, 0, 0.56)
+      ),
       url(../images/my-library/hbg-768-x1.jpg);
 
     @media (min-device-pixel-ratio: 2),
@@ -39,8 +44,11 @@
   }
 
   @media screen and (min-width: 1280px) {
-    background-image: linear-gradient(to right, rgba(0, 0, 0, .56),
-        rgba(0, 0, 0, .56)),
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.56),
+        rgba(0, 0, 0, 0.56)
+      ),
       url(../images/my-library/hbg-1280-x1.jpg);
 
     @media (min-device-pixel-ratio: 2),
@@ -56,33 +64,6 @@
   }
 }
 
-.container {
-  padding-left: 20px;
-  padding-right: 20px;
-  margin-left: auto;
-  margin-right: auto;
-
-  @media screen and (min-width: 320px) {
-    width: 320px;
-  }
-
-  @media screen and (min-width: 768px) {
-    width: 768px;
-    padding-left: 32px;
-    padding-right: 32px;
-  }
-
-  @media screen and (min-width: 1280px) {
-    width: 1280px;
-  }
-}
-
-// .header-wrapper {
-//   padding-top: 40px;
-//   padding-bottom: 60px;
-// }
-
-// 50/50========================
 .logo_title {
   @media screen and (max-width: 767px) {
     position: absolute;
@@ -119,16 +100,15 @@
 }
 
 .lib-btn {
-  font-family: 'Roboto';
   font-weight: 500;
   font-size: 12px;
   line-height: calc(16 / 12);
-  color: #ffffff;
+  color: var(--main-white-color);
   cursor: pointer;
 
   min-width: 130px;
   min-height: 42px;
-  border: 1px solid #ffffff;
+  border: 1px solid var(--main-white-color);
   border-radius: 5px;
   background-color: transparent;
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -140,18 +120,18 @@
 
 .lib-btn:hover,
 .lib-btn:focus {
-  background-color: #ff6b01;
+  background-color: var(--second-orange-color);
 }
 
 .lib-btn.current {
-  border: 1px solid #ff6b01;
-  background-color: #ff6b01;
+  border: 1px solid var(--second-orange-color);
+  background-color: var(--second-orange-color);
 }
 
 .link {
   text-decoration: none;
   display: block;
 }
-.container-lib-header{
+.container-lib-header {
   position: relative;
 }

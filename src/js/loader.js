@@ -1,9 +1,9 @@
-const preloader = document.getElementById('spinner');
+import { refs } from './refs';
 
 export function showPreloader() {
-  preloader.classList.remove('done');
-};
+  refs.preloader.classList.remove('done');
+}
 
 export function hidePreloader() {
-  preloader.classList.add('done');
-};
+  refs.preloader.classList.add('done');
+}

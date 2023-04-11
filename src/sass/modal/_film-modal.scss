@@ -1,4 +1,3 @@
-// src/sass/modal/_film-modal.scss
 .is-hidden {
   opacity: 0;
   visibility: hidden;
@@ -28,7 +27,6 @@
 
   transform: translate(-50%, -50%) scale(1) rotate(-360deg);
 
-  // transform: scale(1) rotate(-360deg);
   transition: transform 300ms linear;
 
   background-color: var(--modal);
@@ -43,8 +41,6 @@
   overflow-y: auto;
 
   z-index: 50;
-
-  // transition: transform 300ms linear;
 
   .is-hidden & {
     transform: translate(-50%, -50%) scale(0) rotate(0deg);
@@ -84,7 +80,7 @@
 
 .modal-close:hover,
 .modal-close:focus {
-  fill: #ff6b01;
+  fill: var(--second-orange-color);
   text-decoration: none;
   outline: none;
 }
@@ -136,11 +132,6 @@
     font-size: 20px;
     line-height: calc(23px / 20px);
   }
-
-  // @media screen and (min-width: 1280px) {
-  //   font-size: 20px;
-  //   line-height: calc(23px / 20px);
-  // }
 }
 .movie-description {
   margin-top: 0;
@@ -198,7 +189,7 @@
 
 .film-property-bgVote {
   color: var(--first-color);
-  background: #ff6b01;
+  background: var(--second-orange-color);
   margin-right: 5px;
 }
 
@@ -279,7 +270,6 @@
 
 .trailer-Btn {
   background: url('../images/youtube_social.png') no-repeat;
-  // background: url('../images/youtube_social1.png') no-repeat;
 
   background-size: 30px;
   background-position-x: 20px;
@@ -304,22 +294,21 @@
 .add-to-queue-Btn:hover,
 .add-to-watched-Btn:focus,
 .add-to-queue-Btn:focus {
-  background-color: #ff6b01;
+  background-color: var(--second-orange-color);
   border: none;
-  color: #ffffff;
+  color: var(--main-white-color);
 }
 
 .trailer-Btn:hover,
 .trailer-Btn:focus {
-  // background: url('../images/youtube_social_onHover-2.png') no-repeat;
   background: url('../images/youtube_social_onHover.png') no-repeat;
   background-size: 30px;
   background-position-x: 10px;
   background-position-y: center;
 
-  background-color: #ff0909;
+  background-color: var(--trailer-color);
   border: none;
-  color: #ffffff;
+  color: var(--main-white-color);
 }
 
 .done-watched {
@@ -330,10 +319,9 @@
     position: absolute;
     top: -15px;
     left: 4px;
-    background-color: #ff6b01;
+    background-color: var(--second-orange-color);
     width: 50px;
     height: 15px;
-    font-family: 'Roboto';
     font-weight: 500;
     font-size: 10px;
     border-top-right-radius: 20%;
@@ -348,34 +336,6 @@
       border-bottom-right-radius: 20%;
     }
   }
-
-  // &::after{
-  //   content: 'Sure?';
-  //   display:none;
-  //   position: absolute;
-  //   bottom: -15px;
-  //   left: 3px;
-  //   background-color: #f51a1a;
-  //   width: 95%;
-  //   height: 15px;
-  //   font-family: 'Roboto';
-  //   font-weight: 500;
-  //   font-size: 10px;
-  //   color: #fefefe;
-  //   border-bottom-left-radius:50%;
-  //   border-bottom-right-radius:50%;
-  // }
-
-  // &:hover::after{
-  //   display: block;
-  // }
-
-  // &:hover::before {
-  //   width: 95%;
-  //   border-top-left-radius:50%;
-  //   border-top-right-radius:50%;
-  //   background-color: #f51a1a;
-  // }
 }
 
 .done-queue {
@@ -386,10 +346,9 @@
     position: absolute;
     top: -15px;
     left: 4px;
-    background-color: #ff6b01;
+    background-color: var(--second-orange-color);
     width: 50px;
     height: 15px;
-    font-family: 'Roboto';
     font-weight: 500;
     font-size: 10px;
     border-top-right-radius: 20%;
@@ -405,13 +364,6 @@
     }
   }
 }
-
-// .watch-button .active {
-//   background-color: #ff6b01;
-//   border: none;
-//   color: #ffffff;
-// }
-
 .no-scroll {
   overflow: hidden;
 }

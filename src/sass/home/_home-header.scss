@@ -1,52 +1,7 @@
-// src/sass/home/_home-header.scss
 @import '~node_modules/modern-normalize/modern-normalize.css';
 
-ul,
-ol {
-  margin: 0;
-  padding-left: 0;
-}
-
-img {
-  display: block;
-  max-width: 100%;
-  height: auto;
-}
-
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin: 0;
-}
-
 a {
-  text-decoration: none;
   color: inherit;
-}
-
-.list {
-  list-style: none;
-}
-
-.link {
-  text-decoration: none;
-}
-
-.visually-hidden {
-  position: absolute;
-  white-space: nowrap;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  border: 0;
-  padding: 0;
-  clip: rect(0 0 0 0);
-  clip-path: inset(50%);
-  margin: -1px;
 }
 
 .header {
@@ -93,7 +48,7 @@ a {
 }
 
 .logo {
-  color: #ffffff;
+  color: var(--main-white-color);
   display: inline-block;
   align-items: center;
 }
@@ -104,7 +59,7 @@ a {
   font-size: 30px;
   line-height: calc(35 / 30);
   margin-left: 10px;
-  color: #ffffff;
+  color: var(--main-white-color);
   display: none;
   @media screen and (min-width: 768px) {
     display: inline-block;
@@ -121,7 +76,7 @@ a {
   font-weight: 500;
   font-size: 12px;
   line-height: calc(14 / 12);
-  color: #ffffff;
+  color: var(--main-white-color);
   display: flex;
   align-items: center;
   text-align: center;
@@ -152,23 +107,23 @@ a {
 
 .movie-search-form {
   border-color: transparent;
-  border-bottom: 0.5px solid #ffffff;
+  border-bottom: 0.5px solid var(--main-white-color);
   background-color: inherit;
   width: 100%;
   font-family: 'Roboto';
   font-weight: 400;
   font-size: 14px;
   line-height: calc(16 / 14);
-  color: #ffffff;
+  color: var(--main-white-color);
   padding-bottom: 4px;
   outline: none;
 }
 
 .movie-search-form::placeholder {
-  color: #ffffff;
+  color: var(--main-white-color);
 }
 input:-webkit-autofill {
-  border-bottom: 0.5px solid #ffffff;
+  border-bottom: 0.5px solid var(--main-white-color);
   -webkit-text-fill-color: rgb(255, 255, 255);
   -webkit-box-shadow: transparent;
   transition: background-color 5000s ease-in-out 0s;
@@ -208,7 +163,7 @@ input:-webkit-autofill {
 }
 .search-error-message p {
   font-family: 'Roboto';
-  color: #ff001b;
+  color: var(--error-message);
   font-weight: 400;
   font-size: 14px;
   line-height: calc(16 / 14);
@@ -226,7 +181,7 @@ input:-webkit-autofill {
 .header__movie-search-button:focus {
   outline: none;
   border-radius: 5px;
-  background-color: #FF6B08;
+  background-color: var(--main-orange-color);
   transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .button__icon:hover,
@@ -235,6 +190,6 @@ input:-webkit-autofill {
   transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.header-container{
+.header-container {
   position: relative;
 }

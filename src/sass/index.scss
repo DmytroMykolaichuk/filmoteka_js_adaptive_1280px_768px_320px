@@ -1,8 +1,8 @@
-// src/sass/index.scss
 @import './components/container';
 @import './components/pagination';
-@import './components/variables';
-@import './components/reset';
+@import './components/theme';
+@import './base/variables';
+@import './base/reset';
 @import './home/home-header';
 @import './home/choose-genre';
 @import './home/home-body';
@@ -14,4 +14,3 @@
 @import './film-card';
 @import './loader-and-scroll/loader.scss';
 @import './loader-and-scroll/scroll.scss';
-@import './components/theme';

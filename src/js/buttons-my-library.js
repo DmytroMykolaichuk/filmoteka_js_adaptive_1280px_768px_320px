@@ -1,58 +1,51 @@
-import { onCardWatch, onCardQueue } from "./my-library";
+import { onCardWatch, onCardQueue } from './my-library';
+import { refs } from './refs';
 
-const darkWrapper = document.querySelector('.empty-wrapper-dark')
-const wraperMyLib = document.querySelector('.empty-wrapper')
-const queueBtn= document.querySelector('.secondary')
-const watchedBtn= document.querySelector('.lib-btn.current')
-const btnClearAll = document.querySelector('.btn-clear-all')
-const mylibWrapper = document.querySelector('.film-list')
+refs.watchedBtn.addEventListener('click', onClickWatchedBtn);
+refs.queueBtn.addEventListener('click', onClickQueueBtn);
+refs.btnClearAll.addEventListener('click', onClickClearAll);
 
-watchedBtn.addEventListener('click', onClickWatchedBtn)
-queueBtn.addEventListener('click', onClickQueueBtn)
-btnClearAll.addEventListener('click', onClickClearAll)
+export function onClickWatchedBtn() {
+  if (refs.watchedBtn.classList.contains('current')) {
+    return;
+  }
+  refs.gallery.innerHTML = '';
 
+  refs.queueBtn.classList.toggle('current');
+  refs.watchedBtn.classList.toggle('current');
 
-export function onClickWatchedBtn(){
-  if(watchedBtn.classList.contains('current')){return}
-  mylibWrapper.innerHTML=''
-  
-  queueBtn.classList.toggle('current')
-  watchedBtn.classList.toggle('current')
-  
-  onCardWatch()
-  location.replace(location.href)
+  onCardWatch();
+  location.replace(location.href);
 }
 
+export function onClickQueueBtn() {
+  if (refs.queueBtn.classList.contains('current')) {
+    return;
+  }
+  refs.gallery.innerHTML = '';
 
-export function onClickQueueBtn(){
-  if(queueBtn.classList.contains('current')){return}
-  mylibWrapper.innerHTML=''
+  refs.queueBtn.classList.toggle('current');
+  refs.watchedBtn.classList.toggle('current');
 
-  queueBtn.classList.toggle('current')
-  watchedBtn.classList.toggle('current')
-
-  onCardQueue()
-  // location.replace(location.href)
+  onCardQueue();
 }
-
 
 export function onClickClearAll() {
-  if(watchedBtn.classList.contains('current')){
-    localStorage.setItem('watched', JSON.stringify([]))
-    mylibWrapper.innerHTML=''
-    if (localStorage.getItem('theme') === 'dark-theme'){
-      darkWrapper.style.display='flex'
-    }else{
-      wraperMyLib.style.display='flex'
+  if (refs.watchedBtn.classList.contains('current')) {
+    localStorage.setItem('watched', JSON.stringify([]));
+    refs.gallery.innerHTML = '';
+    if (localStorage.getItem('theme') === 'dark-theme') {
+      refs.darkWrapper.style.display = 'flex';
+    } else {
+      refs.wraperMyLib.style.display = 'flex';
     }
-  return}
-  localStorage.setItem('queue', JSON.stringify([]))
-  mylibWrapper.innerHTML=''
-  if (localStorage.getItem('theme') === 'dark-theme'){
-    darkWrapper.style.display='flex'
-  }else{
-    wraperMyLib.style.display='flex'
+    return;
   }
-  
-  
+  localStorage.setItem('queue', JSON.stringify([]));
+  refs.gallery.innerHTML = '';
+  if (localStorage.getItem('theme') === 'dark-theme') {
+    refs.darkWrapper.style.display = 'flex';
+  } else {
+    refs.wraperMyLib.style.display = 'flex';
+  }
 }

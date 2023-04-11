@@ -1,19 +1,13 @@
-// src/js/api.js
 import axios from 'axios';
 import { showPreloader, hidePreloader } from './loader';
 
-export async function getPopularFilms(page) {
-  const BASE_URL = 'https://api.themoviedb.org/3/trending/movie/day';
+const BASE_URL = 'https://api.themoviedb.org/3/';
+const KEY = 'api_key=352708f90836dd2b75b209ae082e91df';
 
-  const options = {
-    params: {
-      api_key: '352708f90836dd2b75b209ae082e91df',
-      page: page,
-    },
-  };
+export async function getPopularFilms() {
   showPreloader();
   try {
-    let { data } = await axios.get(BASE_URL, options);
+    let { data } = await axios.get(`${BASE_URL}trending/movie/day?${KEY}`);
     hidePreloader();
     return data;
   } catch (error) {
@@ -22,20 +16,133 @@ export async function getPopularFilms(page) {
 }
 
 export async function fetchGenres() {
-  const BASE_URL = 'https://api.themoviedb.org/3/genre/movie/list';
-
-  const options = {
-    params: {
-      api_key: '352708f90836dd2b75b209ae082e91df',
-    },
-  };
   try {
-    let { data } = await axios.get(BASE_URL, options);
-    const genres = data.genres.reduce((accumulator, current) => {
-      accumulator[current.id] = current.name;
-      return accumulator;
-    }, {});
-    return genres;
+    let { data } = await axios.get(`${BASE_URL}genre/movie/list?${KEY}`);
+    return data.genres;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function fetchMoviesByGenre(genreId) {
+  try {
+    let { data } = await axios.get(
+      `${BASE_URL}discover/movie?${KEY}&language=en-US&page=1&sort_by=popularity.desc&with_genres=${genreId}`
+    );
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export function getVideoInfo(movieId) {
+  showPreloader();
+  return axios
+    .get(`${BASE_URL}movie/${movieId}/videos?${KEY}`)
+    .then(response => {
+      const videoKey = response.data.results[0].key;
+      hidePreloader();
+      return videoKey;
+    });
+}
+
+export async function getSearchMovie(name, page) {
+  try {
+    const { data } = await axios.get(
+      `${BASE_URL}search/movie?${KEY}&language=en-US&query=${name}&page=${page}`
+    );
+    return data;
+  } catch (error) {
+    console.log(error.message);
+  }
+}
+
+export async function afterForSearchPagination(name, currentPage) {
+  showPreloader();
+  try {
+    const data = await axios.get(
+      `${BASE_URL}search/movie?${KEY}&query=${name}&page=${currentPage}`
+    );
+    hidePreloader();
+    return data;
+  } catch (error) {
+    console.log(error.message);
+  }
+}
+
+export async function afterForGenreIdPagination(genreId, currentPage) {
+  showPreloader();
+  try {
+    const data = await axios.get(
+      `${BASE_URL}discover/movie?${KEY}&language=en-US&page=1&sort_by=popularity.desc&with_genres=${genreId}&page=${currentPage}`
+    );
+    hidePreloader();
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function afterForPagination(currentPage) {
+  showPreloader();
+  try {
+    const data = await axios.get(
+      `${BASE_URL}trending/movie/day?${KEY}&page=${currentPage}`
+    );
+    hidePreloader();
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function beforeForSearchPagination(name) {
+  showPreloader();
+  try {
+    const data = await axios.get(
+      `${BASE_URL}search/movie?${KEY}&query=${name}&page=1`
+    );
+    hidePreloader();
+    return data;
+  } catch (error) {
+    console.log(error.message);
+  }
+}
+
+export async function beforeForGenreIdPagination(genreId) {
+  showPreloader();
+  try {
+    const data = await axios.get(
+      `${BASE_URL}discover/movie?${KEY}&language=en-US&page=1&sort_by=popularity.desc&with_genres=${genreId}&page=1`
+    );
+    hidePreloader();
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function getWatchedFilms(page) {
+  try {
+    showPreloader();
+    const { data } = await axios.get(
+      `${BASE_URL}movie/${page}?${KEY}&language=en-US`
+    );
+    hidePreloader();
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function filmCard(idCard) {
+  try {
+    showPreloader();
+    const data = await axios.get(
+      `${BASE_URL}movie/${idCard}?${KEY}&language=en-US&external_source=imdb_id`
+    );
+    hidePreloader();
+    return data;
   } catch (error) {
     console.log(error);
   }

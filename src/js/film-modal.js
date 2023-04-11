@@ -1,38 +1,24 @@
-// src/js/film-modal.js
-import axios from 'axios';
-import { getVideoInfo } from './trailer';
+import { filmCard, getVideoInfo } from './api';
 import { showPreloader, hidePreloader } from './loader';
-// import { onWatched, onQueue } from './button-modal';
+import { refs } from './refs';
 
-const filmList = document.querySelector('.film-list');
-filmList.addEventListener('click', clickOnFilmCard);
-
-const closeModalOnClick = document.querySelector('.js-modal-close');
-closeModalOnClick.addEventListener('click', closeModal);
-
-const backdrop = document.querySelector('.overlay');
-
-const modal = document.querySelector('.modal');
-const modalBody = document.querySelector('.modal-body');
-
-const body = document.querySelector('body');
+refs.gallery.addEventListener('click', stuffOnFilmCard);
+refs.closeModalOnClick.addEventListener('click', closeModal);
 
 let idCard = '';
 let markup = '';
-export async function clickOnFilmCard(event) {
+export async function stuffOnFilmCard(event) {
   event.preventDefault();
   if (event.target.nodeName === 'UL') return;
   idCard = event.target.closest('.film-card').id;
   showPreloader();
 
-  const data = await axios.get(
-    `https://api.themoviedb.org/3/movie/${idCard}?api_key=352708f90836dd2b75b209ae082e91df&language=en-US&external_source=imdb_id`
-  );
+  const data = await filmCard(idCard);
   hidePreloader();
   const modalCard = data.data;
 
   const mainPoster = `https://image.tmdb.org/t/p/w300${modalCard.poster_path}`;
-  const posterFake = `https://shop-cdn1.vigbo.tech/shops/48947/products/18863233/images/2-be392e7cfe9a0fa843b29c1e22be8909.jpg`;
+  const posterFake = `https://sd.keepcalms.com/i-w600/keep-calm-poster-not-found.jpg`;
 
   const styleBtn = {
     textWatched: 'Add to watched',
@@ -60,6 +46,7 @@ export async function clickOnFilmCard(event) {
         'add-to-watched-Btn click-watche btn__watch btn done-queue';
     }
   }
+
   statusBtn();
 
   markup = `<img src= "${modalCard.poster_path ? mainPoster : posterFake}"
@@ -110,7 +97,7 @@ export async function clickOnFilmCard(event) {
             <div class="modal-Btn">
             <button type="button" class="trailer-Btn btn__queue btn" data-id=${
               modalCard.id
-            }>trailer</button>    
+            }>trailer</button>
             <button type="button" class="${
               styleBtn.classWatched
             } add-to-watched-Btn click-watche btn__watch btn" data-id=${
@@ -121,22 +108,19 @@ export async function clickOnFilmCard(event) {
                 } add-to-queue-Btn click-queue btn__queue btn" data-id=${
     modalCard.id
   }>${styleBtn.textQueue}</button>
-                
+
             </div>
-            
+
     </div>`;
 
-  // backdrop.classList.remove('is-hidden');
-  // modal.classList.add('active');
+  refs.modalBody.innerHTML = '';
+  refs.modalBody.insertAdjacentHTML('beforeend', markup);
 
-  modal.removeAttribute('hidden', '');
+  refs.modal.removeAttribute('hidden', '');
   window.addEventListener('keydown', pressEscapeKey);
 
-  body.classList.toggle('no-scroll');
-  backdrop.classList.toggle('is-hidden');
-
-  modalBody.innerHTML = '';
-  modalBody.insertAdjacentHTML('beforeend', markup);
+  refs.body.classList.toggle('no-scroll');
+  refs.backdropFilmCard.classList.toggle('is-hidden');
 
   getVideoInfo(idCard).catch(() => {
     hidePreloader();
@@ -144,7 +128,6 @@ export async function clickOnFilmCard(event) {
     trailerMovieBtn.classList.add('trailer-btn-none');
     const preloader = document.getElementById('.spinner');
     preloader.classList.add('.done');
-    
   });
 
   const btnWatched = document.querySelector('.click-watche');
@@ -212,37 +195,28 @@ export async function clickOnFilmCard(event) {
 
 window.addEventListener('click', event => {
   hidePreloader();
-  if (event.target === backdrop) {
+  if (event.target === refs.backdropFilmCard) {
     closeModal();
   }
 });
 
 function closeModal() {
-  // Скрыть модальное окно
-  closeModalOnClick.setAttribute('hidden', '');
+  refs.closeModalOnClick.setAttribute('hidden', '');
 
-  body.classList.toggle('no-scroll');
-  backdrop.classList.toggle('is-hidden');
-  // Удалить обработчики событий
+  refs.body.classList.toggle('no-scroll');
+  refs.backdropFilmCard.classList.toggle('is-hidden');
   window.removeEventListener('click', clickOutsideModal);
   window.removeEventListener('keydown', pressEscapeKey);
 }
 
-// Функция для проверки, находится ли щелчок за пределами модального окна
 function clickOutsideModal(event) {
-  if (event.target === modal) {
+  if (event.target === refs.modal) {
     closeModal();
   }
 }
 
-// Функция для проверки, была ли нажата клавиша ESC
 function pressEscapeKey(event) {
   if (event.key === 'Escape') {
     closeModal();
   }
 }
-
-// const btn = document.querySelectorAll('.btn');
-// btn.forEach(el => {
-//   el.addEventListener('mouseout', () => btn.blur());
-// })
